@@ -2,3 +2,6 @@
 A full stack app that can hold your cars information
 
 linters not installed yet
+
+goals:
+Installing Scss to work with it
