@@ -5,6 +5,11 @@
     "jest": true
   },
   "parser": "@babel/eslint-parser",
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parserOptions": {
     "requireConfigFile": false,
     "ecmaFeatures": {
@@ -15,11 +20,6 @@
   },
   "extends": ["airbnb", "plugin:react/recommended", "plugin:react-hooks/recommended"],
   "plugins": ["react"],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
   "rules": {
     "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
