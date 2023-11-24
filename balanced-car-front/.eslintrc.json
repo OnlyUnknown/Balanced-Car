@@ -11,6 +11,11 @@
     }
   },
   "parserOptions": {
+    "babelOptions": {
+      "parserOpts": {
+        "plugins": ["jsx"]
+      }
+    },
     "requireConfigFile": false,
     "ecmaFeatures": {
       "jsx": true
