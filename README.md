@@ -35,6 +35,7 @@
 
 - Ruby on Rails
 - React
+- Redux
 
 <!-- Features -->
 
@@ -42,23 +43,15 @@
 
 - [ ] **A login page**
 - [ ] **A registration page**
-- [ ] **A list of doctors**
-- [ ] **Add a doctor**
-- [ ] **Remove a doctor**
-- [ ] **Appointment Booking with doctors**
+- [ ] **A list of cars**
+- [ ] **Add a car**
+- [ ] **Remove a car**
+- [ ] **Saving car infromation page**
+- [ ] **Editing car infromation page**
 - [ ] **API Documentation**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 💻 Kanban Board <a name="kanban board"></a>
-
-<a href="https://github.com/users/OnlyUnknown/projects/12">Kanban Board</a>
-
-<a href="https://user-images.githubusercontent.com/116448416/262923531-c43d80cf-c1a8-435b-b64b-55a23b344eb5.png">Kanban Board Screenshot</a>
-
-We are a team of four members.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -78,16 +71,16 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  git https://github.com/OnlyUnknown/Doctor-appointment
+  git https://github.com/OnlyUnknown/Balanced-Car.git
 ```
 
 <!-- ### Install -->
 
 Install this project with:
 ```
-cd doctor_appointment_backend
+cd balanced-car-api
   bundle install
-cd doctor_appointment_frontend
+cd balanced-car-front
   npm install
 ```
 
@@ -95,9 +88,9 @@ cd doctor_appointment_frontend
 
 To run the project, execute the following command:
 ```
-cd doctor_appointment_backend
+cd balanced-car-api
   rails server
-cd doctor_appointment_frontend
+cd balanced-car-front
   npm start
 ```
 
@@ -107,30 +100,9 @@ cd doctor_appointment_frontend
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Isabella Otoo**
-
-- GitHub: [@githubhandle](https://github.com/Bellagirl-maker)
-- Twitter: [@twitterhandle](https://twitter.com/isabella_otoo)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/isabella-otoo)
-
-👤 **Drissa Toure**
-
-- GitHub: [@githubhandle](https://github.com/touredri)
-- Twitter: [@twitterhandle](https://twitter.com/touredri)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/touredri/)
-
 👤 **Abdullah AL-Khureif**
 
 - GitHub: [@githubhandle](https://github.com/OnlyUnknown)
-
-👤 **Basim Aljazaeri**
-
-- GitHub: [@githubhandle](https://github.com/ShiroYaksha90)
-- Twitter: [@twitterhandle](https://twitter.com/Basim_AlJazaeri)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/basimaljazaeri/)
-
-
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,9 +110,9 @@ cd doctor_appointment_frontend
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add Medical history for users or patients**
-- [ ] **Add prescription information linked to each doctor appointment**
-- [ ] **A billing information**
+- [ ] **Add pic for the cars**
+- [ ] **Add attachment**
+- [ ] **Add old price**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -164,10 +136,10 @@ If you like this project please give it a 5⭐!
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-We would like to give credit to [ Murat Korkmaz on Behance](https://www.behance.net/muratk) for the design of this app and  [Microverse](https://bit.ly/MicroverseTN) for the opportunity to work on this project.
+<!-- ## 🙏 Acknowledgments <a name="acknowledgements"></a>
+We would like to give credit to [ Murat Korkmaz on Behance](https://www.behance.net/muratk) for the design of this app and  [Microverse](https://bit.ly/MicroverseTN) for the opportunity to work on this project. -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- LICENSE -->
 
