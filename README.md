@@ -1,4 +1,5 @@
-# Doctor Appointment App
+
+# Balanced Car App
 
 <a name="readme-top"></a>
 
@@ -148,3 +149,4 @@ We would like to give credit to [ Murat Korkmaz on Behance](https://www.behance.
 This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
