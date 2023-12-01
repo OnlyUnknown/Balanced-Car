@@ -28,7 +28,7 @@
 
 # 📖 Balanced Car App <a name="about-project"></a>
 
-**Doctor Appointment App** is a React and Rails-built fully functional app. The Balanced Car app allows users to add cars informaion like: Oil changing time, Tire age. 
+**Balanced car App** is a React and Rails-built fully functional app. The Balanced Car app allows users to add cars informaion like: Oil changing time, Tire age. 
 
 ## 🛠️ Built With <a name="built-with"></a>
 
