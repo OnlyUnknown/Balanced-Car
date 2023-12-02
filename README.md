@@ -1,4 +1,4 @@
-
+https://www.javascript.com/
 # Balanced Car App
 
 <a name="readme-top"></a>
@@ -66,7 +66,7 @@ In order to run this project you need:
 
 - [Ruby](https://www.ruby-lang.org/en/)
 - [Rails](https://rubyonrails.org/)
-- JavaScript
+- [JavaScript](https://www.javascript.com/)
 
 ### Setup
 
