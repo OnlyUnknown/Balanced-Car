@@ -4,9 +4,10 @@ const Navigation = () => {
     return (
         <nav className='nav'>
             <ul>
-                <li>Logo</li>
-                <li>Sign out</li>
-                <li>My cars</li>
+                <li> Logo</li>
+                <li> My cars</li>
+                <li> Sign out</li>
+                
             </ul>
         </nav>
     )

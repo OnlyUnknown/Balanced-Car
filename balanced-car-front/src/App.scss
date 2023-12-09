@@ -38,6 +38,17 @@
   }
 }
 
+.nav {
+  padding: 3px;
+  background-color: #61dafb;
+}
+
 .nav ul{
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav ul li{
+  margin: auto;
 }
