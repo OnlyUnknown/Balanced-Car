@@ -1,16 +1,14 @@
 import './App.scss';
 
-const Navigation = () => {
-    return (
-        <nav className='nav'>
-            <ul>
-                <li> Logo</li>
-                <li> My cars</li>
-                <li> Sign out</li>
-                
-            </ul>
-        </nav>
-    )
-}
+const Navigation = () => (
+  <nav className="nav">
+    <ul>
+      <li> Logo</li>
+      <li> My cars</li>
+      <li> Sign out</li>
 
-export default Navigation
+    </ul>
+  </nav>
+);
+
+export default Navigation;
