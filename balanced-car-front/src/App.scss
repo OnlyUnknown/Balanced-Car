@@ -37,3 +37,19 @@
     transform: rotate(360deg);
   }
 }
+
+.nav {
+  color: aliceblue;
+  padding: 3px;
+  background: linear-gradient(#434b4d, transparent);
+}
+
+.nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav ul li {
+  margin: auto;
+}
