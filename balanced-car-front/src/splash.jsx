@@ -1,9 +1,11 @@
-import './splash.scss'
+import './splash.scss';
 
-const splash = () =>(
-    <div>
-        <h1>Balanced car</h1>
-    </div>
-)
+const Splash = () => (
+  <div className="splash">
+    <h1 className="title">Balanced car</h1>
+    <button type="button" className="singin">Sign In</button>
+    <button type="button" className="singup">Sing Up</button>
+  </div>
+);
 
-export default splash
+export default Splash;
