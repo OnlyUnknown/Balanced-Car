@@ -1,6 +1,6 @@
-import './App.scss';
+import './styling/App.scss';
 // import Navigation from './Nav';
-import Splash from './splash';
+import Splash from './components/splash';
 
 function App() {
   return (
