@@ -1,4 +1,4 @@
-import '../styling/App.scss'
+import '../styling/App.scss';
 
 const Navigation = () => (
   <nav className="nav">
