@@ -1,12 +1,12 @@
 import './styling/App.scss';
 // import Navigation from './Nav';
-import Splash from './components/splash';
+import Signup from './components/signup.jsx';
 
 function App() {
   return (
     <div>
       <header className="App">
-        <Splash />
+        <Signup />
       </header>
     </div>
   );
