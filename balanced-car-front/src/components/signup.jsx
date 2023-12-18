@@ -1,12 +1,14 @@
-import '../styling/signup.scss'
+import '../styling/signup.scss';
 
 const Signup = () => (
-    <div>
-        <h1 className="title">Sign Up</h1>
-        <input/>
-        <input/>
-        <input/>
+  <div className="signup">
+    <h3 className="title">Sign Up</h3>
+    <div className="shadow-box">
+      <input placeholder="Email" />
+      <input placeholder="Pass" />
+      <input placeholder="Re Pass" />
     </div>
-)
+  </div>
+);
 
-export default Signup
+export default Signup;
