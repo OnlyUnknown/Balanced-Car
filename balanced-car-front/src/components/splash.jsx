@@ -1,4 +1,4 @@
-import './splash.scss';
+import '../styling/splash.scss';
 
 const Splash = () => (
   <div className="splash">
