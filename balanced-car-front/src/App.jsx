@@ -1,6 +1,6 @@
 import './styling/App.scss';
 // import Navigation from './Nav';
-import Signup from './components/signup';
+import Signup from './components/signin';
 
 function App() {
   return (
