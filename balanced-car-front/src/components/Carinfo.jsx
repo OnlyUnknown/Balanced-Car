@@ -1,7 +1,7 @@
 import '../styling/Carinfo.scss';
 
 const Carinfo = () => (
-    <div></div>
-  );
-  
-  export default Carinfo;
+  <div />
+);
+
+export default Carinfo;
