@@ -1,12 +1,14 @@
 import './styling/App.scss';
 // import Navigation from './Nav';
-import Signup from './components/signin';
+import Navigation from './components/Nav';
+import Main from './components/main';
 
 function App() {
   return (
     <div>
       <header className="App">
-        <Signup />
+        <Navigation />
+        <Main />
       </header>
     </div>
   );

@@ -1,0 +1,20 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    margin: auto;
+}
+
+.pic{
+    height: 200px;
+    width: 300px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    width: 300px;
+    flex-wrap: wrap;
+    border: 1px solid ;
+}
