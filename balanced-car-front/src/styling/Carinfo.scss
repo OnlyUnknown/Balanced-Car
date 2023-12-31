@@ -1,0 +1,19 @@
+.border {
+    display: flex;
+    justify-content:center;
+    align-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.carpic {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+.carinfo {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
