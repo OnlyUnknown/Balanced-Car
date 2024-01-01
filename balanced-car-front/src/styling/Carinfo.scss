@@ -7,12 +7,16 @@
 }
 
 .carpic {
+    margin: 20px;
     width: 500px;
     height: 500px;
     border: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .carinfo {
+    margin: 20px;
     width: 500px;
     height: 500px;
     border: 1px solid black;
