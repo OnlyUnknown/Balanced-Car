@@ -1,0 +1,38 @@
+body {
+    background-color: #bccbc7;
+  }
+  .signup {
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: auto;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .shadow-box {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 300px;
+    height: 60vh;
+    align-items: center;
+    gap: 20px;
+
+  }
+
+  .title {
+    font-size: 32px;
+    position: absolute;
+    top: 20px;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

@@ -1,14 +1,14 @@
 import './styling/App.scss';
 // import Navigation from './Nav';
 import Navigation from './components/Nav';
-import Carinfo from './components/Carinfo';
+import AddCar from './components/AddCar';
 
 function App() {
   return (
     <div>
       <header className="App">
         <Navigation />
-        <Carinfo />
+        <AddCar />
       </header>
     </div>
   );

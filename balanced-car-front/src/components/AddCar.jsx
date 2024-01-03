@@ -2,7 +2,7 @@ import '../styling/AddCar.scss';
 
 const AddCar = () => (
   <div className="signup">
-    <h3 className="title">Sign In</h3>
+    <h3 className="title">Add a car</h3>
     <div className="shadow-box">
       <input placeholder="Car Name" />
       <input placeholder="Tansition type" />
@@ -10,7 +10,12 @@ const AddCar = () => (
       <input placeholder="Transition Kilos" />
       <input placeholder="Milage" />
       <input placeholder="Auto Milage" />
-      <input placeholder="Tires age" />
+      <div className="tires">
+        <input placeholder="Tires age 1" />
+        <input placeholder="Tires age 2" />
+        <input placeholder="Tires age 3" />
+        <input placeholder="Tires age 4" />
+      </div>
       <input placeholder="Oil Milage" />
       <textarea placeholder="Note" />
     </div>
