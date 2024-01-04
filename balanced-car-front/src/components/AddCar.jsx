@@ -4,6 +4,10 @@ const AddCar = () => (
   <div className="signup">
     <h3 className="title">Add a car</h3>
     <div className="shadow-box">
+      <div>
+        Pic
+      </div>
+      <div>
       <input placeholder="Car Name" />
       <input placeholder="Tansition type" />
       <input placeholder="Model" />
@@ -18,6 +22,7 @@ const AddCar = () => (
       </div>
       <input placeholder="Oil Milage" />
       <textarea placeholder="Note" />
+      </div>
     </div>
   </div>
 
