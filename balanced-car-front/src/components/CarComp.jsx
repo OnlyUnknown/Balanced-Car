@@ -8,6 +8,7 @@ const CarComp = () => (
       <div>TX Oil change: 0000</div>
       <div>Tire age: 00</div>
       <div>Model: 0000</div>
+      <button type="button">Remove</button>
     </div>
   </div>
 );

@@ -9,6 +9,7 @@ const AddCar = () => (
       </div>
       <div>
       <input placeholder="Car Name" />
+      <input placeholder="Car type" />
       <input placeholder="Tansition type" />
       <input placeholder="Model" />
       <input placeholder="Transition Kilos" />
