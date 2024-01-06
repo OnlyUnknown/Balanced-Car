@@ -7,22 +7,22 @@ const AddCar = () => (
       <div>
         Pic
       </div>
-      <div>
-      <input placeholder="Car Name" />
-      <input placeholder="Car type" />
-      <input placeholder="Tansition type" />
-      <input placeholder="Model" />
-      <input placeholder="Transition Kilos" />
-      <input placeholder="Milage" />
-      <input placeholder="Auto Milage" />
-      <div className="tires">
-        <input placeholder="Tires age 1" />
-        <input placeholder="Tires age 2" />
-        <input placeholder="Tires age 3" />
-        <input placeholder="Tires age 4" />
-      </div>
-      <input placeholder="Oil Milage" />
-      <textarea placeholder="Note" />
+      <div className="info_box">
+        <input placeholder="Car Name" />
+        <input placeholder="Car type" />
+        <input placeholder="Tansition type" />
+        <input placeholder="Model" />
+        <input placeholder="Transition Kilos" />
+        <input placeholder="Milage" />
+        <input placeholder="Auto Milage" />
+        <div className="tires">
+          <input placeholder="Tires age 1" />
+          <input placeholder="Tires age 2" />
+          <input placeholder="Tires age 3" />
+          <input placeholder="Tires age 4" />
+        </div>
+        <input placeholder="Oil Milage" />
+        <textarea placeholder="Note" />
       </div>
     </div>
   </div>
