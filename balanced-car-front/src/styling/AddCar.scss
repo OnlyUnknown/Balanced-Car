@@ -19,6 +19,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
     margin-top: auto;
     margin-bottom: auto;
     width: 700px;
@@ -42,8 +43,17 @@ body {
     flex-direction: column;
   }
 
+  .info_box div, input {
+    margin: 3px;
+  }
+
   .tires {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .car_box_pic {
+    width: 300px;
   }
