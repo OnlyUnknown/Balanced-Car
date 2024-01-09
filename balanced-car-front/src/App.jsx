@@ -1,16 +1,18 @@
 import './styling/App.scss';
 // import Navigation from './Nav';
-import Navigation from './components/Nav';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AddCar from './components/AddCar';
+import Main from './components/main';
 
 function App() {
   return (
-    <div>
-      <header className="App">
-        <Navigation />
-        <AddCar />
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />}>
+          <Route path="addcar" element={<AddCar />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
