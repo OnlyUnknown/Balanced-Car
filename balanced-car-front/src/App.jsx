@@ -8,9 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />}>
-          <Route path="addcar" element={<AddCar />} />
-        </Route>
+        <Route exact path="/" Component={Main}/>
+          <Route path="/addcar" Component={AddCar} />
       </Routes>
     </BrowserRouter>
   );
