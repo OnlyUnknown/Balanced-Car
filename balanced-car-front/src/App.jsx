@@ -18,8 +18,9 @@ function App() {
           <Route path="/addcar" element={<AddCar />} />
           <Route path="/splash" element={<Splash />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/singin" element={<Signin />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/carinfo" element={<Carinfo />} />
+          <Route path="/main" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );

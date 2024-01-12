@@ -25,6 +25,7 @@ const AddCar = () => (
             <input placeholder="Tire age 4" />
           </div>
           <input placeholder="Oil Milage" />
+          <input placeholder="Last price" />
           <textarea placeholder="Note" />
         </div>
       </div>
