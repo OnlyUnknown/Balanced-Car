@@ -4,9 +4,9 @@ import Navigation from './Nav';
 const AddCar = () => (
   <>
     <Navigation />
-    <div className="signup">
+    <div className="addcar">
       <h3 className="title">Add a car</h3>
-      <div className="shadow-box">
+      <div className="shadow-box-add">
         <div className="car_box_pic">
           Pic
         </div>
