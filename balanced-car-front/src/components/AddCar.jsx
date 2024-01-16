@@ -27,6 +27,7 @@ const AddCar = () => (
           <input placeholder="Oil Milage" />
           <input placeholder="Last price" />
           <textarea placeholder="Note" />
+          <button type="submit">Submit</button>
         </div>
       </div>
     </div>

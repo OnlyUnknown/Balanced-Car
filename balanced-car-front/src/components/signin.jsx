@@ -1,11 +1,12 @@
 import '../styling/signup.scss';
 
 const Signin = () => (
-  <div className="signin">
+  <div className="signup">
     <h3 className="title">Sign In</h3>
-    <div className="shadow-box-in">
+    <div className="shadow-box">
       <input placeholder="Email" />
       <input placeholder="Pass" />
+      <button type="submit">Submit</button>
     </div>
   </div>
 );
