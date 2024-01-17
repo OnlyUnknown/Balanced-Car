@@ -7,7 +7,7 @@ const Signup = () => (
       <input placeholder="Email" />
       <input placeholder="Pass" />
       <input placeholder="Re Pass" />
-      <button type="submit">Submit</button>
+      <button type="submit">Sign Up</button>
     </div>
   </div>
 );
