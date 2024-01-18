@@ -1,4 +1,5 @@
 import '../styling/main.scss';
+import AddNew from './AddNew';
 import CarComp from './CarComp';
 import Navigation from './Nav';
 
@@ -13,7 +14,7 @@ const Main = () => (
       <CarComp />
       <CarComp />
       <CarComp />
-      <CarComp />
+      <AddNew />
     </div>
   </>
 );
