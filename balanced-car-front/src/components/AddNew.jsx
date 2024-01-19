@@ -2,7 +2,13 @@ import '../styling/CarComp.scss';
 
 const AddNew = () => (
   <div className="box">
-    <div>Add New one</div>
+    <div className="pic">Pic</div>
+    <div className="info">
+      <div>Add new</div>
+      <div>Add new</div>
+      <div>Add new</div>
+      <div>Add new</div>
+    </div>
   </div>
 );
 
