@@ -1,59 +1,60 @@
 body {
-    background-color: #bccbc7;
-  }
-  .addcar {
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: auto;
-    width: 100%;
-    height: 100vh;
-    align-items: center;
-    gap: 20px;
-  }
+  background-color: #bccbc7;
+}
 
-  .shadow-box-add {
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: auto;
-    margin-bottom: auto;
-    max-width: 700px;
-    height: 60vh;
-    align-items: center;
-    gap: 20px;
+.addcar {
+  box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: auto;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  gap: 20px;
+}
 
-  }
+.shadow-box-add {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: auto;
+  margin-bottom: auto;
+  max-width: 700px;
+  height: 60vh;
+  align-items: center;
+  gap: 20px;
+}
 
-  .title {
-    font-size: 32px;
-    position: absolute;
-    top: 20px;
-    background: -webkit-linear-gradient(#eee, #333);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.title {
+  font-size: 32px;
+  position: absolute;
+  top: 20px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  .info_box {
-    display: flex;
-    flex-direction: column;
-  }
+.info_box {
+  display: flex;
+  flex-direction: column;
+}
 
-  .info_box div, input {
-    margin: 3px;
-  }
+.info_box div,
+input {
+  margin: 3px;
+}
 
-  .tires {
-    display: grid;
-    grid-template-columns: auto auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+.tires {
+  display: grid;
+  grid-template-columns: auto auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  .car_box_pic {
-    width: 300px;
-  }
+.car_box_pic {
+  width: 300px;
+}

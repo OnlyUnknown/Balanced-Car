@@ -1,23 +1,22 @@
 .border {
-    display: flex;
-    justify-content:center;
-    align-content: center;
-    flex-wrap: wrap;
-    
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .carpic {
-    margin: 20px;
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: flex-start;
+  margin: 20px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .carinfo {
-    margin: 20px;
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
+  margin: 20px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
 }
