@@ -2,7 +2,7 @@ body {
   background-color: #bccbc7;
 }
 
-.signup {
+.addcar {
   box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
   display: flex;
   justify-content: center;
@@ -14,16 +14,17 @@ body {
   gap: 20px;
 }
 
-.shadow-box {
+.shadow-box-add {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   margin-top: auto;
   margin-bottom: auto;
-  width: 300px;
-  height: 20vh;
+  max-width: 700px;
+  height: 60vh;
   align-items: center;
   gap: 20px;
 }
@@ -35,4 +36,25 @@ body {
   background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.info_box {
+  display: flex;
+  flex-direction: column;
+}
+
+.info_box div,
+input {
+  margin: 3px;
+}
+
+.tires {
+  display: grid;
+  grid-template-columns: auto auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.car_box_pic {
+  width: 300px;
 }

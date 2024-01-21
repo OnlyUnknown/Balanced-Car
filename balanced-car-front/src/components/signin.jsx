@@ -6,6 +6,7 @@ const Signin = () => (
     <div className="shadow-box">
       <input placeholder="Email" />
       <input placeholder="Pass" />
+      <button type="submit">Sign in</button>
     </div>
   </div>
 );
