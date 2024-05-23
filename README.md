@@ -37,6 +37,7 @@
 - Ruby on Rails
 - React
 - Redux
+- React Native
 
 <!-- Features -->
 
