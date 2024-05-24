@@ -8,6 +8,12 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.text :note
       t.integer :model
       t.references :user, null: false, foreign_key: true
+      t.string :car_type
+      t.string :transmission_type
+      t.integer :last_bid
+      t.integer :revenue
+      t.boolean :commercial
+      t.boolean :public
 
       t.timestamps
     end
