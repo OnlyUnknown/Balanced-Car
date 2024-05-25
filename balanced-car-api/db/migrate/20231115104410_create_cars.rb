@@ -14,6 +14,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.integer :revenue
       t.boolean :commercial
       t.boolean :public
+      t.string :bills, array: true, default: []
 
       t.timestamps
     end
