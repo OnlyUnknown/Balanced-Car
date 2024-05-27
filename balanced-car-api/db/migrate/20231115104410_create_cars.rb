@@ -14,7 +14,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.boolean :for_bidding
       t.integer :last_bid
       t.integer :buy_limit
-      t.integer :revenue
+      t.integer :revenues, array: true, default: []
       t.boolean :commercial
       t.boolean :public
       t.string :chassis_number
