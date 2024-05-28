@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_15_105015) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_24_131042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,16 +22,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_105015) do
     t.text "note"
     t.integer "model"
     t.bigint "user_id", null: false
+    t.string "car_type"
+    t.string "transmission_type"
+    t.integer "last_bid"
+    t.integer "revenue"
+    t.boolean "commercial"
+    t.boolean "public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "car_type"
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.integer "phone_number"
+    t.integer "number_of_cars"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "cars", "users"
