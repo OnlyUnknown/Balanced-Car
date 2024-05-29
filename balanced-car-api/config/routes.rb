@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
       resources :cars, only: [:index, :show, :create, :destroy]
       resources :users, only: [:show, :create, :destroy]
     end
