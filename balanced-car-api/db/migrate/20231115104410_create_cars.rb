@@ -8,17 +8,17 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.integer :auto_oil
       t.text :note
       t.integer :model
-      t.references :user, null: false, foreign_key: true
       t.string :car_type
       t.string :transmission_type
       t.boolean :for_bidding
       t.integer :last_bid
       t.integer :buy_limit
-      t.integer :revenues, array: true, default: []
       t.boolean :commercial
       t.boolean :public
       t.string :chassis_number
       t.string :bills, array: true, default: []
+      t.integer :revenues, array: true, default: []
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
