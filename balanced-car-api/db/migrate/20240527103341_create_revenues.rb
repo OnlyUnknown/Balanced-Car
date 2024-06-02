@@ -5,7 +5,8 @@ class CreateRevenues < ActiveRecord::Migration[7.0]
       t.text :note
       t.float :revenue
       t.references :car, null: false, foreign_key: true
-
+      t.references :user, null: false, foreign_key: true
+      
       t.timestamps
     end
   end
