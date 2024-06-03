@@ -1,5 +1,4 @@
-class revenue < ApplicationRecord
-    belongs_to :car
-    belongs_to :user
-  end
-  
+class Revenue < ApplicationRecord
+  belongs_to :car
+  belongs_to :user
+end
