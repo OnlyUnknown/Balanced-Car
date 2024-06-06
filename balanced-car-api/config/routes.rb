@@ -6,6 +6,11 @@ Rails.application.routes.draw do
       resources :users, only: [:show, :create, :destroy]
     end
   end
+
+  # Cars routes
+  resources :cars, only: [] do
+    post 'create_car', to: 'api/v1/users#create', on: :collection
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
