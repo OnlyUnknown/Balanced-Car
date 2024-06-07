@@ -48,6 +48,3 @@ group :development do
 end
 
 gem 'devise', '~> 4.9'
-
-gem 'dotenv-rails', groups: %i[development test]
-gem 'omniauth-google-oauth2'
