@@ -204,7 +204,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
-  devise (~> 4.9)
+  devise
   devise-jwt
   jsonapi-serializer
   pg (~> 1.1)
