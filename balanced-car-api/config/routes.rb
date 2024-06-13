@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-  get '/current_user', to: 'api/v1/current_user#index'
 
       resources :cars, only: [] do
         post 'create_car', to: 'api/v1/users#create', on: :collection
