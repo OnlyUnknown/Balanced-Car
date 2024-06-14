@@ -49,3 +49,4 @@ group :development do
 end
 
 gem 'devise'
+gem "devise-api", "~> 0.1.3"
