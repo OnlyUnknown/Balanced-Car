@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       devise_for :users
       resources :cars, only: [] do
-        post 'create_car', to: 'api/v1/users#create', on: :collection
+        post 'create_car', to: 'users#create', on: :collection
       end
       resources :users, only: [:show, :create, :destroy]
     end

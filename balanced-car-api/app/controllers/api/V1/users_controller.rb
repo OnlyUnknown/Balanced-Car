@@ -1,11 +1,13 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authinticate_user!
+  skip_before_action :verify_authenticity_token, raise: false
+  before_action :authenticate_devise_api_token!, only: [:create]
   def index; end
 
   def show; end
 
   def create
     @car = Car.new(car_params)
+    c_user = current_devise_api_token.resource_owner
     if @car.save
       render json: @car
     else
@@ -18,21 +20,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def car_params
-    current_user
-    name = name_i
-    tires_age = tires_i
-    oil = oil_i
-    note = note_i
-    model = model_i
-    car_type = car_type_i
-    transmission_type = transmission_type_input
-    for_bidding = for_bidding_i
-    last_bid = last_bid_i
-    buy_limit = buy_limit_i
-    commercial = commercial_i
-    publicity = public_i
-    chassis_number = chassis_number_i
-
     params.require(:car).permit(
       :name,
       :tires_age,
@@ -48,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
       :public,
       :chassis_number
     ).merge(
-      user: current_user,
+      user: current_devise_api_token.resource_owner
     )
     
   end
