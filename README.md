@@ -116,6 +116,8 @@ cd balanced-car-front
 - [ ] **Add pic for the cars**
 - [ ] **Add attachment**
 - [ ] **Add old price**
+- [ ] **Add agents table**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
