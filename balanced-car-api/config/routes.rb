@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       devise_for :users
       resources :cars, only: [] do
         post 'create_car', to: 'users#create', on: :collection
+        get 'index', to: 'users#index', on: :collection
       end
       resources :users, only: [:show, :create, :destroy]
     end

@@ -1,9 +1,14 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: [:create]
-  def index; end
+  before_action :authenticate_devise_api_token!, only: [:create, :index]
+  def index
+    @cars = User.includes(:cars).where(id: current_devise_api_token.resource_owner)
+    render json: @cars, include: :cars
+   end
 
-  def show; end
+  def show
+  @cars = Car.where(user: current_devise_api_token)
+  end
 
   def create
     @car = Car.new(car_params)
