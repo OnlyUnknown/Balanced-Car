@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: [:create, :index]
+  before_action :authenticate_devise_api_token!, only: [:create, :index, :update_car]
   def index
     @cars = User.includes(:cars).where(id: current_devise_api_token.resource_owner)
     render json: @cars, include: :cars
@@ -9,6 +9,18 @@ class Api::V1::UsersController < ApplicationController
   def show
   @car = Car.find_by_id(params[:id])
   render json: @car
+  end
+
+
+  def update_car
+    @car = Car.find(params[:id])
+    check_user(@car.user)
+    if @car.update(caru_params)
+      
+      render json: { message: 'car updated successfully' }
+    else
+      render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def create
@@ -45,4 +57,31 @@ class Api::V1::UsersController < ApplicationController
     )
     
   end
+end
+
+def check_user(user)
+  return if user == current_devise_api_token.resource_owner
+
+  raise ActiveRecord::RecordNotDestroyed, "You are not authorized"
+end
+
+def caru_params
+  params.require(:car).permit(
+    :name,
+    :tires_age,
+    :oil,
+    :note,
+    :model,
+    :car_type,
+    :transmission_type,
+    :for_bidding,
+    :last_bid,
+    :buy_limit,
+    :commercial,
+    :public,
+    :chassis_number
+  ).merge(
+    user: current_devise_api_token.resource_owner
+  )
+  
 end

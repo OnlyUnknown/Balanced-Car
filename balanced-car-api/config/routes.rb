@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         post 'create_car', to: 'users#create', on: :collection
         get 'index', to: 'users#index', on: :collection
         get 'show/:id', to: 'users#show', on: :collection
-
+        patch 'update/:id', to: 'users#update_car', on: :collection
       end
       resources :users, only: [:show, :create, :destroy]
     end
