@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :cars, only: [] do
         post 'create_car', to: 'users#create', on: :collection
         get 'index', to: 'users#index', on: :collection
+        get 'show/:id', to: 'users#show', on: :collection
+
       end
       resources :users, only: [:show, :create, :destroy]
     end

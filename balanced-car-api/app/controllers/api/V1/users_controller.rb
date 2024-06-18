@@ -7,7 +7,8 @@ class Api::V1::UsersController < ApplicationController
    end
 
   def show
-  @cars = Car.where(user: current_devise_api_token)
+  @car = Car.find_by_id(params[:id])
+  render json: @car
   end
 
   def create
