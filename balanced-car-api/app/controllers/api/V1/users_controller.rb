@@ -38,7 +38,7 @@ class Api::V1::UsersController < ApplicationController
     check_user(@car.user)
     if @car.delete
       
-      render json: { message: "#{@car.id} Deleted successfully" }
+      render json: {car:@car, message: "#{@car.id} Deleted successfully" }
     else
       render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
     end
