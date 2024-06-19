@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         get 'index', to: 'users#index', on: :collection
         get 'show/:id', to: 'users#show', on: :collection
         patch 'update/:id', to: 'users#update_car', on: :collection
+        delete 'delete/:id', to: 'users#delete_car', on: :collection
+
       end
       resources :users, only: [:show, :create, :destroy]
     end

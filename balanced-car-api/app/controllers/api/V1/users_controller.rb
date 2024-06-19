@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: [:create, :index, :update_car]
+  before_action :authenticate_devise_api_token!, only: [:create, :index, :update_car, :delete_car]
   def index
     @cars = User.includes(:cars).where(id: current_devise_api_token.resource_owner)
     render json: @cars, include: :cars
@@ -33,7 +33,16 @@ class Api::V1::UsersController < ApplicationController
     end
     end
 
-  def destroy; end
+  def delete_car
+    @car = Car.find(params[:id])
+    check_user(@car.user)
+    if @car.delete
+      
+      render json: { message: "#{@car.id} Deleted successfully" }
+    else
+      render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
+    end
+   end
 
   private
 
