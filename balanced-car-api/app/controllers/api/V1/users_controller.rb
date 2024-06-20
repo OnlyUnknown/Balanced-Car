@@ -2,8 +2,8 @@ class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!, only: [:create, :index, :update_car, :delete_car]
   def index
-    @cars = User.includes(:cars).where(id: current_devise_api_token.resource_owner)
-    render json: @cars, include: :cars
+    @cars = User.includes(:cars).find_by_id( current_devise_api_token.resource_owner)
+    render json: @cars.cars
    end
 
   def show
@@ -25,7 +25,6 @@ class Api::V1::UsersController < ApplicationController
     @car = Car.find(params[:id])
     check_user(@car.user)
     if @car.update(caru_params)
-      
       render json: { message: 'car updated successfully' }
     else
       render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
@@ -68,9 +67,9 @@ class Api::V1::UsersController < ApplicationController
       :last_bid,
       :buy_limit,
       :commercial,
-      :public,
       :chassis_number
     ).merge(
+      public: false,
       user: current_devise_api_token.resource_owner
     )
     
