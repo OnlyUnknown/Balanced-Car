@@ -11,6 +11,15 @@ class Api::V1::UsersController < ApplicationController
   render json: @car
   end
 
+  def switch_publicity
+    @car = Car.find_by_id(params[:id])
+    if @car.public == true && @car.update(public: false)
+    render json: @car.public
+    elsif @car.update(public: true)
+    render json: @car.public
+    end
+  end
+
 
   def update_car
     @car = Car.find(params[:id])
