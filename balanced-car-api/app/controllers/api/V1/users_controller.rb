@@ -1,26 +1,30 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: [:create, :index, :update_car, :delete_car]
+  before_action :authenticate_devise_api_token!, only: %i[create index update_car delete_car]
   def index
     @cars = User.includes(:cars).find_by_id(current_devise_api_token.resource_owner)
     render json: @cars.cars
-   end
+  end
 
   def show
-  @car = Car.find_by_id(params[:id])
-  check_user(@car.user)
-  render json: @car
+    @car = Car.find_by_id(params[:id])
+    check_user(@car.user)
+    render json: @car
   end
 
   def switch_publicity
     @car = Car.find_by_id(params[:id])
-    if @car.public == true && @car.update(public: false)
-    render json: @car.public
-    elsif @car.update(public: true)
-    render json: @car.public
+    if @car
+      new_public_status = !@car.public
+      if @car.update(public: new_public_status)
+        render json: @car.public
+      else
+        render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Car not found' }, status: :not_found
     end
   end
-
 
   def update_car
     @car = Car.find(params[:id])
@@ -34,24 +38,24 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    c_user = current_devise_api_token.resource_owner
+    current_devise_api_token.resource_owner
     if @car.save
       render json: @car
     else
       render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
     end
-    end
+  end
 
   def delete_car
     @car = Car.find(params[:id])
     check_user(@car.user)
     if @car.delete
-      
-      render json: {car:@car, message: "#{@car.id} Deleted successfully" }
+
+      render json: { car: @car, message: "#{@car.id} Deleted successfully" }
     else
       render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
     end
-   end
+  end
 
   private
 
@@ -73,14 +77,13 @@ class Api::V1::UsersController < ApplicationController
     ).merge(
       user: current_devise_api_token.resource_owner
     )
-    
   end
 end
 
 def check_user(user)
   return if user == current_devise_api_token.resource_owner
 
-  raise ActiveRecord::RecordNotDestroyed, "You are not authorized"
+  raise ActiveRecord::RecordNotDestroyed, 'You are not authorized'
 end
 
 def caru_params
@@ -101,5 +104,4 @@ def caru_params
   ).merge(
     user: current_devise_api_token.resource_owner
   )
-  
 end
