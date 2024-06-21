@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: %i[create index update_car delete_car]
+  before_action :authenticate_devise_api_token!, only: %i[create index update_car
+                                                          delete_car switch_publicity]
   def index
     @cars = User.includes(:cars).find_by_id(current_devise_api_token.resource_owner)
     render json: @cars.cars
@@ -14,6 +15,7 @@ class Api::V1::UsersController < ApplicationController
 
   def switch_publicity
     @car = Car.find_by_id(params[:id])
+    check_user(@car.user)
     if @car
       new_public_status = !@car.public
       if @car.update(public: new_public_status)
