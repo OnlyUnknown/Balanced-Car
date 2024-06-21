@@ -67,9 +67,9 @@ class Api::V1::UsersController < ApplicationController
       :last_bid,
       :buy_limit,
       :commercial,
+      :public,
       :chassis_number
     ).merge(
-      public: false,
       user: current_devise_api_token.resource_owner
     )
     

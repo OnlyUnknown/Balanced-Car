@@ -35,11 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
     t.integer "model"
     t.string "car_type"
     t.string "transmission_type"
-    t.boolean "for_bidding"
+    t.boolean "for_bidding", default: false
     t.integer "last_bid"
     t.integer "buy_limit"
-    t.boolean "commercial"
-    t.boolean "public"
+    t.boolean "commercial", default: false
+    t.boolean "public", default: false
     t.string "chassis_number"
     t.string "bills", default: [], array: true
     t.integer "revenues", default: [], array: true
