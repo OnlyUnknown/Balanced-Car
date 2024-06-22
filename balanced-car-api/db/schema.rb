@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_27_103341) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,11 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_27_103341) do
     t.integer "model"
     t.string "car_type"
     t.string "transmission_type"
-    t.boolean "for_bidding"
+    t.boolean "for_bidding", default: false
     t.integer "last_bid"
     t.integer "buy_limit"
-    t.boolean "commercial"
-    t.boolean "public"
+    t.boolean "commercial", default: false
+    t.boolean "public", default: false
     t.string "chassis_number"
     t.string "bills", default: [], array: true
     t.integer "revenues", default: [], array: true
@@ -48,6 +48,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_27_103341) do
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_cars_on_id", unique: true
     t.index ["user_id"], name: "index_cars_on_user_id"
+  end
+
+  create_table "devise_api_tokens", force: :cascade do |t|
+    t.string "resource_owner_type", null: false
+    t.bigint "resource_owner_id", null: false
+    t.string "access_token", null: false
+    t.string "refresh_token"
+    t.integer "expires_in", null: false
+    t.datetime "revoked_at"
+    t.string "previous_refresh_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_devise_api_tokens_on_access_token"
+    t.index ["previous_refresh_token"], name: "index_devise_api_tokens_on_previous_refresh_token"
+    t.index ["refresh_token"], name: "index_devise_api_tokens_on_refresh_token"
+    t.index ["resource_owner_type", "resource_owner_id"], name: "index_devise_api_tokens_on_resource_owner"
   end
 
   create_table "revenues", force: :cascade do |t|
