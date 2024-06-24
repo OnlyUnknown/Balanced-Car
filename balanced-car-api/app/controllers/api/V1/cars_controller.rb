@@ -1,5 +1,4 @@
 class Api::V1::CarsController < ApplicationController
-  def index; end
 
   def show
     @car = Car.find_by_id(params[:id])
@@ -11,10 +10,6 @@ class Api::V1::CarsController < ApplicationController
     end
   end
 
-
-  def create; end
-
-  def destroy; end
 end
 
 private
