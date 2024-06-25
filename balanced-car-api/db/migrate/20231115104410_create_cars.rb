@@ -15,10 +15,12 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.integer :buy_limit
       t.boolean :commercial, default: false
       t.boolean :public, default: false
+      t.boolean :different_driver, default: false
       t.string :chassis_number
       t.string :bills, array: true, default: []
       t.integer :revenues, array: true, default: []
       t.references :user, null: false, foreign_key: true
+      t.references :driver, foreign_key: true
 
       t.timestamps
     end

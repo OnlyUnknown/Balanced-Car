@@ -40,12 +40,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
     t.integer "buy_limit"
     t.boolean "commercial", default: false
     t.boolean "public", default: false
+    t.boolean "different_driver", default: false
     t.string "chassis_number"
     t.string "bills", default: [], array: true
     t.integer "revenues", default: [], array: true
     t.bigint "user_id", null: false
+    t.bigint "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["driver_id"], name: "index_cars_on_driver_id"
     t.index ["id"], name: "index_cars_on_id", unique: true
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
@@ -64,6 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
     t.index ["previous_refresh_token"], name: "index_devise_api_tokens_on_previous_refresh_token"
     t.index ["refresh_token"], name: "index_devise_api_tokens_on_refresh_token"
     t.index ["resource_owner_type", "resource_owner_id"], name: "index_devise_api_tokens_on_resource_owner"
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.string "name"
+    t.integer "identification"
+    t.integer "phone_number"
+    t.string "nationality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "revenues", force: :cascade do |t|
@@ -97,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
 
   add_foreign_key "bills", "cars"
   add_foreign_key "bills", "users"
+  add_foreign_key "cars", "drivers"
   add_foreign_key "cars", "users"
   add_foreign_key "revenues", "cars"
   add_foreign_key "revenues", "users"
