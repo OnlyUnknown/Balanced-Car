@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_25_145129) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,10 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
     t.string "bills", default: [], array: true
     t.integer "revenues", default: [], array: true
     t.bigint "user_id", null: false
-    t.bigint "driver_id"
+    t.integer "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["driver_id"], name: "index_cars_on_driver_id"
     t.index ["id"], name: "index_cars_on_id", unique: true
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
@@ -74,8 +73,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
     t.integer "identification"
     t.integer "phone_number"
     t.string "nationality"
+    t.bigint "car_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_drivers_on_car_id"
   end
 
   create_table "revenues", force: :cascade do |t|
@@ -111,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_14_125932) do
   add_foreign_key "bills", "users"
   add_foreign_key "cars", "drivers"
   add_foreign_key "cars", "users"
+  add_foreign_key "drivers", "cars"
   add_foreign_key "revenues", "cars"
   add_foreign_key "revenues", "users"
 end

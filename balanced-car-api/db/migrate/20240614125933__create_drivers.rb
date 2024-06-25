@@ -5,6 +5,7 @@ class CreateDrivers < ActiveRecord::Migration[7.0]
       t.integer :identification
       t.integer :phone_number
       t.string :nationality
+      t.references :car, foreign_key: true
 
       t.timestamps
     end
