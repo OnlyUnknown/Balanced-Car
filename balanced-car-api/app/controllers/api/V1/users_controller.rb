@@ -59,6 +59,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def create_driver
+      @driver = Driver.new(driver_params)
+      current_devise_api_token.resource_owner
+      if @driver.save
+        render json: @driver
+      else
+        render json: { errors: @driver.errors.full_messages }, status: :unprocessable_entity
+      end
+  end
+
   private
 
   def car_params
@@ -75,11 +85,25 @@ class Api::V1::UsersController < ApplicationController
       :buy_limit,
       :commercial,
       :public,
-      :chassis_number
+      :chassis_number,
+      :driver
     ).merge(
       user: current_devise_api_token.resource_owner
     )
   end
+end
+
+def driver_params
+  params.require(:driver).permit(
+    :name,
+    :identification,
+    :phone_number,
+    :nationality,
+    :car
+  ).merge(
+    user: current_devise_api_token.resource_owner
+  )
+end
 end
 
 def check_user(user)
@@ -102,7 +126,8 @@ def caru_params
     :buy_limit,
     :commercial,
     :public,
-    :chassis_number
+    :chassis_number,
+    :driver
   ).merge(
     user: current_devise_api_token.resource_owner
   )
