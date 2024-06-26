@@ -13,6 +13,8 @@ password_confirmation: '123123')
 
 user = User.first
 
-Car.create(user: user, name:"hunda")
+
 
 Driver.create(name:"Tsadug")
+
+Car.create(user: user, name:"hunda", driver: Driver.first)

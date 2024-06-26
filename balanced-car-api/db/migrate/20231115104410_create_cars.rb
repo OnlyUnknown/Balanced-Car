@@ -20,8 +20,7 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.string :bills, array: true, default: []
       t.integer :revenues, array: true, default: []
       t.references :user, null: false, foreign_key: true
-      t.integer :driver_id # use integer for the reference instead of t.references
-
+      
       t.timestamps
     end
   end
