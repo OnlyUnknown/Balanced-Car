@@ -15,6 +15,6 @@ user = User.first
 
 
 
-Driver.create(name:"Tsadug")
+Driver.create(user: user, name:"Tsadug")
 
 Car.create(user: user, name:"hunda", driver: Driver.first)

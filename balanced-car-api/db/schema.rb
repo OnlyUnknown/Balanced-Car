@@ -75,9 +75,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
     t.integer "phone_number"
     t.string "nationality"
     t.bigint "car_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_drivers_on_car_id"
+    t.index ["user_id"], name: "index_drivers_on_user_id"
   end
 
   create_table "revenues", force: :cascade do |t|
@@ -114,6 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
   add_foreign_key "cars", "drivers"
   add_foreign_key "cars", "users"
   add_foreign_key "drivers", "cars"
+  add_foreign_key "drivers", "users"
   add_foreign_key "revenues", "cars"
   add_foreign_key "revenues", "users"
 end
