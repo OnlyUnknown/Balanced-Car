@@ -69,6 +69,30 @@ class Api::V1::UsersController < ApplicationController
       end
   end
 
+  def delete_driver
+    @driver = Driver.find(params[:id])
+    check_user(@driver.user)
+    if @driver.delete
+
+      render json: { driver: @driver, message: "#{@driver.id} Deleted successfully" }
+    else
+      render json: { errors: @driver.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def delete_resource
+    resource = params[:resource].capitalize.constantize.find(params[:id])
+    check_user(resource.user)
+    if resource.class == Car
+      check_driver(resource.driver)
+    end
+    if resource.delete
+      render json: { resource: resource, message: "#{resource.class.name} #{resource.id} Deleted successfully" }
+    else
+      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def car_params
@@ -104,7 +128,6 @@ def driver_params
     user: current_devise_api_token.resource_owner
   )
 end
-end
 
 def check_user(user)
   return if user == current_devise_api_token.resource_owner
@@ -112,6 +135,11 @@ def check_user(user)
   raise ActiveRecord::RecordNotDestroyed, 'You are not authorized'
 end
 
+def check_driver(driver)
+  return if driver == nil
+
+  raise ActiveRecord::RecordNotDestroyed, 'You need to remove the driver first'
+end
 def caru_params
   params.require(:car).permit(
     :name,
