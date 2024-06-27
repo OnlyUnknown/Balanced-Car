@@ -48,17 +48,6 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def delete_car
-    @car = Car.find(params[:id])
-    check_user(@car.user)
-    if @car.delete
-
-      render json: { car: @car, message: "#{@car.id} Deleted successfully" }
-    else
-      render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
-
   def create_driver
       @driver = Driver.new(driver_params)
       current_devise_api_token.resource_owner
@@ -67,17 +56,6 @@ class Api::V1::UsersController < ApplicationController
       else
         render json: { errors: @driver.errors.full_messages }, status: :unprocessable_entity
       end
-  end
-
-  def delete_driver
-    @driver = Driver.find(params[:id])
-    check_user(@driver.user)
-    if @driver.delete
-
-      render json: { driver: @driver, message: "#{@driver.id} Deleted successfully" }
-    else
-      render json: { errors: @driver.errors.full_messages }, status: :unprocessable_entity
-    end
   end
 
   def delete_resource
