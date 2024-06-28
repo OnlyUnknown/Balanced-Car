@@ -62,25 +62,6 @@ class Api::V1::UsersController < ApplicationController
     end
 
   end
-  def create
-    @car = Car.new(car_params)
-    current_devise_api_token.resource_owner
-    if @car.save
-      render json: @car
-    else
-      render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
-
-  def create_driver
-      @driver = Driver.new(driver_params)
-      current_devise_api_token.resource_owner
-      if @driver.save
-        render json: @driver
-      else
-        render json: { errors: @driver.errors.full_messages }, status: :unprocessable_entity
-      end
-  end
 
   def delete_resource
     resource = params[:resource].capitalize.constantize.find(params[:id])
