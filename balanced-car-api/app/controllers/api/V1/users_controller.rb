@@ -38,39 +38,28 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-
   def create_item
-    param = nil
     current_devise_api_token.resource_owner
     resource = params[:resource].capitalize.constantize
-    if resource == Car
-      param = car_params
-      @item = resource.new(param)
-      if @item.save
-        render json: @item
-      else
-        render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
-      end
+    param = if resource == Car
+              car_params
+            else
+              driver_params
+            end
+    @item = resource.new(param)
+    if @item.save
+      render json: @item
     else
-      param = driver_params
-      @item = resource.new(param)
-      if @item.save
-        render json: @item
-      else
-        render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
-      end
+      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
     end
-
   end
 
   def delete_resource
     resource = params[:resource].capitalize.constantize.find(params[:id])
     check_user(resource.user)
-    if resource.class == Car
-      check_driver(resource.driver)
-    end
+    check_driver(resource.driver) if resource.instance_of?(Car)
     if resource.delete
-      render json: { resource: resource, message: "#{resource.class.name} #{resource.id} Deleted successfully" }
+      render json: { resource:, message: "#{resource.class.name} #{resource.id} Deleted successfully" }
     else
       render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
     end
@@ -119,10 +108,11 @@ def check_user(user)
 end
 
 def check_driver(driver)
-  return if driver == nil
+  return if driver.nil?
 
   raise ActiveRecord::RecordNotDestroyed, 'You need to remove the driver first'
 end
+
 def caru_params
   params.require(:car).permit(
     :name,

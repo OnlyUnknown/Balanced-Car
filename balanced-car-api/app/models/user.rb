@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :cars
-  has_many :revenues 
+  has_many :revenues
   has_many :drivers
   has_many :bills
 end
