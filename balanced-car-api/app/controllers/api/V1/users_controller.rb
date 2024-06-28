@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: %i[create index update_car
-                                                          delete_car switch_publicity]
+  before_action :authenticate_devise_api_token!, only: %i[create_item index update_car
+                                                          delete_car switch_publicity update_driver]
   def index
     @cars = User.includes(:cars).find_by_id(current_devise_api_token.resource_owner)
     render json: @cars.cars
@@ -110,7 +110,7 @@ end
 def check_driver(driver)
   return if driver.nil?
 
-  raise ActiveRecord::RecordNotDestroyed, 'You need to remove the driver first'
+  raise ActiveRecord::RecordNotDestroyed, 'You need to remove the or change the driver first'
 end
 
 def caru_params
