@@ -38,6 +38,30 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+
+  def create_item
+    param = nil
+    current_devise_api_token.resource_owner
+    resource = params[:resource].capitalize.constantize
+    if resource == Car
+      param = car_params
+      @item = resource.new(param)
+      if @item.save
+        render json: @item
+      else
+        render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      param = driver_params
+      @item = resource.new(param)
+      if @item.save
+        render json: @item
+      else
+        render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
+      end
+    end
+
+  end
   def create
     @car = Car.new(car_params)
     current_devise_api_token.resource_owner

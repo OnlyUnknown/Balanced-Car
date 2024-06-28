@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         patch 'update/:id', to: 'users#update_car', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
         delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection
+        post '/create_item', to: 'users#create_item', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection
