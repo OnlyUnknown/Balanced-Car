@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: %i[create_item index update_car
+  before_action :authenticate_devise_api_token!, only: %i[create_item index update_item
                                                           delete_car switch_publicity update_driver]
   def index
     @cars = User.includes(:cars).find_by_id(current_devise_api_token.resource_owner)
@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    @car = Car.find_by_id(params[:id])
+    @car = Driver.find_by_id(params[:id])
     check_user(@car.user)
     render json: @car
   end
@@ -36,6 +36,25 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def update_item
+    current_devise_api_token.resource_owner
+    param = nil
+    resource = params[:resource].capitalize.constantize
+     param = if resource == Car
+              caru_params
+    else  
+      driveru_params
+    end
+    @item = resource.find_by_id(params[:id])
+    check_user(@item.user)
+    if @item.update(param)
+      render json: { message: "#{@item.id} updated successfully" }
+    else
+      render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
+    end
+
   end
 
   def create_item
@@ -129,6 +148,18 @@ def caru_params
     :public,
     :chassis_number,
     :driver
+  ).merge(
+    user: current_devise_api_token.resource_owner
+  )
+end
+
+def driveru_params
+  params.require(:driver).permit(
+    :name,
+    :identification,
+    :phone_number,
+    :nationality,
+    :car
   ).merge(
     user: current_devise_api_token.resource_owner
   )
