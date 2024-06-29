@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       resources :user, only: [] do
         get 'index', to: 'users#index', on: :collection
         get 'show/:id', to: 'users#show', on: :collection
-        patch 'update/:id', to: 'users#update_car', on: :collection
         patch 'update_item/:id', to: 'users#update_item', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
         delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection

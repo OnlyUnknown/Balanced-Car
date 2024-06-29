@@ -28,25 +28,14 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def update_car
-    @car = Car.find(params[:id])
-    check_user(@car.user)
-    if @car.update(caru_params)
-      render json: { message: 'car updated successfully' }
-    else
-      render json: { errors: @car.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
-
   def update_item
     current_devise_api_token.resource_owner
-    param = nil
     resource = params[:resource].capitalize.constantize
-     param = if resource == Car
+    param = if resource == Car
               caru_params
-    else  
-      driveru_params
-    end
+            else
+              driveru_params
+            end
     @item = resource.find_by_id(params[:id])
     check_user(@item.user)
     if @item.update(param)
@@ -54,7 +43,6 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
     end
-
   end
 
   def create_item
