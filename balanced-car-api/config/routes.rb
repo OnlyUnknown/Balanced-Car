@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       devise_for :users
       resources :user, only: [] do
-        get 'index', to: 'users#index', on: :collection
-        get 'show/:id', to: 'users#show', on: :collection
+        get 'index/cars', to: 'users#index_cars', on: :collection
+        get 'show/:id', to: 'users#show_car', on: :collection
         patch 'update_item/:id', to: 'users#update_item', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
         delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection
