@@ -7,10 +7,21 @@ class Api::V1::UsersController < ApplicationController
     render json: @cars.cars
   end
 
+  def index_drivers
+    @drivers = User.includes(:drivers).find_by_id(current_devise_api_token.resource_owner)
+    render json: @drivers.drivers
+  end
+
   def show_car
     @car = Car.find_by_id(params[:id])
     check_user(@car.user)
     render json: @car
+  end
+
+  def show_driver
+    @driver = Driver.find_by_id(params[:id])
+    check_user(@driver.user)
+    render json: @driver
   end
 
   def switch_publicity
