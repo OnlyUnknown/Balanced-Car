@@ -3,12 +3,14 @@ Rails.application.routes.draw do
     namespace :v1 do
       devise_for :users
       resources :user, only: [] do
-        post 'create_car', to: 'users#create', on: :collection
-        get 'index', to: 'users#index', on: :collection
-        get 'show/:id', to: 'users#show', on: :collection
-        patch 'update/:id', to: 'users#update_car', on: :collection
-        delete 'delete/:id', to: 'users#delete_car', on: :collection
+        get 'index/cars', to: 'users#index_cars', on: :collection
+        get 'index/drivers', to: 'users#index_drivers', on: :collection
+        get 'show/car/:id', to: 'users#show_car', on: :collection
+        get 'show/driver/:id', to: 'users#show_driver', on: :collection
+        patch 'update_item/:id', to: 'users#update_item', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
+        delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection
+        post '/create_item', to: 'users#create_item', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection
