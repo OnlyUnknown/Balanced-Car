@@ -44,13 +44,15 @@ class Api::V1::UsersController < ApplicationController
     resource = params[:resource].capitalize.constantize
     param = if resource == Car
               caru_params
-            else
+            elsif resource == Driver
               driveru_params
+            elsif resource == Bill
+              billu_params
             end
     @item = resource.find_by_id(params[:id])
     check_user(@item.user)
     if @item.update(param)
-      render json: { message: "#{@item.id} updated successfully" }
+      render json: { item: @item, message: "#{@item.class.name} #{@item.id} updated successfully" }
     else
       render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
     end
@@ -61,8 +63,10 @@ class Api::V1::UsersController < ApplicationController
     resource = params[:resource].capitalize.constantize
     param = if resource == Car
               car_params
-            else
+            elsif resource == Driver
               driver_params
+            elsif resource == Bill
+              bill_params
             end
     @item = resource.new(param)
     if @item.save
@@ -119,6 +123,17 @@ def driver_params
   )
 end
 
+def bill_params
+  @car = Car.find_by_id(params.require(:car_id))
+  params.require(:bill).permit(
+    :total,
+    :note
+  ).merge(
+    car: @car,
+    user: current_devise_api_token.resource_owner
+  )
+end
+
 def check_user(user)
   return if user == current_devise_api_token.resource_owner
 
@@ -161,5 +176,15 @@ def driveru_params
     :car
   ).merge(
     user: current_devise_api_token.resource_owner
+  )
+end
+
+def billu_params
+  @car = Car.find_by_id(params.require(:car_id))
+  params.require(:bill).permit(
+    :total,
+    :note
+  ).merge(
+    car: @car
   )
 end
