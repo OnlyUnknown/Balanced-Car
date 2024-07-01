@@ -119,6 +119,17 @@ def driver_params
   )
 end
 
+def bill_params
+  @car = Car.find_by_id(:car_id)
+  params.require(:bill).permit(
+    :total
+    :note).merge(
+      car: @car,
+      user: current_devise_api_token.resource_owner,
+
+  )
+end
+
 def check_user(user)
   return if user == current_devise_api_token.resource_owner
 
