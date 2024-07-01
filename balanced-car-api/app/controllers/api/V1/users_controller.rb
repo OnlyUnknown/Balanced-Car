@@ -61,9 +61,11 @@ class Api::V1::UsersController < ApplicationController
     resource = params[:resource].capitalize.constantize
     param = if resource == Car
               car_params
-            else
+    elsif resource == Driver
               driver_params
-            end
+    elsif resource == Bill
+    bill_params
+    end
     @item = resource.new(param)
     if @item.save
       render json: @item
@@ -120,13 +122,13 @@ def driver_params
 end
 
 def bill_params
-  @car = Car.find_by_id(:car_id)
+  @car = Car.find_by_id(params.require(:car_id))
   params.require(:bill).permit(
-    :total
+    
+    :total,
     :note).merge(
       car: @car,
       user: current_devise_api_token.resource_owner,
-
   )
 end
 
