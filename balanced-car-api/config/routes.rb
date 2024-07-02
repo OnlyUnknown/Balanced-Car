@@ -5,8 +5,10 @@ Rails.application.routes.draw do
       resources :user, only: [] do
         get 'index/cars', to: 'users#index_cars', on: :collection
         get 'index/drivers', to: 'users#index_drivers', on: :collection
+        get 'index/bills', to: 'users#index_bills', on: :collection
         get 'show/car/:id', to: 'users#show_car', on: :collection
         get 'show/driver/:id', to: 'users#show_driver', on: :collection
+        get 'show/bill/:id', to: 'users#show_bill', on: :collection
         patch 'update_item/:id', to: 'users#update_item', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
         delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection

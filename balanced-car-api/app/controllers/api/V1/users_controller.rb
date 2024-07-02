@@ -12,6 +12,11 @@ class Api::V1::UsersController < ApplicationController
     render json: @drivers.drivers
   end
 
+  def index_bills
+    @bills = User.includes(:bills).find_by_id(current_devise_api_token.resource_owner)
+    render json: @bills.bills
+  end
+
   def show_car
     @car = Car.find_by_id(params[:id])
     check_user(@car.user)
@@ -22,6 +27,12 @@ class Api::V1::UsersController < ApplicationController
     @driver = Driver.find_by_id(params[:id])
     check_user(@driver.user)
     render json: @driver
+  end
+
+  def show_bill
+    @bill = Bill.find_by_id(params[:id])
+    check_user(@bill.user)
+    render json: @bill
   end
 
   def switch_publicity
