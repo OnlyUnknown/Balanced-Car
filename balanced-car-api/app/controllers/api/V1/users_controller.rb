@@ -112,13 +112,15 @@ class Api::V1::UsersController < ApplicationController
 end
 
 def driver_params
+  @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
   params.require(:driver).permit(
     :name,
     :identification,
     :phone_number,
     :nationality,
-    :car
+
   ).merge(
+    car: @car,
     user: current_devise_api_token.resource_owner
   )
 end
@@ -127,7 +129,7 @@ def bill_params
   @car = Car.find_by_id(params.require(:car_id))
   params.require(:bill).permit(
     :total,
-    :note
+    :note,
   ).merge(
     car: @car,
     user: current_devise_api_token.resource_owner
