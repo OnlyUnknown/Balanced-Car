@@ -126,10 +126,12 @@ def driver_params
 end
 
 def bill_params
+  @date = Date.today
   @car = Car.find_by_id(params.require(:car_id))
   params.require(:bill).permit(
     :total,
     :note,
+    :date
   ).merge(
     car: @car,
     user: current_devise_api_token.resource_owner
@@ -185,7 +187,8 @@ def billu_params
   @car = Car.find_by_id(params.require(:car_id))
   params.require(:bill).permit(
     :total,
-    :note
+    :note,
+    :date
   ).merge(
     car: @car
   )

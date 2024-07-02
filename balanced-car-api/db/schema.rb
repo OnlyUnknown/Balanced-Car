@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
   create_table "bills", force: :cascade do |t|
     t.float "total"
     t.text "note"
+    t.date "date"
     t.bigint "car_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -85,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
   create_table "revenues", force: :cascade do |t|
     t.text "note"
     t.float "revenue"
+    t.date "date"
     t.bigint "car_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
