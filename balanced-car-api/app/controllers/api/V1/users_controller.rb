@@ -143,8 +143,7 @@ def driver_params
     :name,
     :identification,
     :phone_number,
-    :nationality,
-
+    :nationality
   ).merge(
     car: @car,
     user: current_devise_api_token.resource_owner
