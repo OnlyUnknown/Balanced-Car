@@ -4,6 +4,7 @@ class CreateRevenues < ActiveRecord::Migration[7.0]
       t.index :id, unique: true
       t.text :note
       t.float :revenue
+      t.date :date
       t.references :car, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       

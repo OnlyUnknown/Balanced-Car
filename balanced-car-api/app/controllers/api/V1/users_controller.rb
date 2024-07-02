@@ -12,6 +12,16 @@ class Api::V1::UsersController < ApplicationController
     render json: @drivers.drivers
   end
 
+  def index_bills
+    @bills = User.includes(:bills).find_by_id(current_devise_api_token.resource_owner)
+    render json: @bills.bills
+  end
+
+  def index_revenues
+    @revenues = User.includes(:revenues).find_by_id(current_devise_api_token.resource_owner)
+    render json: @revenues.revenues
+  end
+
   def show_car
     @car = Car.find_by_id(params[:id])
     check_user(@car.user)
@@ -22,6 +32,18 @@ class Api::V1::UsersController < ApplicationController
     @driver = Driver.find_by_id(params[:id])
     check_user(@driver.user)
     render json: @driver
+  end
+
+  def show_bill
+    @bill = Bill.find_by_id(params[:id])
+    check_user(@bill.user)
+    render json: @bill
+  end
+
+  def show_revenue
+    @revenue = Revenue.find_by_id(params[:id])
+    check_user(@revenue.user)
+    render json: @revenue
   end
 
   def switch_publicity
@@ -48,6 +70,8 @@ class Api::V1::UsersController < ApplicationController
               driveru_params
             elsif resource == Bill
               billu_params
+            elsif resource == Revenue
+              revenueu_params
             end
     @item = resource.find_by_id(params[:id])
     check_user(@item.user)
@@ -67,6 +91,8 @@ class Api::V1::UsersController < ApplicationController
               driver_params
             elsif resource == Bill
               bill_params
+            elsif resource == Revenue
+              revenue_params
             end
     @item = resource.new(param)
     if @item.save
@@ -112,13 +138,14 @@ class Api::V1::UsersController < ApplicationController
 end
 
 def driver_params
+  @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
   params.require(:driver).permit(
     :name,
     :identification,
     :phone_number,
-    :nationality,
-    :car
+    :nationality
   ).merge(
+    car: @car,
     user: current_devise_api_token.resource_owner
   )
 end
@@ -127,7 +154,20 @@ def bill_params
   @car = Car.find_by_id(params.require(:car_id))
   params.require(:bill).permit(
     :total,
-    :note
+    :note,
+    :date
+  ).merge(
+    car: @car,
+    user: current_devise_api_token.resource_owner
+  )
+end
+
+def revenue_params
+  @car = Car.find_by_id(params.require(:car_id))
+  params.require(:revenue).permit(
+    :revenue,
+    :note,
+    :date
   ).merge(
     car: @car,
     user: current_devise_api_token.resource_owner
@@ -180,11 +220,24 @@ def driveru_params
 end
 
 def billu_params
-  @car = Car.find_by_id(params.require(:car_id))
+  @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
   params.require(:bill).permit(
     :total,
-    :note
+    :note,
+    :date
   ).merge(
     car: @car
+  )
+end
+
+def revenueu_params
+  @car = Car.find_by_id(params.require(:car_id))
+  params.require(:revenue).permit(
+    :revenue,
+    :note,
+    :date
+  ).merge(
+    car: @car,
+    user: current_devise_api_token.resource_owner
   )
 end
