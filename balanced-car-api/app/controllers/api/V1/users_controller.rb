@@ -48,6 +48,8 @@ class Api::V1::UsersController < ApplicationController
               driveru_params
             elsif resource == Bill
               billu_params
+            elsif resource == Revenue
+              revenueu_params
             end
     @item = resource.find_by_id(params[:id])
     check_user(@item.user)
@@ -204,5 +206,17 @@ def billu_params
     :date
   ).merge(
     car: @car
+  )
+end
+
+def revenueu_params
+  @car = Car.find_by_id(params.require(:car_id))
+  params.require(:revenue).permit(
+    :revenue,
+    :note,
+    :date
+  ).merge(
+    car: @car,
+    user: current_devise_api_token.resource_owner
   )
 end
