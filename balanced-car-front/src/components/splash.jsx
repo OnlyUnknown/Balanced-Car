@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import '../styling/splash.scss';
 
 const Splash = () => (
   <div className="splash">
     <h1 className="title-sp">Balanced car</h1>
-    <button type="button" className="signin">Sign In</button>
-    <button type="button" className="signup">Sign Up</button>
+    <Link to={`/signin`} className="signin">Sign In</Link>
+    <Link to={`/signup`} className="signup">Sign Up</Link>
   </div>
 );
 
