@@ -1,7 +1,7 @@
 import '../styling/signup.scss';
 
 const Signup = () => (
-  <div className="signup">
+  <div className="signup-p">
     <h3 className="title">Sign Up</h3>
     <div className="shadow-box">
       <input placeholder="Email" />
