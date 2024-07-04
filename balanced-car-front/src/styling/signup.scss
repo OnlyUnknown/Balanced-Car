@@ -23,16 +23,14 @@ body {
   margin-top: auto;
   margin-bottom: auto;
   width: 300px;
-  height: 20vh;
+  height: 25vh;
   align-items: center;
   gap: 20px;
 }
 
 .title-sign {
   font-size: 32px;
-  position: absolute;
-  top: 20px;
   background: -webkit-linear-gradient(#eee, #333);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
