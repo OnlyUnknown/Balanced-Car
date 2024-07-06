@@ -5,7 +5,8 @@ import { signup, setUser } from '../features/auth/authSlice';
 
 const Signup = () => {
   const dispatch = useDispatch();
-  // const error = useSelector((state) => state.auth.error);
+  const error = useSelector((state) => state.auth.error);
+  const user = useSelector((state) => state.auth.user); // Get the current user from the store
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -29,12 +30,20 @@ const Signup = () => {
   return (
     <div className="signup-p">
       <h3 className="title">Sign Up</h3>
-      <form id="sign_up_form" onSubmit={handleSignup}>
-        <input type="email" id="signup-email" placeholder="Email" required />
-        <input type="password" id="signup-password" placeholder="Password" required />
-        <input type="password" id="signup-password-confirm" placeholder="Confirm Password" required />
-        <button type="submit">Sign Up</button>
-      </form>
+      {user ? (
+        <div>
+          <p>Current User: {user.email}</p>
+          <button onClick={() => dispatch(setUser(null))}>Log Out</button>
+        </div>
+      ) : (
+        <form id="sign_up_form" onSubmit={handleSignup}>
+          <input type="email" id="signup-email" placeholder="Email" required />
+          <input type="password" id="signup-password" placeholder="Password" required />
+          <input type="password" id="signup-password-confirm" placeholder="Confirm Password" required />
+          <button type="submit">Sign Up</button>
+          {error && <div className="error">{error}</div>}
+        </form>
+      )}
     </div>
   );
 };
