@@ -12,9 +12,9 @@ const Signup = () => {
     e.preventDefault();
     const email = e.target.elements['signup-email'].value;
     const password = e.target.elements['signup-password'].value;
-    const password_confirm = e.target.elements['signup-password-confirm'].value;
+    const PasswordConfirmation = e.target.elements['signup-password-confirm'].value;
 
-    if (password !== password_confirm) {
+    if (password !== PasswordConfirmation) {
       alert('Passwords do not match');
       return;
     }
@@ -32,7 +32,10 @@ const Signup = () => {
       <h3 className="title">Sign Up</h3>
       {user ? (
         <div>
-          <p>Current User: {user.email}</p>
+          <p>
+            Current User:
+            {user.email}
+          </p>
           <button onClick={() => dispatch(setUser(null))}>Log Out</button>
         </div>
       ) : (
