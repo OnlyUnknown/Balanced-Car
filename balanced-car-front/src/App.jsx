@@ -7,7 +7,7 @@ import AddCar from './components/AddCar';
 import Main from './components/main';
 import Carinfo from './components/Carinfo';
 import Splash from './components/splash';
-import SignUp from './components/signup';
+import SignUp from './components/SignUp';
 import SignScreen from './components/signin';
 
 function App() {

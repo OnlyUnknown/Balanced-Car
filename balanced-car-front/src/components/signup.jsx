@@ -1,8 +1,8 @@
 // src/components/Signup.js
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import Error from '../components/Error'
-import Spinner from '../components/Spinner'
+import Error from './Error'
+import Spinner from './Spinner'
 import { registerUser } from '../features/auth/authActions'
 
 const SignUp = () => {
@@ -27,10 +27,11 @@ const SignUp = () => {
       <h3 className="title">Sign Up</h3>
       {
         <form onSubmit={handleSubmit(submitForm)}>
+          {error && <Error errorMessage={error}/>}
           <input type="email" id="signup-email" placeholder="Email" {...register('email', { required: true })} />
           <input type="password" id="signup-password" placeholder="Password" {...register('email', { required: true })} />
           <input type="password" id="signup-password-confirm" placeholder="Confirm Password" {...register('email', { required: true })} />
-          <button type="submit">Sign Up</button>
+          <button type="submit" disabled={loading} >{loading ? <Spinner /> : 'SignUp'}</button>
           {error && <div className="error">{error}</div>}
         </form>
       }
