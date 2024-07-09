@@ -1,12 +1,10 @@
 import React from 'react';
 
-const Spinner = () => {
-  return (
-    <div style={styles.spinnerContainer}>
-      <div style={styles.spinner}></div>
-    </div>
-  );
-};
+const Spinner = () => (
+  <div style={styles.spinnerContainer}>
+    <div style={styles.spinner} />
+  </div>
+);
 
 const styles = {
   spinnerContainer: {

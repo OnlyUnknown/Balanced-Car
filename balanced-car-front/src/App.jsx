@@ -4,9 +4,9 @@ import './styling/AddCar.scss';
 // import Navigation from './Nav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AddCar from './components/AddCar';
-import Main from './components/main';
+import Main from './components/Main';
 import Carinfo from './components/Carinfo';
-import Splash from './components/splash';
+import Splash from './components/Splash';
 import SignUp from './components/SignUp';
 import SignScreen from './components/signin';
 

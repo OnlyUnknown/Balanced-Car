@@ -1,7 +1,7 @@
-import axios from 'axios'
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const backendURL = 'http://localhost:3001'
+const backendURL = 'http://localhost:3001';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
@@ -11,19 +11,18 @@ export const registerUser = createAsyncThunk(
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      };
       await axios.post(
         `${backendURL}/api/v1/users/tokens/sign_up`,
         { firstName, email, password },
-        config
-      )
+        config,
+      );
     } catch (error) {
     // return custom error message from backend if present
       if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
-      } else {
-        return rejectWithValue(error.message)
+        return rejectWithValue(error.response.data.message);
       }
+      return rejectWithValue(error.message);
     }
-  }
-)
+  },
+);

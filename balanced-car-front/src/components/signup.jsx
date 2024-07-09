@@ -1,40 +1,40 @@
 // src/components/Signup.js
-import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
-import Error from './Error'
-import Spinner from './Spinner'
-import { registerUser } from '../features/auth/authActions'
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import Error from './Error';
+import Spinner from './Spinner';
+import { registerUser } from '../features/auth/authActions';
 
 const SignUp = () => {
-  const { loading, userInfo, error, success } = useSelector(
-    (state) => state.auth
-  )
-  const dispatch = useDispatch()
-  const { register, handleSubmit } = useForm()
+  const {
+    loading, userInfo, error, success,
+  } = useSelector(
+    (state) => state.auth,
+  );
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
 
   const submitForm = (data) => {
     // check if passwords match
     if (data.password !== data.confirmPassword) {
-      alert('Password mismatch')
+      alert('Password mismatch');
     }
     // transform email string to lowercase to avoid case sensitivity issues in login
-    data.email = data.email.toLowerCase()
-    dispatch(registerUser(data))
-  }
+    data.email = data.email.toLowerCase();
+    dispatch(registerUser(data));
+  };
 
   return (
     <div className="signup-p">
       <h3 className="title">Sign Up</h3>
-      {
-        <form onSubmit={handleSubmit(submitForm)}>
-          {error && <Error errorMessage={error}/>}
-          <input type="email" id="signup-email" placeholder="Email" {...register('email', { required: true })} />
-          <input type="password" id="signup-password" placeholder="Password" {...register('email', { required: true })} />
-          <input type="password" id="signup-password-confirm" placeholder="Confirm Password" {...register('email', { required: true })} />
-          <button type="submit" disabled={loading} >{loading ? <Spinner /> : 'SignUp'}</button>
-          {error && <div className="error">{error}</div>}
-        </form>
-      }
+      <form onSubmit={handleSubmit(submitForm)}>
+        {error && <Error errorMessage={error} />}
+        <input type="email" id="signup-email" placeholder="Email" {...register('email', { required: true })} />
+        <input type="password" id="signup-password" placeholder="Password" {...register('email', { required: true })} />
+        <input type="password" id="signup-password-confirm" placeholder="Confirm Password" {...register('email', { required: true })} />
+        <button type="submit" disabled={loading}>{loading ? <Spinner /> : 'SignUp'}</button>
+        {error && <div className="error">{error}</div>}
+      </form>
     </div>
   );
 };
