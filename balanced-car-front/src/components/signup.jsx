@@ -29,9 +29,9 @@ const SignUp = () => {
       <h3 className="title">Sign Up</h3>
       <form onSubmit={handleSubmit(submitForm)}>
         {error && <Error errorMessage={error} />}
-        <input type="email" id="signup-email" placeholder="Email" {...register('email', { required: true })} />
-        <input type="password" id="signup-password" placeholder="Password" {...register('email', { required: true })} />
-        <input type="password" id="signup-password-confirm" placeholder="Confirm Password" {...register('email', { required: true })} />
+        <input type="email" id="signup-email" className='form-input' placeholder="Email" {...register('email', { required: true })} />
+        <input type="password" id="signup-password" placeholder="Password" {...register('password', { required: true })} />
+        <input type="password" id="signup-password-confirm" placeholder="Confirm Password" {...register('confirmPassword', { required: true })} />
         <button type="submit" disabled={loading}>{loading ? <Spinner /> : 'SignUp'}</button>
         {error && <div className="error">{error}</div>}
       </form>
