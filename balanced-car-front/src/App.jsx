@@ -4,10 +4,10 @@ import './styling/AddCar.scss';
 // import Navigation from './Nav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AddCar from './components/AddCar';
-import Main from './components/Main.jsx';
+import Main from './components/Main';
 import Carinfo from './components/Carinfo';
-import Splash from './components/Splash.jsx';
-import SignUp from './components/signup.jsx';
+import Splash from './components/Splash';
+import SignUp from './components/signup';
 import SignScreen from './components/signin';
 
 function App() {
