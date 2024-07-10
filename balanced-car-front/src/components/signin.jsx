@@ -1,14 +1,64 @@
+/* eslint-disable */
 import '../styling/signup.scss';
+import { useForm } from 'react-hook-form';
 
-const Signin = () => (
-  <div className="signup">
-    <h3 className="title">Sign In</h3>
-    <div className="shadow-box">
-      <input placeholder="Email" />
-      <input placeholder="Pass" />
-      <button type="submit">Sign in</button>
-    </div>
-  </div>
-);
+const SignScreen = () => {
+  const { register, handleSubmit } = useForm();
 
-export default Signin;
+  const submitForm = (data) => {
+    console.log(data.email);
+  };
+
+  return (
+  //     <form onSubmit={handleSubmit(submitForm)}>
+  //       <div className='form-group'>
+  //         <label htmlFor='email'>Email</label>
+  //         <input
+  //           type='email'
+  //           className='form-input'
+  //           {...register('email')}
+  //           required
+  //         />
+  //       </div>
+  //       <div className='form-group'>
+  //         <label htmlFor='password'>Password</label>
+  //         <input
+  //           type='password'
+  //           className='form-input'
+  //           {...register('password')}
+  //           required
+  //         />
+  //       </div>
+  //       <button type='submit' className='button'>
+  //         Login
+  //       </button>
+  //     </form>
+  //   )
+  // }
+
+  // const Signin = () => (
+    <form onSubmit={handleSubmit(submitForm)}>
+      <div className="signup-p">
+        <div className="shadow-box">
+          <h3 className="title-sign">Sign In</h3>
+          <input
+            placeholder="Email"
+            type="email"
+            className="form-input"
+            {...register('email', { required: true })}
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            className="form-input"
+            {...register('password', { required: true })}
+            required
+          />
+          <button type="submit">Sign in</button>
+        </div>
+      </div>
+    </form>
+  );
+};
+
+export default SignScreen;
