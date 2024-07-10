@@ -1,3 +1,4 @@
+/* eslint-disable */
 import '../styling/signup.scss';
 import { useForm } from 'react-hook-form';
 

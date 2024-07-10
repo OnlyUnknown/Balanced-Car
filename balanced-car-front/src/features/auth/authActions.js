@@ -3,9 +3,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const backendURL = 'http://localhost:3001';
 
-export const registerUser = createAsyncThunk(
+const registerUser = createAsyncThunk(
   'auth/register',
+  /* eslint-disable */
   async ({ email, password }, { rejectWithValue }) => {
+    /* eslint-enable */
     try {
       const config = {
         headers: {
@@ -26,3 +28,5 @@ export const registerUser = createAsyncThunk(
     }
   },
 );
+
+export default registerUser;

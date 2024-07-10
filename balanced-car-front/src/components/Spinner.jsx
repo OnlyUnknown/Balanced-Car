@@ -1,24 +1,18 @@
 import React from 'react';
 
-const Spinner = () => (
-  <div style={styles.spinnerContainer}>
-    <div style={styles.spinner} />
-  </div>
-);
-
 const styles = {
   spinnerContainer: {
-    display: 'flex',
+    display: 'absolote',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
+    height: '20px',
   },
   spinner: {
     border: '16px solid #f3f3f3', /* Light grey */
     borderTop: '16px solid #3498db', /* Blue */
     borderRadius: '50%',
-    width: '120px',
-    height: '120px',
+    width: '20px',
+    height: '20px',
     animation: 'spin 2s linear infinite',
   },
   '@keyframes spin': {
@@ -26,5 +20,11 @@ const styles = {
     '100%': { transform: 'rotate(360deg)' },
   },
 };
+
+const Spinner = () => (
+  <div style={styles.spinnerContainer}>
+    <div style={styles.spinner} />
+  </div>
+);
 
 export default Spinner;

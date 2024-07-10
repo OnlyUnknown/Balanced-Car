@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { registerUser } from './authActions'
+import { createSlice } from '@reduxjs/toolkit';
+import registerUser from './authActions';
 
 const initialState = {
   loading: false,
@@ -7,7 +7,7 @@ const initialState = {
   userToken: null,
   error: null,
   success: false,
-}
+};
 
 const authSlice = createSlice({
   name: 'auth',
@@ -16,17 +16,18 @@ const authSlice = createSlice({
   extraReducers: {
     // register user
     [registerUser.pending]: (state) => {
-      state.loading = true
-      state.error = null
+      state.loading = true;
+      state.error = null;
     },
     [registerUser.fulfilled]: (state, { payload }) => {
-      state.loading = false
-      state.success = true // registration successful
+      state.loading = false;
+      state.success = true; // registration successful
+      state.error = payload;
     },
     [registerUser.rejected]: (state, { payload }) => {
-      state.loading = false
-      state.error = payload
+      state.loading = false;
+      state.error = payload;
     },
   },
-})
-export default authSlice.reducer
+});
+export default authSlice.reducer;
