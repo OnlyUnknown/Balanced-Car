@@ -40,7 +40,7 @@ export const userLogin = createAsyncThunk(
         },
       }
       const { data } = await axios.post(
-        `${backendURL}/api/v1/users/tokens/login`,
+        `${backendURL}/api/v1/users/tokens/sign_in`,
         { email, password },
         config
       )
