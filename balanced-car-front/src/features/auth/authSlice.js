@@ -40,7 +40,6 @@ const authSlice = createSlice({
       state.loading = false
       state.userInfo = payload.resource_owner
       state.userToken = payload.token
-      localStorage.setItem('userToken', JSON.stringify(payload.token));
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false
