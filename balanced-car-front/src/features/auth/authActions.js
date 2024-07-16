@@ -5,22 +5,21 @@ const backendURL = 'http://localhost:3001';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
-  /* eslint-disable */
   async ({ email, password }, { rejectWithValue }) => {
-    /* eslint-enable */
     try {
       const config = {
         headers: {
           'Content-Type': 'application/json',
         },
       };
-      await axios.post(
+      const response = await axios.post(
         `${backendURL}/api/v1/users/tokens/sign_up`,
         { email, password },
         config,
       );
+      return response.data;
     } catch (error) {
-    // return custom error message from backend if present
+      // return custom error message from backend if present
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
       }
@@ -38,22 +37,21 @@ export const userLogin = createAsyncThunk(
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      };
       const { data } = await axios.post(
         `${backendURL}/api/v1/users/tokens/sign_in`,
         { email, password },
-        config
-      )
+        config,
+      );
       // store user's token in local storage
       localStorage.setItem('userToken', JSON.stringify(data.token));
-      return data
+      return data;
     } catch (error) {
       // return custom error message from API if any
       if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message)
-      } else {
-        return rejectWithValue(error.message)
+        return rejectWithValue(error.response.data.message);
       }
+      return rejectWithValue(error.message);
     }
-  }
-)
+  },
+);

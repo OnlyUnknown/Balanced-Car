@@ -1,18 +1,19 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     // base url of backend API
     baseUrl: 'http://localhost:3001/',
-    // prepareHeaders is used to configure the header of every request and gives access to getState which we use to include the token from the store
+    // prepareHeaders is used to configure the header of every request and gives
+    // access to getState which we use to include the token from the store
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.userToken
+      const token = getState().auth.userToken;
       if (token) {
-       // include token in req header
-        headers.set('authorization', `Bearer ${token}`)  
-        return headers
+        // include token in req header
+        headers.set('authorization', `Bearer ${token}`);
       }
+      return headers;
     },
   }),
   endpoints: (builder) => ({
@@ -23,8 +24,8 @@ export const authApi = createApi({
       }),
     }),
   }),
-})
+});
 
 // export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUserDetailsQuery } = authApi
+export const { useGetUserDetailsQuery } = authApi;

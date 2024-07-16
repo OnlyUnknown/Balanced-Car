@@ -7,25 +7,22 @@ import Error from './Error';
 import Spinner from './Spinner';
 import { userLogin } from '../features/auth/authActions';
 
-
-
 const SigninScreen = () => {
-  const { loading, userInfo, error } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  const { register, handleSubmit } = useForm()
-  const navigate = useNavigate()
+  const { loading, userInfo, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   // redirect authenticated user to profile screen
   useEffect(() => {
     if (userInfo) {
-      navigate('/main')
+      navigate('/main');
     }
-  }, [navigate, userInfo])
+  }, [navigate, userInfo]);
 
   const submitForm = (data) => {
-    dispatch(userLogin(data))
-  }
-
+    dispatch(userLogin(data));
+  };
 
   return (
   //     <form onSubmit={handleSubmit(submitForm)}>
@@ -72,9 +69,9 @@ const SigninScreen = () => {
             className="form-input"
             {...register('password', { required: true })}
           />
-          <button type='submit' className='button' disabled={loading}>
-        {loading ? <Spinner /> : 'Sign In'}
-      </button>
+          <button type="submit" className="button" disabled={loading}>
+            {loading ? <Spinner /> : 'Sign In'}
+          </button>
         </div>
       </div>
     </form>
