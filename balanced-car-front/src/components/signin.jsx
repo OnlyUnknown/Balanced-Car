@@ -1,12 +1,27 @@
 /* eslint-disable */
-import '../styling/signup.scss';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Error from './Error';
+import Spinner from './Spinner';
+import { userLogin } from '../features/auth/authActions';
 
-const SignScreen = () => {
+const SigninScreen = () => {
+  const { loading, userInfo, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+  // redirect authenticated user to profile screen
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/main');
+    }
+  }, [navigate, userInfo]);
 
   const submitForm = (data) => {
-    console.log(data.email);
+    dispatch(userLogin(data));
   };
 
   return (
@@ -38,6 +53,7 @@ const SignScreen = () => {
 
   // const Signin = () => (
     <form onSubmit={handleSubmit(submitForm)}>
+      {error && <Error errorMessage={error} />}
       <div className="signup-p">
         <div className="shadow-box">
           <h3 className="title-sign">Sign In</h3>
@@ -52,13 +68,14 @@ const SignScreen = () => {
             type="password"
             className="form-input"
             {...register('password', { required: true })}
-            required
           />
-          <button type="submit">Sign in</button>
+          <button type="submit" className="button" disabled={loading}>
+            {loading ? <Spinner /> : 'Sign In'}
+          </button>
         </div>
       </div>
     </form>
   );
 };
 
-export default SignScreen;
+export default SigninScreen;

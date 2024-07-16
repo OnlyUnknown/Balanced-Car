@@ -1,5 +1,4 @@
 /* eslint-disable */
-// src/components/Signup.js
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';

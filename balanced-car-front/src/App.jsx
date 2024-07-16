@@ -8,7 +8,7 @@ import Main from './components/Main';
 import Carinfo from './components/Carinfo';
 import Splash from './components/Splash';
 import SignUp from './components/signup';
-import SignScreen from './components/signin';
+import SigninScreen from './components/signin';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/addcar" element={<AddCar />} />
         <Route path="/splash" element={<Splash />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignScreen />} />
+        <Route path="/signin" element={<SigninScreen />} />
         <Route path="/carinfo" element={<Carinfo />} />
         <Route path="/main" element={<Main />} />
       </Routes>
