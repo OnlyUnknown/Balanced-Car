@@ -9,12 +9,14 @@ import Carinfo from './components/Carinfo';
 import Splash from './components/Splash';
 import SignUp from './components/signup';
 import SigninScreen from './components/signin';
+import Profile from './components/Profile';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Main />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/addcar" element={<AddCar />} />
         <Route path="/splash" element={<Splash />} />
         <Route path="/signup" element={<SignUp />} />
