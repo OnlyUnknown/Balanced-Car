@@ -34,7 +34,7 @@ const Navigation = () => {
         <li>
           <span>{renderUserInfo()}</span>
         </li>
-        <li> My cars</li>
+        <NavLink className="button" to="/main"> My cars</NavLink>
         <li>
           {userInfo ? (
             <button className="button" type="button" onClick={() => dispatch(logout())}>

@@ -9,18 +9,18 @@ import Carinfo from './components/Carinfo';
 import Splash from './components/Splash';
 import SignUp from './components/signup';
 import SigninScreen from './components/signin';
-import Profile from './components/Profile';
+import Profile from './components/profile';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SigninScreen />} />
         <Route exact path="/" element={<Main />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/addcar" element={<AddCar />} />
         <Route path="/splash" element={<Splash />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SigninScreen />} />
         <Route path="/carinfo" element={<Carinfo />} />
         <Route path="/main" element={<Main />} />
       </Routes>
