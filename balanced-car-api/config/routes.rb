@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
         delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection
         post '/create_item', to: 'users#create_item', on: :collection
+        patch '/update_profile', to: 'users#update_profile', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection
