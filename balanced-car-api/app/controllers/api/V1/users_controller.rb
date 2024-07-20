@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!, only: %i[create_item index update_item
-                                                          delete_car switch_publicity 
+                                                          delete_car switch_publicity
                                                           update_driver update_profile]
   def index_cars
     @cars = User.includes(:cars).find_by_id(current_devise_api_token.resource_owner)
@@ -199,8 +199,8 @@ end
 
 def useru_params
   params.require(:user).permit(
-  :name,
-  :phone_number
+    :name,
+    :phone_number
   )
 end
 
