@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 const backendURL = 'http://localhost:3001';
 
 export const editUser = createAsyncThunk(
-    'auth/edit',
+    'edit/profile',
     async ({ name, phone_number }, { rejectWithValue }) => {
       try {
         const config = {
