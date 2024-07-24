@@ -4,11 +4,20 @@ export const editApi = createApi({
   // Set the baseUrl for every endpoint below
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/api/v1' }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query({
+    getProfile: builder.query({
       // Will make a request like https://pokeapi.co/api/v2/pokemon/bulbasaur
       query: `/users/tokens/info`,
     }),
-    updatePokemon: builder.mutation({
+    prepareHeaders: (headers, { getState }) => {
+        const token = getState().auth.userToken;
+        if (token) {
+          // include token in req header
+          headers.set('authorization', `Bearer ${token}`);
+        }
+        return headers;
+      },
+      
+    updateProfile: builder.mutation({
       query: ({ patch }) => ({
         url: `/users/update_profile`,
         // When performing a mutation, you typically use a method of
