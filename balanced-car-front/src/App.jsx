@@ -10,6 +10,7 @@ import Splash from './components/Splash';
 import SignUp from './components/signup';
 import SigninScreen from './components/signin';
 import Profile from './components/profile';
+import EditProfile from './components/editprofile';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/splash" element={<Splash />} />
         <Route path="/carinfo" element={<Carinfo />} />
         <Route path="/main" element={<Main />} />
+        <Route path='/editProfile' element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   );
