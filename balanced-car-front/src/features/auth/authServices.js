@@ -19,7 +19,7 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     getUserDetails: builder.query({
       query: () => ({
-        url: 'api//v1/users/tokens/info',
+        url: 'api//v1/user/profile',
         method: 'GET',
       }),
     }),
