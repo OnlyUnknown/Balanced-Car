@@ -20,7 +20,10 @@ const initialState = {
 const editSlice = createSlice({
   name: 'edit',
   initialState,
-  reducers: {},
+  reducers: {
+    setCredentials: (state, { payload }) => {
+    state.userInfo = payload;
+  },},
   extraReducers: {
     // edit profile
     [editUser.pending]: (state) => {
@@ -40,5 +43,4 @@ const editSlice = createSlice({
   },
 });
 
-export const { logout, setCredentials } = authSlice.actions;
 export default editSlice.reducer;

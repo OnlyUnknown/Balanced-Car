@@ -13,7 +13,7 @@ export const editUser = createAsyncThunk(
           },
         };
         const response = await axios.patch(
-          `${backendURL}/api/v1/users/update_profile`,
+          `${backendURL}/api/v1/user/update_profile`,
           { name, phone_number },
           config,
         );
