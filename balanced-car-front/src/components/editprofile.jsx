@@ -10,10 +10,12 @@ import { editUser } from '../features/edit/editActions';
 
 const EditProfile = () => {
   const {
-    loading, userInfo, error, success,
+    loading, error, success,
   } = useSelector(
     (state) => state.edit,
   );
+
+  const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 

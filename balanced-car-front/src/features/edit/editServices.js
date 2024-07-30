@@ -9,7 +9,7 @@ export const editApi = createApi({
       query: `/users/tokens/info`,
     }),
     prepareHeaders: (headers, { getState }) => {
-        const token = getState().auth.userToken;
+        const token = getState().edit.userToken;
         if (token) {
           // include token in req header
           headers.set('authorization', `Bearer ${token}`);
@@ -30,3 +30,5 @@ export const editApi = createApi({
     }),
   }),
 })
+
+export const { useUpdateProfileQuery } = editApi;
