@@ -12,6 +12,6 @@ const store = configureStore({
     edit: editReducer,
     [editApi.reducerPath]: editApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware, editApi.middleware),
 });
 export default store;
