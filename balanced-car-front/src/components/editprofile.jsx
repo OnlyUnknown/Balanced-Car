@@ -31,7 +31,7 @@ const EditProfile = () => {
   const submitForm = async (data) => {
     try {
       await updateProfile({ ...data }).unwrap();
-      dispatch(editUser(data))
+      dispatch(editUser( {...data}))
       console.log('Profile updated successfully');
     } catch (err) {
       console.error('Failed to update profile:', err);
