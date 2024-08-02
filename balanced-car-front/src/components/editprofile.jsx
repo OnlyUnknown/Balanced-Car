@@ -18,7 +18,6 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (userInfo) {
-      // Set default values for the form fields
       setValue('name', userInfo.name || '');
       setValue('phone_number', userInfo.phone_number || '');
     }
@@ -30,7 +29,7 @@ const EditProfile = () => {
 
   const submitForm = async (data) => {
     try {
-      await updateProfile(data).unwrap();
+      await updateProfile({ ...data }).unwrap();
       console.log('Profile updated successfully');
     } catch (err) {
       console.error('Failed to update profile:', err);

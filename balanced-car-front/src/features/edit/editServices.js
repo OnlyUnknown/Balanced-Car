@@ -5,9 +5,9 @@ export const editApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3001/api/v1/',
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.userToken; // Retrieve token from local storage
+      const token = getState().auth.userToken; // Retrieve token from the state
       if (token) {
-        headers.set('authorization', `Bearer ${token}`);
+        headers.set('Authorization', `Bearer ${token}`);
       }
       return headers;
     },
@@ -17,7 +17,7 @@ export const editApi = createApi({
       query: () => 'users/tokens/info',
     }),
     updateProfile: builder.mutation({
-      query: ({ patch }) => ({
+      query: (patch) => ({
         url: 'user/update_profile',
         method: 'PATCH',
         body: patch,
