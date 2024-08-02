@@ -32,6 +32,7 @@ const editSlice = createSlice({
     },
     [editUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
+      state.success = true;
       state.name = payload.name;
       state.phone_number = payload.phone_number;
     },

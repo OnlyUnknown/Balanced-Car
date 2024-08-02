@@ -7,6 +7,7 @@ import Navigation from './Nav';
 import Error from './Error';
 import Spinner from './Spinner';
 import { useUpdateProfileMutation } from '../features/edit/editServices';
+import { editUser } from '../features/edit/editActions';
 
 const EditProfile = () => {
   const { loading, errors, success } = useSelector((state) => state.edit);
@@ -30,6 +31,7 @@ const EditProfile = () => {
   const submitForm = async (data) => {
     try {
       await updateProfile({ ...data }).unwrap();
+      dispatch(editUser(data))
       console.log('Profile updated successfully');
     } catch (err) {
       console.error('Failed to update profile:', err);
