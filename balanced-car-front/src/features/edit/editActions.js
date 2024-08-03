@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+/* eslint-disable */
 const backendURL = 'http://localhost:3001';
 
 export const editUser = createAsyncThunk(
@@ -11,7 +11,7 @@ export const editUser = createAsyncThunk(
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       };
       const data = await axios.patch(

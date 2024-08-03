@@ -13,7 +13,7 @@ const initialState = {
   userInfo: null,
   userToken: getUserToken(),
   error: null,
-  name:null,
+  name: null,
   phone_number: null,
   success: false,
 };
@@ -45,9 +45,8 @@ const authSlice = createSlice({
       state.signedin = true;
       state.userInfo = payload.resource_owner;
       state.userToken = payload.token;
-      state.name = payload.resource_owner.name
-      state.phone_number = payload.resource_owner.phone_number
-
+      state.name = payload.resource_owner.name;
+      state.phone_number = payload.resource_owner.phone_number;
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false;

@@ -13,8 +13,8 @@ const initialState = {
   userToken: getUserToken(),
   error: null,
   success: false,
-  name:null,
-  phone_number:null
+  name: null,
+  phone_number: null,
 };
 
 const editSlice = createSlice({
@@ -22,8 +22,9 @@ const editSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, { payload }) => {
-    state.userInfo = payload;
-  },},
+      state.userInfo = payload;
+    },
+  },
   extraReducers: {
     // edit profile
     [editUser.pending]: (state) => {
@@ -33,7 +34,6 @@ const editSlice = createSlice({
     [editUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.success = true;
-      console.log(payload)
       state.name = payload.data.item.name;
       state.phone_number = payload.data.item.phone_number;
     },
@@ -41,7 +41,7 @@ const editSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
-   
+
   },
 });
 

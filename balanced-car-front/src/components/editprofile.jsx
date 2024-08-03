@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import Navigation from './Nav';
 import Error from './Error';
 import Spinner from './Spinner';
 import { useUpdateProfileMutation } from '../features/edit/editServices';
 import { editUser } from '../features/edit/editActions';
-
+/* eslint-disable */
 const EditProfile = () => {
   const { loading, errors, success } = useSelector((state) => state.edit);
   const { userInfo } = useSelector((state) => state.auth);
@@ -31,10 +32,11 @@ const EditProfile = () => {
   const submitForm = async (data) => {
     try {
       await updateProfile({ ...data }).unwrap();
-      dispatch(editUser( {...data}))
-      console.log('Profile updated successfully');
+      dispatch(editUser({ ...data }));
+      toast.success('Profile updated successfully');
+      navigate('/profile'); // Redirect to profile page after success
     } catch (err) {
-      console.error('Failed to update profile:', err);
+      toast.error('Failed to update profile. Please try again.');
     }
   };
 
@@ -46,14 +48,17 @@ const EditProfile = () => {
           <figure>{userInfo?.email.charAt(0).toUpperCase()}</figure>
           <div>
             This is edit profile page
-            <strong>{userInfo?.email}!</strong>
-            You can view this page because you're logged in
+            <strong>
+              {userInfo?.email}
+              !
+            </strong>
+            You can view this page because you&apos;re logged in
           </div>
           <div>
             <label htmlFor="name">Name:</label>
             <input
               id="name"
-              type='text'
+              type="text"
               {...register('name', { required: true })}
               placeholder="Enter your name"
             />
@@ -62,7 +67,7 @@ const EditProfile = () => {
             <label htmlFor="phone_number">Phone number:</label>
             <input
               id="phone_number"
-              type='text'
+              type="text"
               {...register('phone_number', { required: true })}
               placeholder="Enter your phone number"
             />

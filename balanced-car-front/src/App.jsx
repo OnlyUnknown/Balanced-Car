@@ -1,8 +1,8 @@
 import './styling/App.scss';
 import './styling/AddCar.scss';
 
-// import Navigation from './Nav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import AddCar from './components/AddCar';
 import Main from './components/Main';
 import Carinfo from './components/Carinfo';
@@ -11,6 +11,8 @@ import SignUp from './components/signup';
 import SigninScreen from './components/signin';
 import Profile from './components/profile';
 import EditProfile from './components/editprofile';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -24,8 +26,9 @@ function App() {
         <Route path="/splash" element={<Splash />} />
         <Route path="/carinfo" element={<Carinfo />} />
         <Route path="/main" element={<Main />} />
-        <Route path='/editProfile' element={<EditProfile />} />
+        <Route path="/editProfile" element={<EditProfile />} />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 }
