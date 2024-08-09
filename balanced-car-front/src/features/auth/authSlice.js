@@ -8,10 +8,13 @@ const getUserToken = () => {
 };
 
 const initialState = {
+  signedin: false,
   loading: false,
   userInfo: null,
   userToken: getUserToken(),
   error: null,
+  name: null,
+  phone_number: null,
   success: false,
 };
 
@@ -25,6 +28,7 @@ const authSlice = createSlice({
       state.userInfo = null;
       state.userToken = null;
       state.error = null;
+      state.signedin = false;
     },
     setCredentials: (state, { payload }) => {
       state.userInfo = payload;
@@ -38,8 +42,11 @@ const authSlice = createSlice({
     },
     [userLogin.fulfilled]: (state, { payload }) => {
       state.loading = false;
+      state.signedin = true;
       state.userInfo = payload.resource_owner;
       state.userToken = payload.token;
+      state.name = payload.resource_owner.name;
+      state.phone_number = payload.resource_owner.phone_number;
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false;

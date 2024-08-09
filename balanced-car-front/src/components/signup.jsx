@@ -40,6 +40,8 @@ const SignUp = () => {
       <h3 className="title">Sign Up</h3>
       <form onSubmit={handleSubmit(submitForm)}>
         {error && <Error errorMessage={error} />}
+        <input type="name" id="signup-name" className="form-input" placeholder="Name" {...register('name', { required: true })} />
+        <input type="phone_number" id="signup-phone_number" className="form-input" placeholder="Phone number" {...register('phone_number', { required: true })} />
         <input type="email" id="signup-email" className="form-input" placeholder="Email" {...register('email', { required: true })} />
         <input type="password" id="signup-password" placeholder="Password" {...register('password', { required: true })} />
         <input type="password" id="signup-password-confirm" placeholder="Confirm Password" {...register('confirmPassword', { required: true })} />

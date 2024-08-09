@@ -12,12 +12,12 @@ export const registerUser = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       };
-      const response = await axios.post(
+      await axios.post(
         `${backendURL}/api/v1/users/tokens/sign_up`,
         { email, password },
         config,
       );
-      return response.data;
+      return { message: 'User registered successfully' }; // Return a success message or an object
     } catch (error) {
       // return custom error message from backend if present
       if (error.response && error.response.data.message) {
