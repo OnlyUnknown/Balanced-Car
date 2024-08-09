@@ -9,7 +9,7 @@ import Carinfo from './components/Carinfo';
 import Splash from './components/Splash';
 import SignUp from './components/signup';
 import SigninScreen from './components/signin';
-import Profile from './components/profile.jsx';
+import Profile from './components/profile';
 import EditProfile from './components/editprofile';
 
 import 'react-toastify/dist/ReactToastify.css';
