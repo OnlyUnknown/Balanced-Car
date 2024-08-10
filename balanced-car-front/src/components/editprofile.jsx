@@ -27,7 +27,7 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (success)
-      toast.success('Profile updated successfully');;
+      toast.success('Profile updated successfully');
   }, [success]);
 
   const submitForm = async (data) => {
