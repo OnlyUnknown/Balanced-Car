@@ -32,7 +32,6 @@ const EditProfile = () => {
 
   const submitForm = async (data) => {
     try {
-      await updateProfile({ ...data }).unwrap();
       dispatch(editUser({ ...data }));
       
     } catch (err) {

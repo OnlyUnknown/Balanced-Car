@@ -1,9 +1,34 @@
 import '../styling/AddCar.scss';
 import Navigation from './Nav';
+import { addItem } from '../features/add/addActions';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
+import Error from './Error';
+import Spinner from './Spinner';
+import { useAddItemMutation } from '../features/add/addServices';
 
-const AddCar = () => (
-  <>
+
+const AddCar = () => {
+  const { loading, errors, success } = useSelector((state) => state.add);
+  const { userInfo } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm();
+  const [addCar] = useAddItemMutation();
+  
+  const submitForm = async (data) => {
+    try {
+      dispatch(addItem({ "resource": "Car", car: data }));
+      toast.success('Car added successfully!');
+    } catch (err) {
+      toast.error('Failed to add car. Please try again.');
+    }
+  };
+ return ( <>
     <Navigation />
+    <form onSubmit={handleSubmit(submitForm)}>
     <div className="addcar">
       <h3 className="title">Add a car</h3>
       <div className="shadow-box-add">
@@ -11,7 +36,12 @@ const AddCar = () => (
           Pic
         </div>
         <div className="info_box">
-          <input placeholder="Car Name" />
+        <input
+              id="name"
+              type="text"
+              {...register('name', { required: true })}
+              placeholder="Car name"
+            />
           <input placeholder="Car type" />
           <input placeholder="Tansition type" />
           <input placeholder="Model" />
@@ -27,11 +57,15 @@ const AddCar = () => (
           <input placeholder="Oil Milage" />
           <input placeholder="Last price" />
           <textarea placeholder="Note" />
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={loading}>
+            {loading ? <Spinner /> : 'Create'}
+          </button>
+          {errors && <Error message={errors.message} />}
         </div>
       </div>
     </div>
+    </form>
   </>
-);
+)};
 
 export default AddCar;

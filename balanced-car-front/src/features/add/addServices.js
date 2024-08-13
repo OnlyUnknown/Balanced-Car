@@ -12,14 +12,15 @@ export const addApi = createApi({
       return headers;
     },
   }),
+  endpoints: (builder) => ({
     addItem: builder.mutation({
       query: (data) => ({
-        url: 'user/update_profile',
+        url: 'user/create_item',
         method: 'POST',
         body: data,
       }),
     }),
-  }),
-});
+})
+  })
 
-export const { useGetProfileQuery, useUpdateProfileMutation } = editApi;
+export const { useAddItemMutation } = addApi;

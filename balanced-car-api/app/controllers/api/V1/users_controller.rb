@@ -65,7 +65,7 @@ class Api::V1::UsersController < ApplicationController
   def profile
     current_devise_api_token.resource_owner
     @profile = User.find_by_id(current_devise_api_token.resource_owner_id)
-    render json: @profile
+    render json: @profile, except: %i[cars]
   end
 
   def update_profile

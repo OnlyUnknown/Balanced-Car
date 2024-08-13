@@ -29,11 +29,9 @@ const addSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
-    [addItem.fulfilled]: (state, { payload }) => {
+    [addItem.fulfilled]: (state) => {
       state.loading = false;
       state.success = true;
-      state.name = payload.data.item.name;
-      state.phone_number = payload.data.item.phone_number;
     },
     [addItem.rejected]: (state, { payload }) => {
       state.loading = false;
