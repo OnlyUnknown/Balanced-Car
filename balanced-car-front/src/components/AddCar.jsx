@@ -18,9 +18,9 @@ const AddCar = () => {
   const { register, handleSubmit } = useForm();
   const [addCar] = useAddItemMutation();
   
-  const submitForm = async (data) => {
+  const submitForm = async (item) => {
     try {
-      dispatch(addItem({ "resource": "Car", car: data }));
+      dispatch(addItem({ item }));
       toast.success('Car added successfully!');
     } catch (err) {
       toast.error('Failed to add car. Please try again.');
