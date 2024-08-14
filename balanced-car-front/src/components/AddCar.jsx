@@ -49,10 +49,22 @@ const AddCar = () => {
           <input placeholder="Milage" />
           <input placeholder="Auto Milage" />
           <div className="tires">
-            <input placeholder="Tire age 1" />
-            <input placeholder="Tire age 2" />
-            <input placeholder="Tire age 3" />
-            <input placeholder="Tire age 4" />
+            <input               id="name"
+              type="date"
+              {...register("tires_age.tirerf")}
+               placeholder="Tire age 1" />
+            <input 
+            type="date"
+            {...register('tires_age.tirelf')}
+            placeholder="Tire age 2" />
+            <input 
+            type="date"
+            {...register('tires_age.tirerb')}
+            placeholder="Tire age 3" />
+            <input
+            type="date"
+            {...register('tires_age.tirelb')}
+             placeholder="Tire age 4" />
           </div>
           <input placeholder="Oil Milage" />
           <input placeholder="Last price" />

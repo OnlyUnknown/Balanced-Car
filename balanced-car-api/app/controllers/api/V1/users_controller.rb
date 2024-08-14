@@ -135,7 +135,6 @@ class Api::V1::UsersController < ApplicationController
   def car_params
     params.require(:car).permit(
       :name,
-      :tires_age,
       :oil,
       :note,
       :model,
@@ -147,7 +146,8 @@ class Api::V1::UsersController < ApplicationController
       :commercial,
       :public,
       :chassis_number,
-      :driver
+      :driver,
+      :tires_age => [:tirerf, :tirelf, :tirerb, :tirelb],
     ).merge(
       user: current_devise_api_token.resource_owner
     )

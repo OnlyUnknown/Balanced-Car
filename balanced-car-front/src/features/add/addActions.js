@@ -16,7 +16,7 @@ export const addItem = createAsyncThunk(
       };
       const data = await axios.post(
         `${backendURL}/user/create_item`,
-        { resource: "car", "car": item },
+        { resource: "car", car: item},
         config,
       );
       return data;
