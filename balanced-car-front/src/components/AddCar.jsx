@@ -42,33 +42,68 @@ const AddCar = () => {
               {...register('name', { required: true })}
               placeholder="Car name"
             />
-          <input placeholder="Car type" />
-          <input placeholder="Tansition type" />
-          <input placeholder="Model" />
-          <input placeholder="Transition Kilos" />
-          <input placeholder="Milage" />
-          <input placeholder="Auto Milage" />
+          <input 
+          type="text"
+              {...register('car_type')}
+              placeholder="Car type" />
+          <input
+          type="text"
+          {...register('transmission_type')}
+           placeholder="Transimission type" />
+          <input 
+          type="number"
+          {...register('model')}
+          placeholder="Model" />
+          <input 
+          type="number"
+          {...register('transmission_kilos')}
+          placeholder="Transmission Kilos" />
+          <input
+          type="number"
+          {...register('milage')}
+           placeholder="Milage" />
+          <input
+          type="number"
+          {...register('auto_milage')}
+           placeholder="Auto Milage" />
           <div className="tires">
-            <input               id="name"
-              type="date"
+            <input
+              type="month"
               {...register("tires_age.tirerf")}
                placeholder="Tire age 1" />
             <input 
-            type="date"
+            type="month"
             {...register('tires_age.tirelf')}
             placeholder="Tire age 2" />
             <input 
-            type="date"
+            type="month"
             {...register('tires_age.tirerb')}
             placeholder="Tire age 3" />
             <input
-            type="date"
+            type="month"
             {...register('tires_age.tirelb')}
              placeholder="Tire age 4" />
           </div>
-          <input placeholder="Oil Milage" />
-          <input placeholder="Last price" />
-          <textarea placeholder="Note" />
+          <input
+          type="text"
+          {...register('oil_milage')}
+           placeholder="Oil Milage" />
+          <input
+          type="text"
+          {...register('buy_limit')}
+           placeholder="buy_limit" />
+           <input
+          type="text"
+          {...register('last_bid')}
+           placeholder="Last Bid" />
+           <span> <label>For bidding</label>
+           <input
+          type="checkbox"
+          {...register('for_bidding')} />
+          </span>
+          <textarea type="text"
+          {...register('note')}
+          placeholder="Note" />
           <button type="submit" disabled={loading}>
             {loading ? <Spinner /> : 'Create'}
           </button>

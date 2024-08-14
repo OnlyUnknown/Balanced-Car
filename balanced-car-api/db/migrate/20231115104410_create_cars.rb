@@ -4,8 +4,8 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.index :id, unique: true
       t.string :name
       t.string :tires_age
-      t.integer :oil
-      t.integer :auto_oil
+      t.integer :oil_milage
+      t.integer :transmission_milage
       t.text :note
       t.integer :model
       t.string :car_type
