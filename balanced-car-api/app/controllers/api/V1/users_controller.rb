@@ -150,7 +150,7 @@ class Api::V1::UsersController < ApplicationController
       :public,
       :chassis_number,
       :driver,
-      :tires_age => [:tirerf, :tirelf, :tirerb, :tirelb],
+      tires_age: %i[tirerf tirelf tirerb tirelb]
     ).merge(
       user: current_devise_api_token.resource_owner
     )
