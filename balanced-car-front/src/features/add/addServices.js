@@ -20,7 +20,7 @@ export const addApi = createApi({
         body: data,
       }),
     }),
-})
-  })
+  }),
+});
 
 export const { useAddItemMutation } = addApi;

@@ -3,9 +3,8 @@ import authReducer from './features/auth/authSlice';
 import { authApi } from './features/auth/authServices';
 import editReducer from './features/edit/editSlice';
 import { editApi } from './features/edit/editServices';
-import addReducer from './features/add/addSlice'
+import addReducer from './features/add/addSlice';
 import { addApi } from './features/add/addServices';
-
 
 const store = configureStore({
   reducer: {
