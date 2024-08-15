@@ -56,17 +56,22 @@ const AddCar = () => {
           placeholder="Model" />
           <input 
           type="number"
-          {...register('transmission_kilos')}
-          placeholder="Transmission Kilos" />
+          {...register('transmission_milage')}
+          placeholder="Transmission Milage" />
           <input
           type="number"
           {...register('milage')}
            placeholder="Milage" />
+           <input
+          type="text"
+          {...register('chassis_number')}
+           placeholder="Chassis number" />
           <input
           type="number"
           {...register('auto_milage')}
            placeholder="Auto Milage" />
           <div className="tires">
+            <label>Tires age</label>
             <input
               type="month"
               {...register("tires_age.tirerf")}
@@ -100,6 +105,11 @@ const AddCar = () => {
            <input
           type="checkbox"
           {...register('for_bidding')} />
+          </span>
+          <span> <label>do you want it to be public?</label>
+           <input
+          type="checkbox"
+          {...register('public')} />
           </span>
           <textarea type="text"
           {...register('note')}

@@ -6,6 +6,8 @@ class CreateCars < ActiveRecord::Migration[7.0]
       t.string :tires_age
       t.integer :oil_milage
       t.integer :transmission_milage
+      t.integer :auto_milage
+      t.integer :milage
       t.text :note
       t.integer :model
       t.string :car_type
