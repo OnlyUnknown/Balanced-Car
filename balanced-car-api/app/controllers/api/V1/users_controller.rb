@@ -2,7 +2,7 @@ class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!, only: %i[create_item index update_item
                                                           delete_car switch_publicity
-                                                          update_driver update_profile]
+                                                          update_driver profile update_profile]
   def index_cars
     @cars = User.includes(:cars).find_by_id(current_devise_api_token.resource_owner)
     render json: @cars.cars
@@ -65,7 +65,7 @@ class Api::V1::UsersController < ApplicationController
   def profile
     current_devise_api_token.resource_owner
     @profile = User.find_by_id(current_devise_api_token.resource_owner_id)
-    render json: @profile
+    render json: @profile, except: %i[cars]
   end
 
   def update_profile
@@ -135,19 +135,22 @@ class Api::V1::UsersController < ApplicationController
   def car_params
     params.require(:car).permit(
       :name,
-      :tires_age,
-      :oil,
+      :oil_milage,
+      :auto_milage,
       :note,
       :model,
       :car_type,
       :transmission_type,
+      :transmission_milage,
+      :milage,
       :for_bidding,
       :last_bid,
       :buy_limit,
       :commercial,
       :public,
       :chassis_number,
-      :driver
+      :driver,
+      tires_age: %i[tirerf tirelf tirerb tirelb]
     ).merge(
       user: current_devise_api_token.resource_owner
     )

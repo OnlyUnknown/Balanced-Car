@@ -3,6 +3,8 @@ import authReducer from './features/auth/authSlice';
 import { authApi } from './features/auth/authServices';
 import editReducer from './features/edit/editSlice';
 import { editApi } from './features/edit/editServices';
+import addReducer from './features/add/addSlice';
+import { addApi } from './features/add/addServices';
 
 const store = configureStore({
   reducer: {
@@ -10,8 +12,10 @@ const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     edit: editReducer,
     [editApi.reducerPath]: editApi.reducer,
+    add: addReducer,
+    [addApi.reducerPath]: addApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware,
-    editApi.middleware),
+    editApi.middleware, addApi.middleware),
 });
 export default store;

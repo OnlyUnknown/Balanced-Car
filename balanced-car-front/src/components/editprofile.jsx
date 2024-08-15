@@ -26,15 +26,14 @@ const EditProfile = () => {
   }, [userInfo, setValue]);
 
   useEffect(() => {
-    if (success) navigate('/profile');
-  }, [navigate, success]);
+    if (success)
+      toast.success('Profile updated successfully');
+  }, [success]);
 
   const submitForm = async (data) => {
     try {
-      await updateProfile({ ...data }).unwrap();
       dispatch(editUser({ ...data }));
-      toast.success('Profile updated successfully');
-      navigate('/profile'); // Redirect to profile page after success
+      
     } catch (err) {
       toast.error('Failed to update profile. Please try again.');
     }

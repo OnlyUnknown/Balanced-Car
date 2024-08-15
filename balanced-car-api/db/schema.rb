@@ -30,8 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
   create_table "cars", force: :cascade do |t|
     t.string "name"
     t.string "tires_age"
-    t.integer "oil"
-    t.integer "auto_oil"
+    t.integer "oil_milage"
+    t.integer "transmission_milage"
+    t.integer "auto_milage"
+    t.integer "milage"
     t.text "note"
     t.integer "model"
     t.string "car_type"
