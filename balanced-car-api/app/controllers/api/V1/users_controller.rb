@@ -133,7 +133,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(
+    params.require(:item).permit(
       :name,
       :oil_milage,
       :auto_milage,
@@ -159,7 +159,7 @@ end
 
 def driver_params
   @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
-  params.require(:driver).permit(
+  params.require(:item).permit(
     :name,
     :identification,
     :phone_number,
@@ -172,7 +172,7 @@ end
 
 def bill_params
   @car = Car.find_by_id(params.require(:car_id))
-  params.require(:bill).permit(
+  params.require(:item).permit(
     :total,
     :note,
     :date
@@ -184,7 +184,7 @@ end
 
 def revenue_params
   @car = Car.find_by_id(params.require(:car_id))
-  params.require(:revenue).permit(
+  params.require(:item).permit(
     :revenue,
     :note,
     :date
@@ -253,7 +253,8 @@ def billu_params
     :note,
     :date
   ).merge(
-    car: @car
+    car: @car,
+    user: current_devise_api_token.resource_owner
   )
 end
 

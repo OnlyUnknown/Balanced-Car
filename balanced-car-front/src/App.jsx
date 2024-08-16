@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 import EditProfile from './components/editprofile';
 
 import 'react-toastify/dist/ReactToastify.css';
+import AddBill from './components/AddBill';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/" element={<Main />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/addcar" element={<AddCar />} />
+        <Route path="/addbill" element={<AddBill />} />
         <Route path="/splash" element={<Splash />} />
         <Route path="/carinfo" element={<Carinfo />} />
         <Route path="/main" element={<Main />} />
