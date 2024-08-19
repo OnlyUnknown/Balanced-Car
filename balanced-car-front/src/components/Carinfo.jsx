@@ -2,7 +2,6 @@ import '../styling/Carinfo.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { showItem } from '../features/show/showActions';
 import Navigation from './Nav';
 import Spinner from './Spinner';

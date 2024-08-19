@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -5,16 +6,16 @@ const backendURL = 'http://localhost:3001';
 
 export const showItem = createAsyncThunk(
   'show/item',
-  async ({ id,classname }, { getState, rejectWithValue }) => {
+  async ({ id, classname }, { getState, rejectWithValue }) => {
     try {
-        const token = getState().auth.userToken; // Retrieve token from the state
-        const config = {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        };
-        const { data } = await axios.get(
+      const token = getState().auth.userToken; // Retrieve token from the state
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.get(
         `${backendURL}/api/v1/user/show/${classname}/${id}`,
         config,
       );
@@ -28,3 +29,4 @@ export const showItem = createAsyncThunk(
     }
   },
 );
+/* eslint-enable import/prefer-default-export */

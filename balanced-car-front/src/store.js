@@ -5,7 +5,7 @@ import editReducer from './features/edit/editSlice';
 import { editApi } from './features/edit/editServices';
 import addReducer from './features/add/addSlice';
 import { addApi } from './features/add/addServices';
-import showReducer from './features/show/showSlice'
+import showReducer from './features/show/showSlice';
 
 const store = configureStore({
   reducer: {

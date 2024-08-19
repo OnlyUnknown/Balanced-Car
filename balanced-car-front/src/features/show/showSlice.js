@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { showItem } from './showActions';
 
 const getUserToken = () => {
-    const userToken = localStorage.getItem('userToken');
-    return userToken ? JSON.parse(userToken) : null;
-  };
+  const userToken = localStorage.getItem('userToken');
+  return userToken ? JSON.parse(userToken) : null;
+};
 
 const initialState = {
   loading: false,
@@ -12,7 +12,7 @@ const initialState = {
   userToken: getUserToken(),
   error: null,
   success: false,
-  item: null
+  item: null,
 };
 
 const showSlice = createSlice({
@@ -31,7 +31,7 @@ const showSlice = createSlice({
     },
     [showItem.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.item = payload.data
+      state.item = payload.data;
       state.success = true;
     },
     [showItem.rejected]: (state, { payload }) => {
