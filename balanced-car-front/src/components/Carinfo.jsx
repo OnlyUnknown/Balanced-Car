@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { showItem } from '../features/show/showActions';
 import Navigation from './Nav';
-import Error from './Error';
 import Spinner from './Spinner';
 /* eslint-disable */
 
@@ -76,7 +75,11 @@ const Carinfo = () => {
           </div>
         </div>
       ) : (
-        <div>empty</div>
+        loading === true ? (
+          <Spinner/>
+        ) : (
+          <div>empty</div>
+        )
       )}
     </>
   );
