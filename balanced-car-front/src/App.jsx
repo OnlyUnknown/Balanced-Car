@@ -30,7 +30,7 @@ function App() {
         <Route path="/addrevenue" element={<AddRevenue />} />
         <Route path="/addDriver" element={<AddDriver />} />
         <Route path="/splash" element={<Splash />} />
-        <Route path="/carinfo" element={<Carinfo />} />
+        <Route path="/carinfo/:cid" element={<Carinfo />} />
         <Route path="/main" element={<Main />} />
         <Route path="/editProfile" element={<EditProfile />} />
       </Routes>

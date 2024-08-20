@@ -19,7 +19,7 @@ const AddDriver = () => {
     if (success === true) {
       toast.success('Profile updated successfully');
       const Transfer = () => {
-        navigate('/main');
+        navigate('/');
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
