@@ -8,7 +8,7 @@ import Spinner from './Spinner';
 /* eslint-disable */
 
 
-const DeiverInfo = () => {
+const DriverInfo = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   let { cid } = useParams();
@@ -28,11 +28,12 @@ const DeiverInfo = () => {
           <div className="carpic">Revenue pic</div>
           <div className="carinfo">
           <div>Id: {item.id}</div>
+          <div>Id: {item.identification}</div>
             <div>
-              Total: {item.name}
+              Name: {item.name}
             </div>
             <div>The car: <a href={`/carinfo/${item.car_id}`}>{item.car_id}</a></div>
-            <div>date: {item.date}</div>
+            <div>date: {item.nationality}</div>
             <div>Note: {item.note}</div>
           </div>
         </div>
@@ -47,4 +48,4 @@ const DeiverInfo = () => {
   );
 };
 
-export default DeiverInfo;
+export default DriverInfo;

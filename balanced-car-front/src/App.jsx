@@ -11,7 +11,7 @@ import SignUp from './components/signup';
 import SigninScreen from './components/signin';
 import Profile from './components/Profile';
 import EditProfile from './components/editprofile';
-
+import DriverInfo from './components/DriverInfo';
 import 'react-toastify/dist/ReactToastify.css';
 import AddBill from './components/AddBill';
 import AddRevenue from './components/AddRevenue';
@@ -33,6 +33,7 @@ function App() {
         <Route path="/addDriver" element={<AddDriver />} />
         <Route path="/splash" element={<Splash />} />
         <Route path="/carinfo/:cid" element={<Carinfo />} />
+        <Route path="/driverinfo/:cid" element={<DriverInfo />} />
         <Route path="/revenueinfo/:cid" element={<RevenueInfo />} />
         <Route path="/billinfo/:cid" element={<BillInfo />} />
         <Route path="/main" element={<Main />} />
