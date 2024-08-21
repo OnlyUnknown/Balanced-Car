@@ -1,7 +1,7 @@
 import '../styling/Carinfo.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { showItem } from '../features/show/showActions';
 import Navigation from './Nav';
 import Spinner from './Spinner';
@@ -10,7 +10,6 @@ import Spinner from './Spinner';
 const Carinfo = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   let { cid } = useParams();
 
   useEffect(() => {
