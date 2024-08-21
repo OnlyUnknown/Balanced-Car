@@ -30,7 +30,7 @@ const RevenueInfo = () => {
             <div>
               Tires age: {item.revenue}
             </div>
-            <div>The car: {item.car_id}</div>
+            <div>The car: <a href={`/carinfo/${item.car_id}`}>{item.car_id}</a></div>
             <div>date: {item.date}</div>
             <div>owner: {item.user_id}</div>
             <div>Note: {item.note}</div>
