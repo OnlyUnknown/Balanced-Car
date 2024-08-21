@@ -7,13 +7,14 @@ import Navigation from './Nav';
 import Spinner from './Spinner';
 /* eslint-disable */
 
-const RevenueInfo = () => {
+
+const BillInfo = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   let { cid } = useParams();
 
   useEffect(() => {
-    const classname = "revenue";
+    const classname = "bill";
     const id = cid;
     dispatch(showItem({ classname, id }));
   }, [dispatch, cid]);
@@ -28,11 +29,10 @@ const RevenueInfo = () => {
           <div className="carinfo">
           <div>Id: {item.id}</div>
             <div>
-              Tires age: {item.revenue}
+              Total: {item.total}
             </div>
             <div>The car: <a href={`/carinfo/${item.car_id}`}>{item.car_id}</a></div>
             <div>date: {item.date}</div>
-            <div>owner: {item.user_id}</div>
             <div>Note: {item.note}</div>
           </div>
         </div>
@@ -47,4 +47,4 @@ const RevenueInfo = () => {
   );
 };
 
-export default RevenueInfo;
+export default BillInfo;
