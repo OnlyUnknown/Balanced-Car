@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddBill from './components/AddBill';
 import AddRevenue from './components/AddRevenue';
 import AddDriver from './components/AddDriver';
+import RevenueInfo from './components/RevenueInfo';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/addDriver" element={<AddDriver />} />
         <Route path="/splash" element={<Splash />} />
         <Route path="/carinfo/:cid" element={<Carinfo />} />
+        <Route path="/revenueinfo/:cid" element={<RevenueInfo />} />
         <Route path="/main" element={<Main />} />
         <Route path="/editProfile" element={<EditProfile />} />
       </Routes>

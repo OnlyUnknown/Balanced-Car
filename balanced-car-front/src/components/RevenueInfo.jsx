@@ -7,7 +7,7 @@ import Navigation from './Nav';
 import Spinner from './Spinner';
 /* eslint-disable */
 
-const Carinfo = () => {
+const RevenueInfo = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   let { cid } = useParams();
@@ -24,7 +24,7 @@ const Carinfo = () => {
       <Navigation />
       {success === true ? (
         <div className="border">
-          <div className="carpic">Car pic</div>
+          <div className="carpic">Revenue pic</div>
           <div className="carinfo">
           <div>Id: {item.id}</div>
             <div>
@@ -47,4 +47,4 @@ const Carinfo = () => {
   );
 };
 
-export default Carinfo;
+export default RevenueInfo;
