@@ -1,6 +1,19 @@
+import { showIndex } from '../features/show/showActions';
 import '../styling/CarComp.scss';
 
-const CarComp = () => (
+const CarComp = () => {
+
+
+  const { item, loading, success } = useSelector((state) => state.show);
+  const dispatch = useDispatch();
+  let { cid } = useParams();
+
+  useEffect(() => {
+    const id = cid;
+    dispatch(showIndex({ classname, id }));
+  }, [dispatch, cid]);
+  return (
+    <>
   <div className="box">
     <div className="pic">Pic</div>
     <div className="info">
@@ -11,6 +24,8 @@ const CarComp = () => (
       <button type="button">Remove</button>
     </div>
   </div>
-);
+  </>
+  )
+};
 
 export default CarComp;
