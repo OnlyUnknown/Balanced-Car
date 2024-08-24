@@ -1,5 +1,11 @@
 import { showIndex } from '../features/show/showActions';
 import '../styling/CarComp.scss';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Error from './Error';
+import Spinner from './Spinner';
 
 const CarComp = () => {
 
