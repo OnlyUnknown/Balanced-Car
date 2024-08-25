@@ -30,7 +30,7 @@ export const showItem = createAsyncThunk(
   },
 );
 
-export const showIndex = createAsyncThunk(
+export const indexItems = createAsyncThunk(
   'show/index',
   async ({ classname }, { getState, rejectWithValue }) => {
     try {
