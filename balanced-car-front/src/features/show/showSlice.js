@@ -13,7 +13,7 @@ const initialState = {
   error: null,
   success: false,
   item: null,
-  items: null
+  items: null,
 };
 
 const showSlice = createSlice({

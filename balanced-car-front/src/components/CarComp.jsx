@@ -1,55 +1,57 @@
-import { indexItems } from '../features/show/showActions';
 import '../styling/CarComp.scss';
 import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import Error from './Error';
+import { indexItems } from '../features/show/showActions';
 import Spinner from './Spinner';
-import Navigation from './Nav';
 
 const CarComp = () => {
-
-
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const classname = "cars"
+    const classname = 'cars';
     dispatch(indexItems({ classname }));
   }, [dispatch]);
 
   return (
     <>
       {success === true ? (
-        <div className='main-box'>
-        {items.map((app) => (
-          <div className="box">
-          <div className="pic">Pic</div>
-          <div className="info">
-            <div>Oil change: {app.oil_milage}</div>
-            <div>name: {app.name} </div>
-            <div>Tire age: {app.car_type}</div>
-            <div>Model: {app.model}</div>
-            <button type="button">Remove</button>
-          </div>
-        </div>
-        
+        <div className="main-box">
+          {items.map((app) => (
+            <div className="box">
+              <div className="pic">Pic</div>
+              <div className="info">
+                <div>
+                  Oil change:
+                  {app.oil_milage}
+                </div>
+                <div>
+                  name:
+                  {app.name}
+                </div>
+                <div>
+                  Tire age:
+                  {app.car_type}
+                </div>
+                <div>
+                  Model:
+                  {app.model}
+                </div>
+                <button type="button">Remove</button>
+              </div>
+            </div>
 
-        ))}
+          ))}
         </div>
       ) : (
         loading === true ? (
-          <Spinner/>
+          <Spinner />
         ) : (
           <div>empty</div>
         )
       )}
-
-      
-  {/*  */}
-  </>
-  )
+    </>
+  );
 };
 
 export default CarComp;
