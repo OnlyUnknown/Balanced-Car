@@ -4,8 +4,8 @@ class Api::V1::UsersController < ApplicationController
                                                           delete_car switch_publicity
                                                           update_driver profile update_profile]
   def index_cars
-    @cars = User.includes(:cars).find_by_id(current_devise_api_token.resource_owner)
-    render json: @cars.cars
+    @cars = Car.joins(:user).where(users: { id: current_devise_api_token.resource_owner })
+    render json: @cars, except: %i[revenues bills drivers user]
   end
 
   def index_drivers

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { showItem } from './showActions';
+import { showItem, indexItems } from './showActions';
 
 const getUserToken = () => {
   const userToken = localStorage.getItem('userToken');
@@ -13,6 +13,7 @@ const initialState = {
   error: null,
   success: false,
   item: null,
+  items: null,
 };
 
 const showSlice = createSlice({
@@ -24,7 +25,7 @@ const showSlice = createSlice({
     },
   },
   extraReducers: {
-    // edit profile
+    // show item
     [showItem.pending]: (state) => {
       state.loading = true;
       state.error = null;
@@ -38,7 +39,20 @@ const showSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
-
+    // show index
+    [indexItems.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [indexItems.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.items = payload.data;
+      state.success = true;
+    },
+    [indexItems.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
   },
 });
 

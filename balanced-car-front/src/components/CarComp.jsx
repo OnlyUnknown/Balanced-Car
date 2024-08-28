@@ -1,16 +1,57 @@
 import '../styling/CarComp.scss';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { indexItems } from '../features/show/showActions';
+import Spinner from './Spinner';
 
-const CarComp = () => (
-  <div className="box">
-    <div className="pic">Pic</div>
-    <div className="info">
-      <div>Oil change: 0000</div>
-      <div>TX Oil change: 0000</div>
-      <div>Tire age: 00</div>
-      <div>Model: 0000</div>
-      <button type="button">Remove</button>
-    </div>
-  </div>
-);
+const CarComp = () => {
+  const { items, loading, success } = useSelector((state) => state.show);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const classname = 'cars';
+    dispatch(indexItems({ classname }));
+  }, [dispatch]);
+
+  return (
+    <>
+      {success === true ? (
+        <div className="main-box">
+          {items.map((app) => (
+            <div className="box">
+              <div className="pic">Pic</div>
+              <div className="info">
+                <div>
+                  Oil change:
+                  {app.oil_milage}
+                </div>
+                <div>
+                  name:
+                  {app.name}
+                </div>
+                <div>
+                  Tire age:
+                  {app.car_type}
+                </div>
+                <div>
+                  Model:
+                  {app.model}
+                </div>
+                <button type="button">Remove</button>
+              </div>
+            </div>
+
+          ))}
+        </div>
+      ) : (
+        loading === true ? (
+          <Spinner />
+        ) : (
+          <div>empty</div>
+        )
+      )}
+    </>
+  );
+};
 
 export default CarComp;

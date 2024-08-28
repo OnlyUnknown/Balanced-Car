@@ -25,6 +25,7 @@
   },
   "extends": "airbnb",
   "rules": {
+    "no-nested-ternary": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
