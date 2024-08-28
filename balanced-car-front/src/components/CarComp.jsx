@@ -22,15 +22,15 @@ const CarComp = () => {
   return (
     <>
       {success === true ? (
-        <div>
+        <div className='main-box'>
         {items.map((app) => (
           <div className="box">
           <div className="pic">Pic</div>
           <div className="info">
             <div>Oil change: {app.oil_milage}</div>
-            <div>TX Oil change: </div>
-            <div>Tire age: 00</div>
-            <div>Model: 0000</div>
+            <div>name: {app.name} </div>
+            <div>Tire age: {app.car_type}</div>
+            <div>Model: {app.model}</div>
             <button type="button">Remove</button>
           </div>
         </div>

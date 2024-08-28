@@ -8,13 +8,6 @@ const Main = () => (
     <Navigation />
     <div className="main_box">
       <CarComp />
-      <CarComp />
-      <CarComp />
-      <CarComp />
-      <CarComp />
-      <CarComp />
-      <CarComp />
-      <AddNew />
     </div>
   </>
 );
