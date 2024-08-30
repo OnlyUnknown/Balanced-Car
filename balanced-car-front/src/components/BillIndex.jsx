@@ -2,7 +2,7 @@ import '../styling/main.scss';
 import BillComp from './BillComp';
 import Navigation from './Nav';
 
-const Main = () => (
+const BillIndex = () => (
   <>
     <Navigation />
     <div className="main_box">
@@ -11,4 +11,4 @@ const Main = () => (
   </>
 );
 
-export default Main;
+export default BillIndex;
