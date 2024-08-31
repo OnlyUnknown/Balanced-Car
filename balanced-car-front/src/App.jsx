@@ -29,7 +29,7 @@ function App() {
         <Route path="/signin" element={<SigninScreen />} />
         <Route exact path="/" element={<Main />} />
         <Route path="/Bills" element={<BillIndex />} />
-        <Route path="/Bills/:cid" element={<BillCarIndex/>} />
+        <Route path="/Bills/:cid" element={<BillCarIndex />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/addcar" element={<AddCar />} />
         <Route path="/addbill" element={<AddBill />} />

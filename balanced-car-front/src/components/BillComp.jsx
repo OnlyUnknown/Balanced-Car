@@ -31,11 +31,11 @@ const BillComp = () => {
                 </div>
                 <div>
                   Tire age:
-                  
+
                 </div>
                 <div>
                   Model:
-            
+
                 </div>
                 <button type="button">Remove</button>
               </div>

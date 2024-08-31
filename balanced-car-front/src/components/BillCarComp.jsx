@@ -1,30 +1,25 @@
 import '../styling/CarComp.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { indexItemsOfItem } from '../features/show/showActions';
 import Spinner from './Spinner';
 
-
-
-
-const BillComp = (props) => {
+const BillComp = ({ cid }) => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
 
-  
-
   useEffect(() => {
     const classname = 'bills';
-    const id = props.cid
-    dispatch(indexItemsOfItem({ classname, id}));
-  }, [dispatch]);
+    dispatch(indexItemsOfItem({ classname, id: cid }));
+  }, [dispatch, cid]);
 
   return (
     <>
       {success === true ? (
         <div className="main-box">
           {items.map((app) => (
-            <div className="box">
+            <div className="box" key={app.id}>
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
@@ -41,12 +36,11 @@ const BillComp = (props) => {
                 </div>
                 <div>
                   Note:
-                {app.note}
+                  {app.note}
                 </div>
                 <button type="button">Remove</button>
               </div>
             </div>
-
           ))}
         </div>
       ) : (
@@ -58,6 +52,10 @@ const BillComp = (props) => {
       )}
     </>
   );
+};
+
+BillComp.propTypes = {
+  cid: PropTypes.string.isRequired, // Assuming cid is a number
 };
 
 export default BillComp;
