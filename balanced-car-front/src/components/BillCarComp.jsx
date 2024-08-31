@@ -28,20 +28,20 @@ const BillComp = (props) => {
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
-                  Oil change:
-                  {app.total}
-                </div>
-                <div>
-                  name:
+                  id:
                   {app.id}
                 </div>
                 <div>
-                  Tire age:
-                  
+                  Total:
+                  {app.total}
                 </div>
                 <div>
-                  Model:
-            
+                  date:
+                  {app.date}
+                </div>
+                <div>
+                  Note:
+                {app.note}
                 </div>
                 <button type="button">Remove</button>
               </div>
