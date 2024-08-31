@@ -67,6 +67,7 @@ const Carinfo = () => {
             <div>Is it for bidding: {item.for_bidding.toString()}</div>
             <div>Last bid: {item.last_bid}</div>
             <div>Buy Limit: {item.buy_limit}</div>
+            <div>Amount of Bills: <a href={`/bills/${item.id}`}>{item.bills.length}</a></div>
             <div>Is it commercial: {item.commercial.toString()}</div>
             <div>Is it public?: {item.public.toString()}</div>
             <div>Chassis Number: {item.chassis_number}</div>
