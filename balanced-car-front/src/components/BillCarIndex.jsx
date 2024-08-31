@@ -1,0 +1,18 @@
+import '../styling/main.scss';
+import { useParams } from 'react-router-dom';
+import BillComp from './BillCarComp';
+import Navigation from './Nav';
+
+const BillCarIndex = () => {
+  const { cid } = useParams();
+  return (
+    <>
+      <Navigation />
+      <div className="main_box">
+        <BillComp cid={cid} />
+      </div>
+    </>
+  );
+};
+
+export default BillCarIndex;
