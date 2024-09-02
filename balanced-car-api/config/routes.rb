@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         get 'index/bills', to: 'users#index_bills', on: :collection
         get 'index/bills/:id', to: 'users#index_car_bills', on: :collection
         get 'index/revenues', to: 'users#index_revenues', on: :collection
+        get 'index/revenues/:id', to: 'users#index_car_revenues', on: :collection
         get 'show/car/:id', to: 'users#show_car', on: :collection
         get 'show/driver/:id', to: 'users#show_driver', on: :collection
         get 'show/bill/:id', to: 'users#show_bill', on: :collection

@@ -21,6 +21,7 @@ import BillInfo from './components/BillInfo';
 import BillIndex from './components/BillIndex';
 import BillCarIndex from './components/BillCarIndex';
 import RevenueIndex from './components/RevenueIndex';
+import RevenueCarIndex from './components/RevenueCarIndex';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/Bills" element={<BillIndex />} />
         <Route path="/Bills/:cid" element={<BillCarIndex />} />
         <Route path="/Revenues" element={<RevenueIndex />} />
+        <Route path="/Revenues/:cid" element={<RevenueCarIndex />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/addcar" element={<AddCar />} />
         <Route path="/addbill" element={<AddBill />} />
