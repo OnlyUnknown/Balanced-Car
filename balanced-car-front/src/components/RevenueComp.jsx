@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { indexItems } from '../features/show/showActions';
 import Spinner from './Spinner';
 
-const BillComp = () => {
+const RevenueComp = () => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
 
@@ -22,12 +22,12 @@ const BillComp = () => {
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
-                  Oil change:
+                  Total Revenue:
                   {app.total}
                 </div>
                 <div>
-                  name:
-                  {app.id}
+                  Date:
+                  {app.date}
                 </div>
                 <div>
                   Tire age:
@@ -54,4 +54,4 @@ const BillComp = () => {
   );
 };
 
-export default BillComp;
+export default RevenueComp;
