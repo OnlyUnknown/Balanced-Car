@@ -1,8 +1,9 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: %i[create_item index update_item
-                                                          delete_car switch_publicity
-                                                          update_driver profile update_profile]
+  before_action :authenticate_devise_api_token!,
+                only: %i[create_item index update_item
+                         delete_car switch_publicity
+                         update_driver profile update_profile]
   def index_cars
     @cars = Car.joins(:user).where(users: { id: current_devise_api_token.resource_owner })
     render json: @cars, except: %i[revenues bills drivers user]
