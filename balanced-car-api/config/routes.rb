@@ -7,12 +7,12 @@ Rails.application.routes.draw do
         get 'index/drivers', to: 'users#index_drivers', on: :collection
         get 'index/bills', to: 'users#index_bills', on: :collection
         get 'index/bills/:id', to: 'users#index_car_bills', on: :collection
-        get 'index/revenues', to: 'users#index_revenues', on: :collection
-        get 'index/revenues/:id', to: 'users#index_car_revenues', on: :collection
+        get 'index/revenues', to: 'revenues#index_revenues', on: :collection
+        get 'index/revenues/:id', to: 'revenues#index_car_revenues', on: :collection
         get 'show/car/:id', to: 'users#show_car', on: :collection
         get 'show/driver/:id', to: 'users#show_driver', on: :collection
         get 'show/bill/:id', to: 'users#show_bill', on: :collection
-        get 'show/revenue/:id', to: 'users#show_revenue', on: :collection
+        get 'show/revenue/:id', to: 'revenues#show_revenue', on: :collection
         patch 'update_item/:id', to: 'users#update_item', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
         delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection
