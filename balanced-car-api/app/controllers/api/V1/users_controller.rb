@@ -1,8 +1,9 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, only: %i[create_item index update_item
-                                                          delete_car switch_publicity
-                                                          update_driver profile update_profile]
+  before_action :authenticate_devise_api_token!,
+                only: %i[create_item index update_item
+                         delete_car switch_publicity
+                         update_driver profile update_profile]
   def index_cars
     @cars = Car.joins(:user).where(users: { id: current_devise_api_token.resource_owner })
     render json: @cars, except: %i[revenues bills drivers user]
@@ -26,11 +27,6 @@ class Api::V1::UsersController < ApplicationController
     render json: @bills
   end
 
-  def index_revenues
-    @revenues = User.includes(:revenues).find_by_id(current_devise_api_token.resource_owner)
-    render json: @revenues.revenues
-  end
-
   def show_car
     @car = Car.find_by_id(params[:id])
     check_user(@car.user)
@@ -47,12 +43,6 @@ class Api::V1::UsersController < ApplicationController
     @bill = Bill.find_by_id(params[:id])
     check_user(@bill.user)
     render json: @bill
-  end
-
-  def show_revenue
-    @revenue = Revenue.find_by_id(params[:id])
-    check_user(@revenue.user)
-    render json: @revenue
   end
 
   def switch_publicity
