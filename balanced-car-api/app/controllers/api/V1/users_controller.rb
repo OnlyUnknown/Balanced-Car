@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/ClassLength
 class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!,
@@ -268,4 +267,3 @@ def revenueu_params
     user: current_devise_api_token.resource_owner
   )
 end
-# rubocop:enable Metrics/ClassLength
