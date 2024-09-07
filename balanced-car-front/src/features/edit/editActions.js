@@ -29,7 +29,7 @@ export const editUser = createAsyncThunk(
   },
 );
 
-export const editBill = createAsyncThunk(
+export const editItem = createAsyncThunk(
   'edit/profile',
   async ({ item, classname }, { getState, rejectWithValue }) => {
     try {

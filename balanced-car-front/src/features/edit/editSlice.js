@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { editUser } from './editActions';
+import { editUser, editItem } from './editActions';
 
 // initialize userToken from local storage
 const getUserToken = () => {
@@ -15,6 +15,7 @@ const initialState = {
   success: false,
   name: null,
   phone_number: null,
+  item: null
 };
 
 const editSlice = createSlice({
@@ -38,6 +39,20 @@ const editSlice = createSlice({
       state.phone_number = payload.data.item.phone_number;
     },
     [editUser.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+    //edit Item
+    [editItem.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [editItem.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+      state.item = payload.data.item.name;
+    },
+    [editItem.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },
