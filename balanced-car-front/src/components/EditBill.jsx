@@ -10,7 +10,7 @@ import Spinner from './Spinner';
 import { useUpdateProfileMutation } from '../features/edit/editServices';
 import { editUser } from '../features/edit/editActions';
 /* eslint-disable */
-const EditProfile = () => {
+const EditBill = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   let { cid } = useParams();
@@ -30,15 +30,15 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (success)
-      toast.success('Profile updated successfully');
+      toast.success('Bill updated successfully');
   }, [success]);
 
   const submitForm = async (data) => {
     try {
-      dispatch(editUser({ ...data }));
+      dispatch(editBill({ ...data }));
       
     } catch (err) {
-      toast.error('Failed to update profile. Please try again.');
+      toast.error('Failed to update the bill. Please try again.');
     }
   };
 
@@ -84,4 +84,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default EditBill;
