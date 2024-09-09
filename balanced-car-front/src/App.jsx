@@ -22,6 +22,7 @@ import BillIndex from './components/BillIndex';
 import BillCarIndex from './components/BillCarIndex';
 import RevenueIndex from './components/RevenueIndex';
 import RevenueCarIndex from './components/RevenueCarIndex';
+import EditBill from './components/EditBill';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/billinfo/:cid" element={<BillInfo />} />
         <Route path="/main" element={<Main />} />
         <Route path="/editProfile" element={<EditProfile />} />
+        <Route path="/editbill/:cid" element={<EditBill />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

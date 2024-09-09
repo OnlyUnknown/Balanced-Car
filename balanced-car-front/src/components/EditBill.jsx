@@ -2,16 +2,19 @@ import '../styling/prof.scss';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import Navigation from './Nav';
 import Error from './Error';
 import Spinner from './Spinner';
 import { useUpdateProfileMutation } from '../features/edit/editServices';
 import { editUser } from '../features/edit/editActions';
+import { showItem } from '../features/show/showActions';
 /* eslint-disable */
 const EditBill = () => {
-  const { item, loading, success } = useSelector((state) => state.show);
+  const { item, loading, success, errors } = useSelector((state) => state.show);
+  const { userInfo } = useSelector((state) => state.auth);
+  const { register, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch();
   let { cid } = useParams();
 
@@ -22,11 +25,11 @@ const EditBill = () => {
   }, [dispatch, cid]);
   
   useEffect(() => {
-    if (userInfo) {
-      setValue('name', userInfo.name || '');
-      setValue('phone_number', userInfo.phone_number || '');
+    if (item) {
+      setValue('name', item.id || '');
+      setValue('phone_number', item.date || '');
     }
-  }, [userInfo, setValue]);
+  }, [item, setValue]);
 
   useEffect(() => {
     if (success)

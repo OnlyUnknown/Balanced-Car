@@ -192,12 +192,6 @@ def revenue_params
   )
 end
 
-def check_user(user)
-  return if user == current_devise_api_token.resource_owner
-
-  raise ActiveRecord::RecordNotDestroyed, 'You are not authorized'
-end
-
 def check_driver(driver)
   return if driver.nil?
 
