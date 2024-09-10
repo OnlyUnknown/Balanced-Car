@@ -8,11 +8,12 @@ import Navigation from './Nav';
 import Error from './Error';
 import Spinner from './Spinner';
 import { useUpdateProfileMutation } from '../features/edit/editServices';
-import { editUser } from '../features/edit/editActions';
+import { editItem } from '../features/edit/editActions';
 import { showItem } from '../features/show/showActions';
 /* eslint-disable */
 const EditBill = () => {
-  const { item, loading, success, errors } = useSelector((state) => state.show);
+  const { item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
+  const { loading: editLoading, errors: editErrors, success: editSuccess } = useSelector((state) => state.edit);
   const { userInfo } = useSelector((state) => state.auth);
   const { register, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch();
@@ -25,65 +26,68 @@ const EditBill = () => {
   }, [dispatch, cid]);
   
   useEffect(() => {
-    if (item) {
-      setValue('name', item.id || '');
-      setValue('phone_number', item.date || '');
+    if (show_item) {
+      setValue('total', show_item.total || '');
+      setValue('date', show_item.date || '');
+      setValue('note', show_item.note || '');
     }
-  }, [item, setValue]);
+  }, [show_item, setValue]);
 
   useEffect(() => {
-    if (success)
+    if (editSuccess)
       toast.success('Bill updated successfully');
-  }, [success]);
+  }, [editSuccess]);
 
-  const submitForm = async (data) => {
+  const submitForm = async (data, classname = "bill") => {
     try {
-      dispatch(editBill({ ...data }));
-      
+      dispatch(editItem({ classname, ...data }));
     } catch (err) {
       toast.error('Failed to update the bill. Please try again.');
     }
   };
 
   return (
-    <div>
+    <>
       <Navigation />
       <form onSubmit={handleSubmit(submitForm)}>
-        <div>
-          <figure>{userInfo?.email.charAt(0).toUpperCase()}</figure>
-          <div>
-            This is edit Bill page
-            <strong>
-              {userInfo?.email}
-              !
-            </strong>
-            You can view this page because you&apos;re logged in
+        <div className="addcar">
+          <h3 className="title">Add a bill</h3>
+          <div className="shadow-box-add">
+            <div className="car_box_pic">
+              Pic
+            </div>
+            <div className="info_box">
+              <input
+                id="id"
+                type="number"
+                {...register("car_id", { required: true })}
+                placeholder="Car ID"
+              />
+              <input
+                type="number" step="any"
+                {...register('total', { required: true })}
+                placeholder="Total"
+              />
+              <input
+                type="date"
+                {...register('date', { required: true })}
+                placeholder="Date"
+              />
+              <textarea
+                type="text"
+                {...register('note')}
+                placeholder="Note"
+              />
+              
+              <button type="submit" disabled={editLoading}>
+                {editLoading ? <Spinner /> : 'Create'}
+              </button>
+              {editErrors && <Error message={editErrors.message} />}
+            </div>
           </div>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input
-              id="name"
-              type="text"
-              {...register('name', { required: true })}
-              placeholder="Enter your name"
-            />
-          </div>
-          <div>
-            <label htmlFor="phone_number">Phone number:</label>
-            <input
-              id="phone_number"
-              type="text"
-              {...register('phone_number', { required: true })}
-              placeholder="Enter your phone number"
-            />
-          </div>
-          <button type="submit" disabled={loading}>
-            {loading ? <Spinner /> : 'Update Profile'}
-          </button>
-          {errors && <Error message={errors.message} />}
         </div>
       </form>
-    </div>
+    </>
   );
 };
 
