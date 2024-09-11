@@ -31,7 +31,7 @@ export const editUser = createAsyncThunk(
 
 export const editItem = createAsyncThunk(
   'edit/profile',
-  async ({ item, classname }, { getState, rejectWithValue }) => {
+  async ({ item, classname, id }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.userToken; // Retrieve token from the state
       const config = {
@@ -41,7 +41,7 @@ export const editItem = createAsyncThunk(
         },
       };
       const data = await axios.patch(
-        `${backendURL}/api/v1/user/update_item/:id`,
+        `${backendURL}/api/v1/user/update_item/${id}`,
         { resource: classname, item},
         config,
       );

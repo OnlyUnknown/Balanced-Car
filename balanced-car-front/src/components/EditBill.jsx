@@ -38,9 +38,11 @@ const EditBill = () => {
       toast.success('Bill updated successfully');
   }, [editSuccess]);
 
-  const submitForm = async (data, classname = "bill") => {
+  const submitForm = async (item, classname, id) => {
+    classname = "bill"
+    id = cid
     try {
-      dispatch(editItem({ classname, ...data }));
+      dispatch(editItem({ classname, item, id }));
     } catch (err) {
       toast.error('Failed to update the bill. Please try again.');
     }
@@ -57,12 +59,12 @@ const EditBill = () => {
               Pic
             </div>
             <div className="info_box">
-              <input
+              {/* <input
                 id="id"
                 type="number"
                 {...register("car_id", { required: true })}
                 placeholder="Car ID"
-              />
+              /> */}
               <input
                 type="number" step="any"
                 {...register('total', { required: true })}
