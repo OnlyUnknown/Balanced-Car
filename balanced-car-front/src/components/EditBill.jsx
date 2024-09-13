@@ -2,12 +2,12 @@ import '../styling/prof.scss';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import Navigation from './Nav';
 import Error from './Error';
 import Spinner from './Spinner';
-import { useUpdateProfileMutation } from '../features/edit/editServices';
+// import { useUpdateProfileMutation } from '../features/edit/editServices';
 import { editItem } from '../features/edit/editActions';
 import { showItem } from '../features/show/showActions';
 /* eslint-disable */
@@ -39,7 +39,7 @@ const EditBill = () => {
   }, [editSuccess]);
 
   const submitForm = async (item, classname, id) => {
-    classname = "bill"
+    classname = "Bill"
     id = cid
     try {
       dispatch(editItem({ classname, item, id }));
@@ -72,7 +72,7 @@ const EditBill = () => {
               />
               <input
                 type="date"
-                {...register('date', { required: true })}
+                {...register('date')}
                 placeholder="Date"
               />
               <textarea

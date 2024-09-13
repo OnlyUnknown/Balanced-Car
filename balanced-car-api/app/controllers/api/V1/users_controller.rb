@@ -240,13 +240,10 @@ end
 
 def billu_params
   @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
-  params.require(:bill).permit(
+  params.require(:item).permit(
     :total,
     :note,
     :date
-  ).merge(
-    car: @car,
-    user: current_devise_api_token.resource_owner
   )
 end
 

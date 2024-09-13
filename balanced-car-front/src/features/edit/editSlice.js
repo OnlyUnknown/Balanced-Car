@@ -15,7 +15,7 @@ const initialState = {
   success: false,
   name: null,
   phone_number: null,
-  item: null
+  item: null,
 };
 
 const editSlice = createSlice({
@@ -42,7 +42,7 @@ const editSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
-    //edit Item
+    // edit Item
     [editItem.pending]: (state) => {
       state.loading = true;
       state.error = null;
@@ -50,7 +50,7 @@ const editSlice = createSlice({
     [editItem.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.success = true;
-      state.item = payload.data.item.name;
+      state.item = payload.item;
     },
     [editItem.rejected]: (state, { payload }) => {
       state.loading = false;
