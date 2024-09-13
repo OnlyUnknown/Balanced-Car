@@ -170,6 +170,8 @@ end
 
 def bill_params
   @car = Car.find_by_id(params.require(:car_id))
+  user = @car.user
+  check_user(user)
   params.require(:item).permit(
     :total,
     :note,
