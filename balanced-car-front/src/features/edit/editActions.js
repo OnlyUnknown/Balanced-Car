@@ -28,3 +28,29 @@ export const editUser = createAsyncThunk(
     }
   },
 );
+
+export const editItem = createAsyncThunk(
+  'edit/profile',
+  async ({ item, classname, id }, { getState, rejectWithValue }) => {
+    try {
+      const token = getState().auth.userToken; // Retrieve token from the state
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const data = await axios.patch(
+        `${backendURL}/api/v1/user/update_item/${id}`,
+        { resource: classname, item},
+        config,
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      }
+      return rejectWithValue(error.message);
+    }
+  },
+);
