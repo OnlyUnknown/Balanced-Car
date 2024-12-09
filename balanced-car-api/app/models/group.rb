@@ -14,10 +14,10 @@ class Group < ApplicationRecord
 
   def validate_group_items_type
     group_items.each do |group_item|
-      if group_type == "cars" && group_item.item_type != "Car"
-        errors.add(:base, "This group can only contain cars.")
-      elsif group_type == "drivers" && group_item.item_type != "Driver"
-        errors.add(:base, "This group can only contain drivers.")
+      if group_type == 'cars' && group_item.item_type != 'Car'
+        errors.add(:base, 'This group can only contain cars.')
+      elsif group_type == 'drivers' && group_item.item_type != 'Driver'
+        errors.add(:base, 'This group can only contain drivers.')
       end
     end
   end
