@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_07_145551) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_09_132221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,16 +85,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_07_145551) do
     t.index ["user_id"], name: "index_drivers_on_user_id"
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.bigint "car_id"
-    t.bigint "driver_id"
+  create_table "group_items", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["car_id"], name: "index_groups_on_car_id"
-    t.index ["driver_id"], name: "index_groups_on_driver_id"
-    t.index ["id"], name: "index_groups_on_id"
+    t.index ["group_id"], name: "index_group_items_on_group_id"
+    t.index ["item_type", "item_id"], name: "index_group_items_on_item"
+    t.index ["user_id"], name: "index_group_items_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "group_type", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -135,8 +143,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_07_145551) do
   add_foreign_key "cars", "users"
   add_foreign_key "drivers", "cars"
   add_foreign_key "drivers", "users"
-  add_foreign_key "groups", "cars"
-  add_foreign_key "groups", "drivers"
+  add_foreign_key "group_items", "groups"
+  add_foreign_key "group_items", "users"
   add_foreign_key "groups", "users"
   add_foreign_key "revenues", "cars"
   add_foreign_key "revenues", "users"
