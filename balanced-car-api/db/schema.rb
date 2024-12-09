@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_09_132221) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,6 +85,27 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
     t.index ["user_id"], name: "index_drivers_on_user_id"
   end
 
+  create_table "group_items", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_items_on_group_id"
+    t.index ["item_type", "item_id"], name: "index_group_items_on_item"
+    t.index ["user_id"], name: "index_group_items_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "group_type", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
   create_table "revenues", force: :cascade do |t|
     t.text "note"
     t.float "revenue"
@@ -103,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
     t.integer "phone_number"
     t.integer "number_of_cars"
     t.string "cars", default: [], array: true
+    t.string "drivers", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -121,6 +143,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_26_140340) do
   add_foreign_key "cars", "users"
   add_foreign_key "drivers", "cars"
   add_foreign_key "drivers", "users"
+  add_foreign_key "group_items", "groups"
+  add_foreign_key "group_items", "users"
+  add_foreign_key "groups", "users"
   add_foreign_key "revenues", "cars"
   add_foreign_key "revenues", "users"
 end

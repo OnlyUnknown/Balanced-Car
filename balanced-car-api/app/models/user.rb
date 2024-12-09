@@ -6,8 +6,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  has_many :cars
-  has_many :revenues
-  has_many :drivers
-  has_many :bills
+  has_many :groups, dependent: :destroy
+  has_many :cars, dependent: :destroy
+  has_many :drivers, dependent: :destroy
+  has_many :revenues, dependent: :destroy
+  has_many :bills, dependent: :destroy
 end
