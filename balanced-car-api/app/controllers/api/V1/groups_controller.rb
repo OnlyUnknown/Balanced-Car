@@ -5,8 +5,19 @@ class Api::V1::GroupsController < ApplicationController
            delete_car switch_publicity
            update_driver profile update_profile]
 
+  def index
+    @groups = Group.where(user: current_user)
+    render json: @groups
+  end
+  
   def create_group
-   
+    @group = Group.new(group_params)
+    @group.user = current_user
+    if @group.save
+      render json: @group
+    else
+      render json: { errors: @group.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def add
