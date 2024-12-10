@@ -1,28 +1,12 @@
 class Api::V1::GroupsController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!,
-  only: %i[create_item index update_item
+  only: %i[create_group index update_item
            delete_car switch_publicity
            update_driver profile update_profile]
 
-  def create_item
-    current_devise_api_token.resource_owner
-    resource = params[:resource].capitalize.constantize
-    param = if resource == Car
-              car_params
-            elsif resource == Driver
-              driver_params
-            elsif resource == Bill
-              bill_params
-            elsif resource == Revenue
-              revenue_params
-            end
-    @item = resource.new(param)
-    if @item.save
-      render json: @item
-    else
-      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
-    end
+  def create_group
+   
   end
 
   def add
@@ -34,9 +18,38 @@ class Api::V1::GroupsController < ApplicationController
   def show
   end
 
-  def publicity
+  def update_group
+    @group = Group.find_by_id(params[:id])
+    check_user(@group.user)
+    if @group
+      if @group.update(group_params)
+        render json: @group
+      else
+        render json: { errors: @group.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Group not found' }, status: :not_found
+    end
+  end
+
+
+  def switch_publicity
+    @group = Group.find_by_id(params[:id])
+    check_user(@group.user)
+    if @group
+      new_public_status = !@group.public
+      if @group.update(public: new_public_status)
+        render json: @group.public
+      else
+        render json: { errors: @group.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Group not found' }, status: :not_found
+    end
   end
 
   private
+
+  
 
 end
