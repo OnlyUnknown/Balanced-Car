@@ -8,8 +8,22 @@ class Api::V1::GroupsController < ApplicationController
   def index
     @groups = Group.where(user: current_user)
     render json: @groups
-  end
+    def find_item_by_type(item_type, item_id, group_type = nil)
+      if group_type && item_type != group_type
+        return nil
+      end
   
+      case item_type
+      when 'car'
+        Car.find_by_id(item_id)
+      when 'driver'
+        Driver.find_by_id(item_id)
+      else
+        nil
+      end
+    end
+  end
+
   def create_group
     @group = Group.new(group_params)
     @group.user = current_user
@@ -20,8 +34,30 @@ class Api::V1::GroupsController < ApplicationController
     end
   end
 
-  def add
+  def add_item_to_group
+    @group = Group.find(params[:group_id])
+    check_user(@group.user)
+    @item = find_item_by_type(params[:item_type], params[:item_id], @group.group_type)
+    unless @item
+      render json: { error: "#{params[:item_type].capitalize} not found or group type mismatch" }, status: :unprocessable_entity and return
+    end
+
+    if @item.user != current_user
+      render json: { error: "You are not the owner of this #{params[:item_type]}" }, status: :forbidden and return
+    end
+
+    if @item
+      group_item = GroupItem.create(group: @group, item: @item, user: current_user)
+      if group_item.persisted?
+        render json: @group
+      else
+        render json: { errors: group_item.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: "#{item_type.capitalize} not found" }, status: :not_found
+    end
   end
+
 
   def remove
   end
@@ -30,7 +66,7 @@ class Api::V1::GroupsController < ApplicationController
   end
 
   def update_group
-    @group = Group.find_by_id(params[:id])
+    @group = Group.find(params[:id])
     check_user(@group.user)
     if @group
       if @group.update(group_params)
