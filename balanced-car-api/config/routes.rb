@@ -19,6 +19,8 @@ Rails.application.routes.draw do
         post '/create_item', to: 'users#create_item', on: :collection
         get '/profile', to: 'users#profile', on: :collection
         patch '/update_profile', to: 'users#update_profile', on: :collection
+        post '/create_group', to: 'groups#create_group', on: :collection
+        post '/add_to_group', to: 'groups#add_item_to_group', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection

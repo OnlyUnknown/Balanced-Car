@@ -6,27 +6,12 @@ class Api::V1::GroupsController < ApplicationController
            update_driver profile update_profile]
 
   def index
-    @groups = Group.where(user: current_user)
+    @groups = Group.where(user: current_devise_api_token.resource_owner)
     render json: @groups
-    def find_item_by_type(item_type, item_id, group_type = nil)
-      if group_type && item_type != group_type
-        return nil
-      end
-  
-      case item_type
-      when 'car'
-        Car.find_by_id(item_id)
-      when 'driver'
-        Driver.find_by_id(item_id)
-      else
-        nil
-      end
-    end
   end
 
   def create_group
     @group = Group.new(group_params)
-    @group.user = current_user
     if @group.save
       render json: @group
     else
@@ -37,17 +22,17 @@ class Api::V1::GroupsController < ApplicationController
   def add_item_to_group
     @group = Group.find(params[:group_id])
     check_user(@group.user)
-    @item = find_item_by_type(params[:item_type], params[:item_id], @group.group_type)
+    @item = params[:item_type].classify.constantize.find_by_id(params[:item_id])
     unless @item
       render json: { error: "#{params[:item_type].capitalize} not found or group type mismatch" }, status: :unprocessable_entity and return
     end
 
-    if @item.user != current_user
+    if @item.user != current_devise_api_token.resource_owner
       render json: { error: "You are not the owner of this #{params[:item_type]}" }, status: :forbidden and return
     end
 
     if @item
-      group_item = GroupItem.create(group: @group, item: @item, user: current_user)
+      group_item = GroupItem.create(group: @group, item: @item, user: current_devise_api_token.resource_owner)
       if group_item.persisted?
         render json: @group
       else
@@ -97,6 +82,23 @@ class Api::V1::GroupsController < ApplicationController
 
   private
 
-  
+  def find_item_by_type(item_type, item_id, group_type = nil)
+    if group_type && item_type != group_type
+      return nil
+    end
+
+    case item_type
+    when 'car'
+      Car.find_by_id(item_id)
+    when 'driver'
+      Driver.find_by_id(item_id)
+    else
+      nil
+    end
+  end
+
+  def group_params
+    params.require(:group).permit(:name, :description, :public, :group_type).merge(user: current_devise_api_token.resource_owner)
+  end
 
 end
