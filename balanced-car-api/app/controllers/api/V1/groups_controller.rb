@@ -47,7 +47,22 @@ class Api::V1::GroupsController < ApplicationController
   def remove
   end
 
-  def show
+  def show_items
+    @group = Group.find(params[:id])
+    check_user(@group.user)
+    if @group
+      case @group.group_type
+      when 'cars'
+        @items = @group.cars
+      when 'drivers'
+        @items = @group.drivers
+      else
+        @items = []
+      end
+      render json: @items
+    else
+      render json: { error: 'Group not found' }, status: :not_found
+    end
   end
 
   def update_group

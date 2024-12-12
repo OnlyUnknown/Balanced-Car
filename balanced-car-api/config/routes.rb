@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         patch '/update_profile', to: 'users#update_profile', on: :collection
         post '/create_group', to: 'groups#create_group', on: :collection
         post '/add_to_group', to: 'groups#add_item_to_group', on: :collection
+        get '/show_group/:id', to: 'groups#show_items', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection
