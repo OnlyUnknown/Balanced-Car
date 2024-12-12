@@ -22,6 +22,9 @@ Rails.application.routes.draw do
         post '/create_group', to: 'groups#create_group', on: :collection
         post '/add_to_group', to: 'groups#add_item_to_group', on: :collection
         get '/show_group/:id', to: 'groups#show_items', on: :collection
+        post '/switch_publicity/:id', to: 'groups#switch_publicity', on: :collection
+        delete '/delete_group/:id', to: 'groups#delete_group', on: :collection
+        delete '/remove_from_group/:group_id/:item_type/:item_id', to: 'groups#remove_from_group', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection

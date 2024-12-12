@@ -43,8 +43,32 @@ class Api::V1::GroupsController < ApplicationController
     end
   end
 
+  def delete_group
+    @group = Group.find(params[:id])
+    check_user(@group.user)
+    if @group
+      @group.destroy
+      render json: { message: 'Group deleted successfully' }
+    else
+      render json: { error: 'Group not found' }, status: :not_found
+    end
+  end
 
-  def remove
+  def remove_from_group
+    @group = Group.find(params[:group_id])
+    check_user(@group.user)
+    @item = params[:item_type].classify.constantize.find_by_id(params[:item_id])
+    unless @item
+      render json: { error: "#{params[:item_type].capitalize} not found or group type mismatch" }, status: :unprocessable_entity and return
+    end
+
+    group_item = GroupItem.find_by(group: @group, item: @item)
+    if group_item
+      group_item.destroy
+      render json: { message: "#{params[:item_type].capitalize} removed from group successfully" }
+    else
+      render json: { error: "#{params[:item_type].capitalize} not found in group" }, status: :not_found
+    end
   end
 
   def show_items
