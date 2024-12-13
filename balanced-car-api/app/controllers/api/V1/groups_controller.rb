@@ -3,7 +3,9 @@ class Api::V1::GroupsController < ApplicationController
   before_action :authenticate_devise_api_token!,
   only: %i[create_group index update_item
            delete_car switch_publicity
-           update_driver profile update_profile]
+           update_driver profile update_profile
+          add_item_to_group remove_from_group
+          show_items delete_group]
 
   def index
     @groups = Group.where(user: current_devise_api_token.resource_owner)
@@ -31,15 +33,23 @@ class Api::V1::GroupsController < ApplicationController
       render json: { error: "You are not the owner of this #{params[:item_type]}" }, status: :forbidden and return
     end
 
+    if GroupItem.exists?(group: @group, item: @item)
+      render json: { error: "#{params[:item_type].capitalize} is already in the group" }, status: :unprocessable_entity and return
+    end
+
     if @item
-      group_item = GroupItem.create(group: @group, item: @item, user: current_devise_api_token.resource_owner)
+      group_item = nil
+      GroupItem.transaction do
+        @item.update!(public: @group.public)
+        group_item = GroupItem.create!(group: @group, item: @item, user: current_devise_api_token.resource_owner)
+      end
       if group_item.persisted?
         render json: @group
       else
         render json: { errors: group_item.errors.full_messages }, status: :unprocessable_entity
       end
     else
-      render json: { error: "#{item_type.capitalize} not found" }, status: :not_found
+      render json: { error: "#{params[:item_type].capitalize} not found" }, status: :not_found
     end
   end
 
@@ -51,6 +61,12 @@ class Api::V1::GroupsController < ApplicationController
       render json: { message: 'Group deleted successfully' }
     else
       render json: { error: 'Group not found' }, status: :not_found
+    end
+  end
+
+  def switch_items_publicity(group)
+    group.items.each do |item|
+      item.update(public: true) if !item.public
     end
   end
 
