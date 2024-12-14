@@ -25,6 +25,8 @@ Rails.application.routes.draw do
         post '/switch_publicity/:id', to: 'groups#switch_publicity', on: :collection
         delete '/delete_group/:id', to: 'groups#delete_group', on: :collection
         delete '/remove_from_group/:group_id/:item_type/:item_id', to: 'groups#remove_from_group', on: :collection
+        get "/show_group_items/:group_id", to: 'cars#show_group_items', on: :collection
+        get "/show_public_groups/:user_id", to: 'cars#show_public_groups', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection

@@ -9,28 +9,29 @@ class Api::V1::CarsController < ApplicationController
     end
   end
 
-  def show_public_group
-    @group = Group.find_by(id: params[:group_id], public: true)
-    if @group
-      render json: @group, except: %i[created_at updated_at]
+  def show_public_groups
+    @user = User.find_by_id(params[:user_id])
+    if @user
+      @public_groups = @user.groups.where(public: true)
+      render json: @public_groups, except: %i[created_at updated_at]
     else
-      render json: { error: 'Group not found or not public' }, status: :not_found
+      render json: { error: 'User not found' }, status: :not_found
     end
   end
 
   def show_group_items
-    @group = Group.find_by(id: params[:group_id])
+    @group = Group.find_by(id: params[:group_id], public: true)
     if @group
       case @group.group_type
       when 'drivers'
-        render json: @group.items.where(type: 'Driver'), except: %i[created_at updated_at]
+        render json: @group.drivers, except: %i[created_at updated_at]
       when 'cars'
-        render json: @group.items.where(type: 'Car'), except: %i[created_at updated_at]
+        render json: @group.cars, except: %i[created_at updated_at]
       else
         render json: { error: 'Group type not recognized' }, status: :unprocessable_entity
       end
     else
-      render json: { error: 'Group not found' }, status: :not_found
+      render json: { error: 'Group not found or not public' }, status: :not_found
     end
   end
 end
