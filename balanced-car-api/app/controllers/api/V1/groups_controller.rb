@@ -1,14 +1,13 @@
 class Api::V1::GroupsController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!,
-  only: %i[create_group index update_item
-           delete_car switch_publicity
-           update_driver profile update_profile
-          add_item_to_group remove_from_group
-          show_items delete_group]
+  only: %i[create_group index add_item_to_group remove_from_group
+           delete_group show_items update_group switch_publicity
+          add_item_to_group remove_from_group]
 
   def index
     @groups = Group.where(user: current_devise_api_token.resource_owner)
+    check_user(@group.user)
     render json: @groups
   end
 
