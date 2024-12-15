@@ -19,6 +19,14 @@ Rails.application.routes.draw do
         post '/create_item', to: 'users#create_item', on: :collection
         get '/profile', to: 'users#profile', on: :collection
         patch '/update_profile', to: 'users#update_profile', on: :collection
+        post '/create_group', to: 'groups#create_group', on: :collection
+        post '/add_to_group', to: 'groups#add_item_to_group', on: :collection
+        get '/show_group/:id', to: 'groups#show_items', on: :collection
+        post '/switch_publicity/:id', to: 'groups#switch_publicity', on: :collection
+        delete '/delete_group/:id', to: 'groups#delete_group', on: :collection
+        delete '/remove_from_group/:group_id/:item_type/:item_id', to: 'groups#remove_from_group', on: :collection
+        get "/show_group_items/:group_id", to: 'cars#show_group_items', on: :collection
+        get "/show_public_groups/:user_id", to: 'cars#show_public_groups', on: :collection
       end
       resources :car, only: [] do
         get 'show/:id', to: 'cars#show', on: :collection
