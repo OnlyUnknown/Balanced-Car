@@ -135,7 +135,9 @@ class Api::V1::GroupsController < ApplicationController
   def add_item_to_group_transaction
     group_item = nil
     GroupItem.transaction do
-      @item.update!(public: @group.public)
+      unless @item.is_a?(Driver)
+        @item.update!(public: @group.public)
+      end
       group_item = GroupItem.create!(group: @group, item: @item, user: current_devise_api_token.resource_owner)
     end
     if group_item.persisted?
