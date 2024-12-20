@@ -29,12 +29,20 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="nav">
+    <nav className="sidebar">
       <ul>
         <li>
           <span>{renderUserInfo()}</span>
         </li>
-        <NavLink className="button" to="/main"> My cars</NavLink>
+        <li>
+          <NavLink className="button" to="/main">My cars</NavLink>
+        </li>
+        <li>
+          <NavLink className="button" to="/bills">Bills</NavLink>
+        </li>
+        <li>
+          <NavLink className="button" to="/revenues">Revenues</NavLink>
+        </li>
         <li>
           {userInfo ? (
             <button className="button" type="button" onClick={() => dispatch(logout())}>
