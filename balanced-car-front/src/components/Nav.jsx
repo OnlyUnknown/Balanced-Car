@@ -1,4 +1,5 @@
 import '../styling/App.scss';
+import '../styling/Nav.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -29,7 +30,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="sidebar">
+    <nav className="topbar">
       <ul>
         <li>
           <span>{renderUserInfo()}</span>
