@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useGetUserDetailsQuery } from '../features/auth/authServices';
 import { logout, setCredentials } from '../features/auth/authSlice';
 
-const Navigation = () => {
+const Nav = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -60,4 +60,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Nav;
