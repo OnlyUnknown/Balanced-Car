@@ -45,6 +45,13 @@ const Nav = () => {
           <NavLink className="button" to="/revenues">Revenues</NavLink>
         </li>
         <li>
+          {userInfo  ? (
+            <NavLink className="button" to="/drivers">
+              Drivers
+            </NavLink>
+          ) : null}
+        </li>
+        <li>
           {userInfo ? (
             <button className="button" type="button" onClick={() => dispatch(logout())}>
               Logout
