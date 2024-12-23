@@ -45,7 +45,7 @@ const Nav = () => {
           <NavLink className="button" to="/revenues">Revenues</NavLink>
         </li>
         <li>
-          {userInfo  ? (
+          {userInfo ? (
             <NavLink className="button" to="/drivers">
               Drivers
             </NavLink>

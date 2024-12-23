@@ -1,15 +1,14 @@
 import '../styling/main.scss';
-import CarComp from './CarComp';
-import Nav from './Nav';
 import Headroom from 'react-headroom';
+import Nav from './Nav';
 
 const Navigation = () => (
   <>
-    <Headroom>  
-      <div className='nav'>
-      <Nav />
+    <Headroom>
+      <div className="nav">
+        <Nav />
       </div>
-      </ Headroom >
+    </Headroom>
   </>
 );
 
