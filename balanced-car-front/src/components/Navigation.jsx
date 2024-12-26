@@ -1,12 +1,13 @@
 import '../styling/main.scss';
 import Headroom from 'react-headroom';
 import Nav from './Nav';
+import Navbarv2 from './Navbarv2';
 
 const Navigation = () => (
   <>
     <Headroom>
       <div className="nav">
-        <Nav />
+        <Navbarv2 />
       </div>
     </Headroom>
   </>

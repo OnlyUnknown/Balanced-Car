@@ -1,7 +1,7 @@
 import '../styling/main.scss';
 import { useParams } from 'react-router-dom';
 import RevenueComp from './RevenueCarComp';
-import Navigation from './Nav';
+import Navigation from './Navigation';
 
 const RevenueCarIndex = () => {
   const { cid } = useParams();

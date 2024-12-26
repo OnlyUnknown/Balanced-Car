@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import  styles from './Navbar.module.css';
+import styles from '../styling/Navbar.module.scss';
 
 function Navbarv2() {
     // adding the states 
@@ -14,7 +14,7 @@ function Navbarv2() {
     }
     return (
       <div className="App">
-        <header className="App-header">
+
           <nav className={`${styles.navbar}`}>
             {/* logo */}
             <a href='#home' className={`${styles.logo}`}>Dev. </a>
@@ -38,7 +38,7 @@ function Navbarv2() {
               <span className={`${styles.bar}`}></span>
             </div>
           </nav>
-        </header>
+
       </div>
     );
   }
