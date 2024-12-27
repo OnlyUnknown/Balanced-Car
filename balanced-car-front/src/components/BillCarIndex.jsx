@@ -1,7 +1,7 @@
 import '../styling/main.scss';
 import { useParams } from 'react-router-dom';
 import BillComp from './BillCarComp';
-import Navigation from './Nav';
+import Navigation from './Navigation';
 
 const BillCarIndex = () => {
   const { cid } = useParams();

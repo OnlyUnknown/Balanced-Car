@@ -1,6 +1,6 @@
 import '../styling/prof.scss';
 import { useSelector } from 'react-redux';
-import Navigation from './Nav';
+import Navigation from './Navigation';
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);

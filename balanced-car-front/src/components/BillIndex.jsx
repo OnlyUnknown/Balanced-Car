@@ -1,6 +1,6 @@
 import '../styling/main.scss';
 import BillComp from './BillComp';
-import Navigation from './Nav';
+import Navigation from './Navigation';
 
 const BillIndex = () => (
   <>

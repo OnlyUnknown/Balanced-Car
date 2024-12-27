@@ -1,11 +1,12 @@
 import '../styling/App.scss';
+import '../styling/Nav.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useGetUserDetailsQuery } from '../features/auth/authServices';
 import { logout, setCredentials } from '../features/auth/authSlice';
 
-const Navigation = () => {
+const Nav = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -29,12 +30,27 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="nav">
+    <nav className="topbar">
       <ul>
         <li>
           <span>{renderUserInfo()}</span>
         </li>
-        <NavLink className="button" to="/main"> My cars</NavLink>
+        <li>
+          <NavLink className="button" to="/main">My cars</NavLink>
+        </li>
+        <li>
+          <NavLink className="button" to="/bills">Bills</NavLink>
+        </li>
+        <li>
+          <NavLink className="button" to="/revenues">Revenues</NavLink>
+        </li>
+        <li>
+          {userInfo ? (
+            <NavLink className="button" to="/drivers">
+              Drivers
+            </NavLink>
+          ) : null}
+        </li>
         <li>
           {userInfo ? (
             <button className="button" type="button" onClick={() => dispatch(logout())}>
@@ -51,4 +67,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Nav;

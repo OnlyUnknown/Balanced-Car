@@ -1,6 +1,6 @@
 import '../styling/main.scss';
 import RevenueComp from './RevenueComp';
-import Navigation from './Nav';
+import Navigation from './Navigation';
 
 const RevenueIndex = () => (
   <>

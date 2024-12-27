@@ -1,10 +1,16 @@
 import '../styling/main.scss';
+import Headroom from 'react-headroom';
 import CarComp from './CarComp';
-import Navigation from './Nav';
+import Navigation from './Navigation';
 
 const Main = () => (
   <>
-    <Navigation />
+
+    <Headroom>
+      <div className="nav">
+        <Navigation />
+      </div>
+    </Headroom>
     <div className="main_box">
       <CarComp />
     </div>

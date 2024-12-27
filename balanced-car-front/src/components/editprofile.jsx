@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
-import Navigation from './Nav';
+import Navigation from './Navigation';
 import Error from './Error';
 import Spinner from './Spinner';
 import { useUpdateProfileMutation } from '../features/edit/editServices';
