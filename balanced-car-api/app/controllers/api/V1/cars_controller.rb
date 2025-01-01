@@ -15,7 +15,7 @@ class Api::V1::CarsController < ApplicationController
       @public_groups = @user.groups.where(public: true)
       render json: @public_groups, except: %i[created_at updated_at]
     else
-      render json: { error: 'User not found' }, status: :not_found
+      render json: { error: "User not found" }, status: :not_found
     end
   end
 
