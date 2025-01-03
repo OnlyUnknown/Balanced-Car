@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create(email:'1@email.com', 
+User.create(email:'email@email.com', 
 name: "Hunda",
 password: '123123',
 password_confirmation: '123123')
@@ -19,12 +19,12 @@ car2 = Car.create!(name: "Audi Q7", user: user)
 driver1 = Driver.create!(name: "John Smith", user: user)
 driver2 = Driver.create!(name: "Jane Doe", user: user)
 
-car_group = Group.create!(name: "Luxury Cars", group_type: "cars", user: user)
+car_group = Group.create!(name: "Luxury Cars", group_type: "cars", user: user, description: "A collection of high-end luxury cars", location: "Garage 1")
 
 GroupItem.create!(group: car_group, item: car1, user: user)
 GroupItem.create!(group: car_group, item: car2, user: user)
 
-driver_group = Group.create!(name: "Top Drivers", group_type: "drivers", user: user)
+driver_group = Group.create!(name: "Top Drivers", group_type: "drivers", user: user, description: "A list of our top performing drivers", location: "Office 2")
 
 GroupItem.create!(group: driver_group, item: driver1, user: user)
 GroupItem.create!(group: driver_group, item: driver2, user: user)
