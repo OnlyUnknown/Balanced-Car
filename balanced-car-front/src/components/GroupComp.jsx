@@ -9,7 +9,7 @@ const GroupComp = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const classname = 'group';
+    const classname = 'groups';
     dispatch(indexItems({ classname }));
   }, [dispatch]);
   return (
