@@ -101,6 +101,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_09_132221) do
     t.string "name", null: false
     t.string "group_type", null: false
     t.boolean "public", default: false
+    t.string "description"
+    t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

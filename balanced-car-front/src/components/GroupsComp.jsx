@@ -9,7 +9,7 @@ const GroupComp = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const classname = 'group';
+    const classname = 'groups';
     dispatch(indexItems({ classname }));
   }, [dispatch]);
   return (
@@ -18,23 +18,18 @@ const GroupComp = () => {
         <div className="main-box">
           {items.map((app) => (
             <div className="box">
-              <div className="pic">Pic</div>
               <div className="info">
                 <div>
-                  Oil change:
-                  {app.total}
-                </div>
-                <div>
                   name:
-                  {app.id}
+                  {app.name}
                 </div>
                 <div>
-                  Tire age:
-
+                  Type:
+                  {app.group_type}
                 </div>
                 <div>
-                  Model:
-
+                  Location:
+                  {app.location}
                 </div>
                 <button type="button">Remove</button>
               </div>
