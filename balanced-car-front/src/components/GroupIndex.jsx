@@ -2,7 +2,7 @@ import '../styling/main.scss';
 import GroupsComp from './GroupsComp';
 import Navigation from './Navigation';
 
-const BillIndex = () => (
+const GroupIndex = () => (
   <>
     <Navigation />
     <div className="main_box">
@@ -11,4 +11,4 @@ const BillIndex = () => (
   </>
 );
 
-export default BillIndex;
+export default GroupIndex;

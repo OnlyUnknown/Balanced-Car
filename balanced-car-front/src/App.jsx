@@ -23,6 +23,7 @@ import BillCarIndex from './components/BillCarIndex';
 import RevenueIndex from './components/RevenueIndex';
 import RevenueCarIndex from './components/RevenueCarIndex';
 import EditBill from './components/EditBill';
+import GroupIndex from './components/GroupIndex';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SigninScreen />} />
         <Route exact path="/" element={<Main />} />
+        <Route path='/groups' element={<GroupIndex />} />
         <Route path="/Bills" element={<BillIndex />} />
         <Route path="/Bills/:cid" element={<BillCarIndex />} />
         <Route path="/Revenues" element={<RevenueIndex />} />

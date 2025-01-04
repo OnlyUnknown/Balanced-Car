@@ -7,7 +7,6 @@ class Api::V1::GroupsController < ApplicationController
 
   def index
     @groups = Group.where(user: current_devise_api_token.resource_owner)
-    check_user(@group.user)
     render json: @groups
   end
 

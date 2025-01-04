@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { indexItems } from '../features/show/showActions';
 import Spinner from './Spinner';
 
-const GroupComp = () => {
+const GroupsComp = () => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
 
@@ -48,4 +48,4 @@ const GroupComp = () => {
   );
 }
 
-export default GroupComp;
+export default GroupsComp;
