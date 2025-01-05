@@ -1,40 +1,44 @@
 import '../styling/CarComp.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { indexItems } from '../features/show/showActions';
+import { useParams } from 'react-router-dom';
+import { showItem } from '../features/show/showActions';
 import Spinner from './Spinner';
 
 const GroupComp = () => {
-  const { items, loading, success } = useSelector((state) => state.show);
+  const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
+  let { gid } = useParams();
 
   useEffect(() => {
-    const classname = 'groups';
-    dispatch(indexItems({ classname }));
-  }, [dispatch]);
+    const classname = 'group';
+    const id = gid
+    dispatch(showItem({ classname, id }));
+  }, [dispatch, gid]);
+
   return (
     <>
       {success === true ? (
         <div className="main-box">
-          {items.map((app) => (
+          {item.map((app) => (
             <div className="box">
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
                   Oil change:
-                  {app.total}
+                  {app.oil_milage}
                 </div>
                 <div>
                   name:
-                  {app.id}
+                  {app.name}
                 </div>
                 <div>
                   Tire age:
-
+                  {app.car_type}
                 </div>
                 <div>
                   Model:
-
+                  {app.model}
                 </div>
                 <button type="button">Remove</button>
               </div>
@@ -51,6 +55,6 @@ const GroupComp = () => {
       )}
     </>
   );
-}
+};
 
 export default GroupComp;

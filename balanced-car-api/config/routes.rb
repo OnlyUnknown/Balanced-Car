@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         get 'show/driver/:id', to: 'users#show_driver', on: :collection
         get 'show/bill/:id', to: 'users#show_bill', on: :collection
         get 'show/revenue/:id', to: 'revenues#show_revenue', on: :collection
+        get 'show/group/:id', to: 'groups#show_items', on: :collection
         patch 'update_item/:id', to: 'users#update_item', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
         delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
         patch '/update_profile', to: 'users#update_profile', on: :collection
         post '/create_group', to: 'groups#create_group', on: :collection
         post '/add_to_group', to: 'groups#add_item_to_group', on: :collection
-        get '/show/group/:id', to: 'groups#show_items', on: :collection
         post '/switch_publicity/:id', to: 'groups#switch_publicity', on: :collection
         delete '/delete_group/:id', to: 'groups#delete_group', on: :collection
         delete '/remove_from_group/:group_id/:item_type/:item_id', to: 'groups#remove_from_group', on: :collection
