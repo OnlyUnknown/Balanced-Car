@@ -46,6 +46,6 @@ const GroupsComp = () => {
       )}
     </>
   );
-}
+};
 
 export default GroupsComp;

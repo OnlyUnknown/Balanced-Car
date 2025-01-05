@@ -8,11 +8,11 @@ import Spinner from './Spinner';
 const GroupComp = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
-  let { gid } = useParams();
+  const { gid } = useParams();
 
   useEffect(() => {
     const classname = 'group';
-    const id = gid
+    const id = gid;
     dispatch(showItem({ classname, id }));
   }, [dispatch, gid]);
 

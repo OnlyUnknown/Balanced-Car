@@ -33,8 +33,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SigninScreen />} />
         <Route exact path="/" element={<Main />} />
-        <Route path='/groups' element={<GroupIndex />} />
-        <Route path='/group/:gid' element={<GroupShow />} />
+        <Route path="/groups" element={<GroupIndex />} />
+        <Route path="/group/:gid" element={<GroupShow />} />
         <Route path="/Bills" element={<BillIndex />} />
         <Route path="/Bills/:cid" element={<BillCarIndex />} />
         <Route path="/Revenues" element={<RevenueIndex />} />
