@@ -9,7 +9,7 @@ import Navigation from './Navigation';
 import Error from './Error';
 import Spinner from './Spinner';
 /* eslint-disable */
-const AddDriver = () => {
+const AddGroup = () => {
   const { loading, errors, success } = useSelector((state) => state.add);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
@@ -46,7 +46,7 @@ const AddDriver = () => {
               <input
                 id="name"
                 type="text"
-                {...register("name', { required: true })}")}
+                {...register('name', { required: true })}
                 placeholder="Name of the Group"
               />
               <input
@@ -55,10 +55,10 @@ const AddDriver = () => {
                 placeholder="The description of the group"
               />
               <input
-                type="boolean"
+                type="checkbox"
                 {...register('public', { required: true })}
-                placeholder="The publicity of the group"
               />
+              <label htmlFor="public">The publicity of the group</label>
               <input
                 type="text" step="any"
                 {...register('group_type', { required: true })}
@@ -76,4 +76,4 @@ const AddDriver = () => {
   );
 };
 
-export default AddDriver;
+export default AddGroup;

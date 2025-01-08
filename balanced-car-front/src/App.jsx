@@ -25,6 +25,7 @@ import RevenueCarIndex from './components/RevenueCarIndex';
 import EditBill from './components/EditBill';
 import GroupIndex from './components/GroupIndex';
 import GroupShow from './components/GroupShow';
+import AddGroup from './components/AddGroup';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/addcar" element={<AddCar />} />
         <Route path="/addbill" element={<AddBill />} />
+        <Route path="/addgroup" element={<AddGroup />} />'
         <Route path="/addrevenue" element={<AddRevenue />} />
         <Route path="/addDriver" element={<AddDriver />} />
         <Route path="/splash" element={<Splash />} />
