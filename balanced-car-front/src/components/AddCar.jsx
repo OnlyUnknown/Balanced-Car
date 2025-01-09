@@ -49,41 +49,49 @@ const AddCar = () => {
                 type="text"
                 {...register('name', { required: true })}
                 placeholder="Car name"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('car_type')}
                 placeholder="Car type"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('transmission_type')}
                 placeholder="Transimission type"
+                disabled={success}
               />
               <input
                 type="number"
                 {...register('model')}
                 placeholder="Model"
+                disabled={success}
               />
               <input
                 type="number"
                 {...register('transmission_milage')}
                 placeholder="Transmission Milage"
+                disabled={success}
               />
               <input
                 type="number"
                 {...register('milage')}
                 placeholder="Milage"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('chassis_number')}
                 placeholder="Chassis number"
+                disabled={success}
               />
               <input
                 type="number"
                 {...register('auto_milage')}
                 placeholder="Auto Milage"
+                disabled={success}
               />
               <div className="tires">
                 <label>Tires age</label>
@@ -91,37 +99,44 @@ const AddCar = () => {
                   type="month"
                   {...register('tires_age.tirerf')}
                   placeholder="Tire age 1"
+                  disabled={success}
                 />
                 <input
                   type="month"
                   {...register('tires_age.tirelf')}
                   placeholder="Tire age 2"
+                  disabled={success}
                 />
                 <input
                   type="month"
                   {...register('tires_age.tirerb')}
                   placeholder="Tire age 3"
+                  disabled={success}
                 />
                 <input
                   type="month"
                   {...register('tires_age.tirelb')}
                   placeholder="Tire age 4"
+                  disabled={success}
                 />
               </div>
               <input
                 type="text"
                 {...register('oil_milage')}
                 placeholder="Oil Milage"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('buy_limit')}
                 placeholder="buy_limit"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('last_bid')}
                 placeholder="Last Bid"
+                disabled={success}
               />
               <span>
                 {' '}
@@ -129,6 +144,7 @@ const AddCar = () => {
                 <input
                   type="checkbox"
                   {...register('for_bidding')}
+                  disabled={success}
                 />
               </span>
               <span>
@@ -137,14 +153,16 @@ const AddCar = () => {
                 <input
                   type="checkbox"
                   {...register('public')}
+                  disabled={success}
                 />
               </span>
               <textarea
                 type="text"
                 {...register('note')}
                 placeholder="Note"
+                disabled={success}
               />
-              <button type="submit" disabled={loading}>
+              <button type="submit" disabled={loading || success}>
                 {loading ? <Spinner /> : 'Create'}
               </button>
               {errors && <Error message={errors.message} />}

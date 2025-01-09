@@ -50,24 +50,28 @@ const AddBill = () => {
                 type="number"
                 {...register("car_id", { required: true })}
                 placeholder="Car ID"
+                disabled={success}
               />
               <input
                 type="number" step="any"
                 {...register('total', { required: true })}
                 placeholder="Total"
+                disabled={success}
               />
               <input
                 type="date"
                 {...register('date', { required: true })}
                 placeholder="Date"
+                disabled={success}
               />
               <textarea
                 type="text"
                 {...register('note')}
                 placeholder="Note"
+                disabled={success}
               />
               
-              <button type="submit" disabled={loading}>
+              <button type="submit" disabled={loading || success }>
                 {loading ? <Spinner /> : 'Create'}
               </button>
               {errors && <Error message={errors.message} />}

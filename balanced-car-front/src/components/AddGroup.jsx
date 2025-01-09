@@ -48,23 +48,26 @@ const AddGroup = () => {
                 type="text"
                 {...register('name', { required: true })}
                 placeholder="Name of the Group"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('description')}
                 placeholder="The description of the group"
+                disabled={success}
               />
               <input
                 type="checkbox"
-                {...register('public', { required: true })}
+                {...register('public')}
+                disabled={success}
               />
               <label htmlFor="public">The publicity of the group</label>
-              <input
-                type="text" step="any"
-                {...register('group_type', { required: true })}
-                placeholder="The type of the group"
-              />
-              <button type="submit" disabled={loading}>
+              <select {...register('group_type', { required: true })} disabled={success}>
+                <option value="">Select Category</option>
+                <option value="cars">Cars</option>
+                <option value="drivers">Drivers</option>
+              </select>
+              <button type="submit" disabled={loading || success}>
                 {loading ? <Spinner /> : 'Create'}
               </button>
               {errors && <Error message={errors.message} />}

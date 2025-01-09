@@ -50,23 +50,27 @@ const AddDriver = () => {
                 type="number"
                 {...register("car_id")}
                 placeholder="Car ID"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('name', { required: true })}
                 placeholder="Name"
+                disabled={success}
               />
               <input
                 type="text"
                 {...register('nationality', { required: true })}
                 placeholder="Nationality"
+                disabled={success}
               />
               <input
                 type="number" step="any"
                 {...register('identification', { required: true })}
                 placeholder="Identification"
+                disabled={success}
               />
-              <button type="submit" disabled={loading}>
+              <button type="submit" disabled={loading || success}>
                 {loading ? <Spinner /> : 'Create'}
               </button>
               {errors && <Error message={errors.message} />}
