@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { addItem } from '../features/add/addActions';
+import { indexItems } from '../features/show/showActions';
 import Navigation from './Navigation';
 import Error from './Error';
 import Spinner from './Spinner';
@@ -14,6 +15,13 @@ const AddBill = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+    const { items, success: success2 } = useSelector((state) => state.show);
+
+  
+    useEffect(() => {
+      const classname = 'cars';
+      dispatch(indexItems({ classname }));
+    }, [dispatch]);
 
   useEffect(() => {
     if (success === true) {
@@ -45,13 +53,30 @@ const AddBill = () => {
               Pic
             </div>
             <div className="info_box">
-              <input
+              {/* <input
                 id="name"
                 type="number"
                 {...register("car_id", { required: true })}
                 placeholder="Car ID"
                 disabled={success}
-              />
+              /> */}
+              <select
+                {...register("car_id", { required: true })}
+                disabled={success}
+              >
+                {success2 === true ? (
+                  <>
+                    <option value="">Select Car</option>
+                    {items.map((car) => (
+                      <option key={car.id} value={car.id}>
+                        {car.name}, {car.id}
+                      </option>
+                    ))}
+                  </>
+                ) : (
+                  <option value="">No cars available</option>
+                )}
+              </select>
               <input
                 type="number" step="any"
                 {...register('total', { required: true })}
