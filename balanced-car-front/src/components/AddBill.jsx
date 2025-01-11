@@ -1,5 +1,5 @@
 import '../styling/AddCar.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -15,33 +15,37 @@ const AddBill = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-    const { items, success: success2 } = useSelector((state) => state.show);
-
+  const { items, success: success2 } = useSelector((state) => state.show);
   
-    useEffect(() => {
-      const classname = 'cars';
-      dispatch(indexItems({ classname }));
-    }, [dispatch]);
+  // State to hold selected car_id
+  const [selectedCarId, setSelectedCarId] = useState('');
+
+  useEffect(() => {
+    const classname = 'cars';
+    dispatch(indexItems({ classname }));
+  }, [dispatch]);
 
   useEffect(() => {
     if (success === true) {
       toast.success('Profile updated successfully');
       const Transfer = () => {
-        navigate('/main');
+        navigate(`/bills/${selectedCarId}`); // Pass selectedCarId to the next page
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
-  }, [success]);
+  }, [success, selectedCarId, navigate]);
 
-  const submitForm = async (item, classname, car_id) => {
+  const submitForm = async (item) => {
     try {
-        car_id = item.car_id
-      classname = "bill",
+      const { car_id } = item;
+      setSelectedCarId(car_id); // Set car_id to the state
+      const classname = "bill";
       dispatch(addItem({ item, classname, car_id }));
     } catch (err) {
       toast.error('Failed to add car. Please try again.');
     }
   };
+
   return (
     <>
       <Navigation />
@@ -53,13 +57,6 @@ const AddBill = () => {
               Pic
             </div>
             <div className="info_box">
-              {/* <input
-                id="name"
-                type="number"
-                {...register("car_id", { required: true })}
-                placeholder="Car ID"
-                disabled={success}
-              /> */}
               <select
                 {...register("car_id", { required: true })}
                 disabled={success}
