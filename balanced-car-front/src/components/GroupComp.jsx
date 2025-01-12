@@ -26,19 +26,19 @@ const GroupComp = () => {
               <div className="info">
                 <div>
                   Oil change:
-                  {app.oil_milage}
-                </div>
-                <div>
-                  name:
                   {app.name}
                 </div>
                 <div>
-                  Tire age:
+                  name:
                   {app.car_type}
                 </div>
                 <div>
+                  Tire age:
+                  {app.description}
+                </div>
+                <div>
                   Model:
-                  {app.model}
+                  {app.public}
                 </div>
                 <button type="button">Remove</button>
               </div>
