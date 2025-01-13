@@ -19,7 +19,7 @@ const AddBill = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { items, success: success2 } = useSelector((state) => state.show);
-  
+  let cars = [];
   // State to hold selected car_id
   const [selectedCarId, setSelectedCarId] = useState('');
 
@@ -66,12 +66,17 @@ const AddBill = () => {
               >
                 {success2 === true ? (
                   <>
-                    <option value="">Select Car</option>
                     {items.map((car) => (
-                      <option key={car.id} value={car.id}>
-                        {car.name}, {car.id}
-                      </option>
+                        <option key={car.id} value={car.id}>
+                            {car.name}
+                        </option>
                     ))}
+                    {/* <SearchableDropdown
+                    options={items}
+                    label="name"
+                    id="id"
+                    selectedVal={value}
+                    handleChange={(val) => setValue(val)}/> */}
                   </>
                 ) : (
                   <option value="">No cars available</option>

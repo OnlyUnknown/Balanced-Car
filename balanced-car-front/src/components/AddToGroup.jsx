@@ -53,13 +53,6 @@ const AddBill = () => {
               Pic
             </div>
             <div className="info_box">
-              {/* <input
-                id="name"
-                type="number"
-                {...register("car_id", { required: true })}
-                placeholder="Car ID"
-                disabled={success}
-              /> */}
               <select
                 {...register("car_id", { required: true })}
                 disabled={success}
