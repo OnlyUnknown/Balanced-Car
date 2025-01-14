@@ -51,6 +51,7 @@ const AddDriver = () => {
                 {...register("car_id")}
                 disabled={success}
               >
+                                <option value="">Select a car</option>
                 {success2 === true ? (
                   <>
                     {items.map((car) => (

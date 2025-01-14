@@ -51,6 +51,7 @@ const AddRevenue = () => {
                 {...register("car_id", { required: true })}
                 disabled={success}
               >
+                                <option value="" hidden>Select a car</option>
                 {success2 === true ? (
                   <>
                     {items.map((car) => (

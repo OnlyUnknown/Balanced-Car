@@ -64,19 +64,14 @@ const AddBill = () => {
                 {...register("car_id", { required: true })}
                 disabled={success}
               >
+                <option value="" hidden>Select a car</option>
                 {success2 === true ? (
                   <>
                     {items.map((car) => (
-                        <option key={car.id} value={car.id}>
-                            {car.name}
-                        </option>
+                      <option key={car.id} value={car.id}>
+                        {car.name}
+                      </option>
                     ))}
-                    {/* <SearchableDropdown
-                    options={items}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}/> */}
                   </>
                 ) : (
                   <option value="">No cars available</option>

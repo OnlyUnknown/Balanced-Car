@@ -59,7 +59,7 @@ const AddBill = () => {
               >
                 {success2 === true ? (
                   <>
-                    <option value="">Select Car</option>
+                                    <option value="" hidden>Select a car</option>
                     {items.map((car) => (
                       <option key={car.id} value={car.id}>
                         {car.name}, {car.id}
