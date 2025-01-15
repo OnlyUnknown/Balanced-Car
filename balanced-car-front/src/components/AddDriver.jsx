@@ -18,6 +18,11 @@ const AddDriver = () => {
   const { items, success: success2 } = useSelector((state) => state.show);
 
   useEffect(() => {
+    const classname = 'cars';
+    dispatch(indexItems({ classname }));
+  }, [dispatch]);
+  
+  useEffect(() => {
     if (success === true) {
       toast.success('Profile updated successfully');
       const Transfer = () => {

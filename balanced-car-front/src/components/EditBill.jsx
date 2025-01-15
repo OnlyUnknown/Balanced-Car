@@ -20,8 +20,7 @@ const EditBill = () => {
   let { cid } = useParams();
 
   useEffect(() => {
-    const classname = "bill";
-    const id = cid;
+    const classname = "car";
     dispatch(showItem({ classname, id }));
   }, [dispatch, cid]);
   

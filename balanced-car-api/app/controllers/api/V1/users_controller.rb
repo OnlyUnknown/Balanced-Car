@@ -131,6 +131,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def car_params
+    @driver = Driver.find_by_id(params[:driver_id]) if params[:driver_id].present?
     params.require(:item).permit(
       :name,
       :oil_milage,
@@ -147,9 +148,9 @@ class Api::V1::UsersController < ApplicationController
       :commercial,
       :public,
       :chassis_number,
-      :driver,
       tires_age: %i[tirerf tirelf tirerb tirelb]
     ).merge(
+      driver: @driver,
       user: current_devise_api_token.resource_owner
     )
   end

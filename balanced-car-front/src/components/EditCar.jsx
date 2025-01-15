@@ -11,8 +11,9 @@ import Error from './Error';
 import Spinner from './Spinner';
 /* eslint-disable */
 const AddCar = () => {
-  const { loading, errors, success } = useSelector((state) => state.add);
-  const { items, success: success2 } = useSelector((state) => state.show);
+    const { item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
+    const { loading: editLoading, errors: editErrors, success: editSuccess } = useSelector((state) => state.edit);  
+    const { items, success: success2 } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();

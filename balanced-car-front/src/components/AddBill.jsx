@@ -9,17 +9,14 @@ import { indexItems } from '../features/show/showActions';
 import Navigation from './Navigation';
 import Error from './Error';
 import Spinner from './Spinner';
-import SearchableDropdown from './Searchable';
 
 /* eslint-disable */
 const AddBill = () => {
-  const [value, setValue] = useState("Select option...");
   const { loading, errors, success } = useSelector((state) => state.add);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { items, success: success2 } = useSelector((state) => state.show);
-  let cars = [];
   // State to hold selected car_id
   const [selectedCarId, setSelectedCarId] = useState('');
 
