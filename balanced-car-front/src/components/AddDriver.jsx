@@ -34,13 +34,17 @@ const AddDriver = () => {
 
   const submitForm = async (item, classname, car_id) => {
     try {
-        car_id = item.car_id
-      classname = "driver",
+      car_id = item.car_id;
+      classname = "driver";
       dispatch(addItem({ item, classname, car_id }));
     } catch (err) {
-      toast.error('Failed to add car. Please try again.');
+
+        toast.error('The car already has another driver. Please remove the existing driver first.');
+
+
     }
   };
+
   return (
     <>
       <Navigation />
@@ -52,24 +56,18 @@ const AddDriver = () => {
               Pic
             </div>
             <div className="info_box">
-            <select
+              <select
                 {...register("car_id")}
                 disabled={success}
               >
-                                <option value="">Select a car</option>
+                <option value="">Select a car</option>
                 {success2 === true ? (
                   <>
                     {items.map((car) => (
-                        <option key={car.id} value={car.id}>
-                            {car.name}
-                        </option>
+                      <option key={car.id} value={car.id}>
+                        {car.name}
+                      </option>
                     ))}
-                    {/* <SearchableDropdown
-                    options={items}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}/> */}
                   </>
                 ) : (
                   <option value="">No cars available</option>

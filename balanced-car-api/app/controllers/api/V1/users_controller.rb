@@ -148,6 +148,7 @@ class Api::V1::UsersController < ApplicationController
       :commercial,
       :public,
       :chassis_number,
+      :driver_id,
       tires_age: %i[tirerf tirelf tirerb tirelb]
     ).merge(
       driver: @driver,
@@ -157,7 +158,10 @@ class Api::V1::UsersController < ApplicationController
 end
 
 def driver_params
-  @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
+  if params[:car_id].present?
+    @car = Car.find_by_id(params[:car_id])
+    render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity if @car&.driver.present?
+  end
   params.require(:item).permit(
     :name,
     :identification,
