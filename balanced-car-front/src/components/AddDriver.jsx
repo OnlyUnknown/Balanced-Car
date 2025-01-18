@@ -38,10 +38,12 @@ const AddDriver = () => {
       classname = "driver";
       dispatch(addItem({ item, classname, car_id }));
     } catch (err) {
-
-        toast.error('The car already has another driver. Please remove the existing driver first.');
-
-
+        if (err.response && err.response.status === 500) {
+          toast.error('The car already has another driver. Please remove the existing driver first.');
+        } else {
+          toast.error('Failed to add car. Please try again.');
+        }
+      
     }
   };
 

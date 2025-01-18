@@ -4,6 +4,7 @@ class Api::V1::UsersController < ApplicationController
                 only: %i[create_item index update_item
                          delete_car switch_publicity
                          update_driver profile update_profile]
+  @error = nil
   def index_cars
     @cars = Car.joins(:user).where(users: { id: current_devise_api_token.resource_owner })
     render json: @cars, except: %i[revenues bills drivers user]
@@ -110,10 +111,11 @@ class Api::V1::UsersController < ApplicationController
               revenue_params
             end
     @item = resource.new(param)
-    if @item.save
+    if @item.save && @error.nil?
       render json: @item
     else
-      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
+      @error = nil
     end
   end
 
@@ -160,7 +162,7 @@ end
 def driver_params
   if params[:car_id].present?
     @car = Car.find_by_id(params[:car_id])
-    render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity if @car&.driver.present?
+    @error = 'Car already has a driver' if @car.driver.present?
   end
   params.require(:item).permit(
     :name,

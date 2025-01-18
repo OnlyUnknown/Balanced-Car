@@ -170,23 +170,6 @@ const AddCar = () => {
                 placeholder="Note"
                 disabled={success}
               />
-                            <select
-                {...register("driver_id", { required: true })}
-                disabled={success}
-              >
-                <option value="" hidden>Select a driver</option>
-                {success2 === true ? (
-                  <>
-                    {items.map((driver) => (
-                      <option key={driver.id} value={driver.id}>
-                        {driver.name}
-                      </option>
-                    ))}
-                  </>
-                ) : (
-                  <option value="">No drivers available</option>
-                )}
-              </select>
               <button type="submit" disabled={loading || success}>
                 {loading ? <Spinner /> : 'Create'}
               </button>
