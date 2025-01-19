@@ -31,7 +31,7 @@ const CarComp = () => {
                 </div>
                 <div>
                   Identity:
-                  {app.identity}
+                  {app.identification}
                 </div>
                 <button type="button">Remove</button>
               </div>

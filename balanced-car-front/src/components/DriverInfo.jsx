@@ -25,13 +25,14 @@ const DriverInfo = () => {
       <Navigation />
       {success === true ? (
         <div className="border">
-          <div className="carpic">Revenue pic</div>
+          <div className="carpic">Driver pic</div>
           <div className="carinfo">
           <div>Id: {item.id}</div>
           <div>Id: {item.identification}</div>
             <div>
               Name: {item.name}
             </div>
+            <div>Phone Number: {item.phone_number} </div>
             <div>The car: <a href={`/carinfo/${item.car_id}`}>{item.car_id}</a></div>
             <div>date: {item.nationality}</div>
             <div>Note: {item.note}</div>

@@ -81,6 +81,12 @@ const AddDriver = () => {
                 placeholder="Name"
                 disabled={success}
               />
+               <input
+                type="text"
+                {...register('phone_number', { required: true })}
+                placeholder="Phone Number"
+                disabled={success}
+              />
               <input
                 type="text"
                 {...register('nationality', { required: true })}
