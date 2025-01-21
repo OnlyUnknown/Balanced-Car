@@ -33,13 +33,16 @@ const AddDriver = () => {
   }, [success]);
 
   const submitForm = async (item, classname, car_id) => {
-    try {
-      car_id = item.car_id;
-      classname = "driver";
-      dispatch(addItem({ item, classname, car_id }));
-    } catch (err) {
-          toast.error('Failed to add car. Please try again.');
-    }
+    car_id = item.car_id;
+    classname = "driver";
+    dispatch(addItem({ item, classname, car_id }))
+      .unwrap()
+      .then(() => {
+        toast.success('Driver added successfully');
+      })
+      .catch((err) => {
+        toast.error('Failed to add driver. Please try again.');
+      });
   };
 
   return (

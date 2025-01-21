@@ -161,9 +161,7 @@ class Api::V1::UsersController < ApplicationController
 end
 
 def driver_params
-  if params[:car_id].present?
-    @car = Car.find_by_id(params[:car_id])
-  end
+  @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
   params.require(:item).permit(
     :name,
     :identification,
