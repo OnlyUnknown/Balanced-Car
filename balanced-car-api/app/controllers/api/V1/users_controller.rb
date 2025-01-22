@@ -111,9 +111,9 @@ class Api::V1::UsersController < ApplicationController
               revenue_params
             end
     @item = resource.new(param)
-    if resource != Driver && @item.save 
+    if param != driver_params && @item.save 
       render json: @item
-    elsif resource == Driver && @item.car.driver.nil? && @item.save
+    elsif param == driver_params  && @item.car.driver.nil? && @item.save
       render json: @item
     else
       render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
