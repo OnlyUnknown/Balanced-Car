@@ -26,11 +26,15 @@ const AddGroup = () => {
   }, [success]);
 
   const submitForm = async (item) => {
-    try {
-      dispatch(addGroup({ item }));
-    } catch (err) {
-      toast.error('Failed to add car. Please try again.');
-    }
+
+      dispatch(addGroup({ item }))
+      .unwrap()
+      .then(() => {
+        toast.success('Driver added successfully');
+      })
+      .catch((err = errors.message) => {
+        toast.error('Failed to add driver, Maybe the car has already a driver. Please try again.');
+      });
   };
   return (
     <>

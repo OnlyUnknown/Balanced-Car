@@ -36,14 +36,17 @@ const AddBill = () => {
   }, [success, selectedCarId, navigate]);
 
   const submitForm = async (item) => {
-    try {
       const { car_id } = item;
       setSelectedCarId(car_id); // Set car_id to the state
       const classname = "bill";
-      dispatch(addItem({ item, classname, car_id }));
-    } catch (err) {
-      toast.error('Failed to add car. Please try again.');
-    }
+      dispatch(addItem({ item, classname, car_id }))
+      .unwrap()
+      .then(() => {
+        toast.success('Driver added successfully');
+      })
+      .catch((err = errors.message) => {
+        toast.error('Failed to add driver, Maybe the car has already a driver. Please try again.');
+      });
   };
 
   return (

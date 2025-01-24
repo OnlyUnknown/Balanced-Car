@@ -24,7 +24,6 @@ const AddDriver = () => {
   
   useEffect(() => {
     if (success === true) {
-      toast.success('Profile updated successfully');
       const Transfer = () => {
         navigate('/');
       };
@@ -40,8 +39,8 @@ const AddDriver = () => {
       .then(() => {
         toast.success('Driver added successfully');
       })
-      .catch((err) => {
-        toast.error('Failed to add driver. Please try again.');
+      .catch((err = errors.message) => {
+        toast.error('Failed to add driver, Maybe the car has already a driver. Please try again.');
       });
   };
 

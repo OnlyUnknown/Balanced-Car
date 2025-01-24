@@ -34,13 +34,16 @@ const AddBill = () => {
   }, [success]);
 
   const submitForm = async (item, classname, car_id) => {
-    try {
         car_id = item.car_id
       classname = "bill",
-      dispatch(addItem({ item, classname, car_id }));
-    } catch (err) {
-      toast.error('Failed to add car. Please try again.');
-    }
+      dispatch(addItem({ item, classname, car_id }))
+      .unwrap()
+      .then(() => {
+        toast.success('Driver added successfully');
+      })
+      .catch((err = errors.message) => {
+        toast.error('Failed to add to the group. Please try again.');
+      });
   };
   return (
     <>

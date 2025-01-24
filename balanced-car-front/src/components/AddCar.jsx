@@ -34,12 +34,15 @@ const AddCar = () => {
 
 
   const submitForm = async (item, classname) => {
-    try {
       classname = "car"
-      dispatch(addItem({ item, classname }));
-    } catch (err) {
-      toast.error('Failed to add car. Please try again.');
-    }
+      dispatch(addItem({ item, classname }))
+      .unwrap()
+      .then(() => {
+        toast.success('Car added successfully');
+      })
+      .catch((err = errors.message) => {
+        toast.error('Failed to add car. Please try again.');
+      });
   };
   return (
     <>
