@@ -17,7 +17,6 @@ const AddGroup = () => {
 
   useEffect(() => {
     if (success === true) {
-      toast.success('Profile updated successfully');
       const Transfer = () => {
         navigate('/groups');
       };
@@ -33,7 +32,7 @@ const AddGroup = () => {
         toast.success('Driver added successfully');
       })
       .catch((err = errors.message) => {
-        toast.error('Failed to add driver, Maybe the car has already a driver. Please try again.');
+        toast.error('Failed to add group. Please try again.');
       });
   };
   return (

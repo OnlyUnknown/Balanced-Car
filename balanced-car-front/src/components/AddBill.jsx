@@ -18,7 +18,7 @@ const AddBill = () => {
   const navigate = useNavigate();
   const { items, success: success2 } = useSelector((state) => state.show);
   // State to hold selected car_id
-  const [selectedCarId, setSelectedCarId] = useState('');
+  const [selectedItemId, setSelectedItemId] = useState('');
 
   useEffect(() => {
     const classname = 'cars';
@@ -27,17 +27,16 @@ const AddBill = () => {
 
   useEffect(() => {
     if (success === true) {
-      toast.success('Profile updated successfully');
       const Transfer = () => {
-        navigate(`/bills/${selectedCarId}`); // Pass selectedCarId to the next page
+        navigate(`/bills/${selectedItemId}`); // Pass selectedItemId to the next page
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
-  }, [success, selectedCarId, navigate]);
+  }, [success, selectedItemId, navigate]);
 
   const submitForm = async (item) => {
       const { car_id } = item;
-      setSelectedCarId(car_id); // Set car_id to the state
+      setSelectedItemId(car_id); // Set car_id to the state
       const classname = "bill";
       dispatch(addItem({ item, classname, car_id }))
       .unwrap()
@@ -45,7 +44,7 @@ const AddBill = () => {
         toast.success('Driver added successfully');
       })
       .catch((err = errors.message) => {
-        toast.error('Failed to add driver, Maybe the car has already a driver. Please try again.');
+        toast.error('Failed to add bill. Please try again.');
       });
   };
 

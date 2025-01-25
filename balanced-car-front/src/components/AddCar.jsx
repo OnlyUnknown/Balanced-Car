@@ -19,7 +19,6 @@ const AddCar = () => {
 
   useEffect(() => {
     if (success === true) {
-      toast.success('Profile updated successfully');
       const Transfer = () => {
         navigate('/main');
       };

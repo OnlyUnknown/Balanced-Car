@@ -33,10 +33,10 @@ const AddRevenue = () => {
       dispatch(addItem({ item, classname, car_id }))
       .unwrap()
       .then(() => {
-        toast.success('Driver added successfully');
+        toast.success('Revenue added successfully');
       })
       .catch((err = errors.message) => {
-        toast.error('Failed to add driver, Maybe the car has already a driver. Please try again.');
+        toast.error('Failed to add revenue. Please try again.');
       });
   };
   return (

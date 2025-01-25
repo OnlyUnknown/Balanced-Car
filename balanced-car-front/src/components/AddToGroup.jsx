@@ -1,5 +1,5 @@
 import '../styling/AddCar.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +16,7 @@ const AddBill = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
     const { items, success: success2 } = useSelector((state) => state.show);
+      const [selectedItemId, setSelectedItemId] = useState('');
 
   
     useEffect(() => {
@@ -25,21 +26,21 @@ const AddBill = () => {
 
   useEffect(() => {
     if (success === true) {
-      toast.success('Profile updated successfully');
       const Transfer = () => {
-        navigate('/main');
+        navigate(`/group/${selectedItemId}`);
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
   }, [success]);
 
   const submitForm = async (item, classname, car_id) => {
-        car_id = item.car_id
-      classname = "bill",
+    const { group_id } = item;
+    setSelectedItemId(group_id)
+      classname = "group",
       dispatch(addItem({ item, classname, car_id }))
       .unwrap()
       .then(() => {
-        toast.success('Driver added successfully');
+        toast.success('Added to group successfully');
       })
       .catch((err = errors.message) => {
         toast.error('Failed to add to the group. Please try again.');
