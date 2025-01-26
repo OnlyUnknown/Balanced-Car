@@ -40,11 +40,14 @@ const EditBill = () => {
   const submitForm = async (item, classname, id) => {
     classname = "Bill"
     id = cid
-    try {
-      dispatch(editItem({ classname, item, id }));
-    } catch (err) {
-      toast.error('Failed to update the bill. Please try again.');
-    }
+      dispatch(editItem({ classname, item, id }))
+      .unwrap()
+      .then(() => {
+        toast.success('Bill Has been edited successfully');
+      })
+      .catch(() => {
+        toast.error('Failed to edit the bill. Please try again.');
+      });
   };
 
   return (
