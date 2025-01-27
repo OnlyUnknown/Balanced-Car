@@ -20,7 +20,6 @@ const AddCar = () => {
 
   useEffect(() => {
     if (success === true) {
-      toast.success('Profile updated successfully');
       const Transfer = () => {
         navigate('/main');
       };
@@ -32,6 +31,34 @@ const AddCar = () => {
     const classname = 'drivers';
     dispatch(indexItems({ classname }));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (show_item) {
+      setValue('name', show_item.name || '');
+      setValue('car_type', show_item.car_type || '');
+      setValue('transimission_type', show_item.transmission_type || '');
+      setValue('model', show_item.model || '');
+      setValue('transimission_milage', show_item.transmission_milage || '');
+      setValue('milage', show_item.milage || '');
+      setValue('chassis_number', show_item.chassis_number || '');
+      setValue('auto_milage', show_item.auto_milage || '');
+      setValue('tires_age.tirerf', show_item.tires_age_tirerf || '');
+      setValue('tires_age.tirelf', show_item.tires_age_tirelf || '');
+      setValue('tires_age.tirerb', show_item.tires_age_tirerb || '');
+      setValue('tires_age.tirelb', show_item.tires_age_tirelb || '');
+      setValue('oil_milage', show_item.oil_milage || '');
+      setValue('buy_limit', show_item.buy_limit || '');
+      setValue('last_bid', show_item.last_bid || '');
+      setValue('for_bidding', show_item.for_bidding || '');
+      setValue('public', show_item.public || '');
+      setValue('note', show_item.note || '');
+    }
+  }, [show_item, setValue]);
+
+  useEffect(() => {
+    if (editSuccess)
+      toast.success('Car updated successfully');
+  }, [editSuccess]);
 
 
   const submitForm = async (item, classname) => {
@@ -51,7 +78,7 @@ const AddCar = () => {
       <Navigation />
       <form onSubmit={handleSubmit(submitForm)}>
         <div className="addcar">
-          <h3 className="title">Add a car</h3>
+          <h3 className="title">Edit car</h3>
           <div className="shadow-box-add">
             <div className="car_box_pic">
               Pic
@@ -62,49 +89,49 @@ const AddCar = () => {
                 type="text"
                 {...register('name', { required: true })}
                 placeholder="Car name"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="text"
                 {...register('car_type')}
                 placeholder="Car type"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="text"
                 {...register('transmission_type')}
                 placeholder="Transimission type"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="number"
                 {...register('model')}
                 placeholder="Model"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="number"
                 {...register('transmission_milage')}
                 placeholder="Transmission Milage"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="number"
                 {...register('milage')}
                 placeholder="Milage"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="text"
                 {...register('chassis_number')}
                 placeholder="Chassis number"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="number"
                 {...register('auto_milage')}
                 placeholder="Auto Milage"
-                disabled={success}
+                disabled={editSuccess}
               />
               <div className="tires">
                 <label>Tires age</label>
@@ -112,44 +139,44 @@ const AddCar = () => {
                   type="month"
                   {...register('tires_age.tirerf')}
                   placeholder="Tire age 1"
-                  disabled={success}
+                  disabled={editSuccess}
                 />
                 <input
                   type="month"
                   {...register('tires_age.tirelf')}
                   placeholder="Tire age 2"
-                  disabled={success}
+                  disabled={editSuccess}
                 />
                 <input
                   type="month"
                   {...register('tires_age.tirerb')}
                   placeholder="Tire age 3"
-                  disabled={success}
+                  disabled={editSuccess}
                 />
                 <input
                   type="month"
                   {...register('tires_age.tirelb')}
                   placeholder="Tire age 4"
-                  disabled={success}
+                  disabled={editSuccess}
                 />
               </div>
               <input
                 type="text"
                 {...register('oil_milage')}
                 placeholder="Oil Milage"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="text"
                 {...register('buy_limit')}
                 placeholder="buy_limit"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="text"
                 {...register('last_bid')}
                 placeholder="Last Bid"
-                disabled={success}
+                disabled={editSuccess}
               />
               <span>
                 {' '}
@@ -157,7 +184,7 @@ const AddCar = () => {
                 <input
                   type="checkbox"
                   {...register('for_bidding')}
-                  disabled={success}
+                  disabled={editSuccess}
                 />
               </span>
               <span>
@@ -166,36 +193,19 @@ const AddCar = () => {
                 <input
                   type="checkbox"
                   {...register('public')}
-                  disabled={success}
+                  disabled={editSuccess}
                 />
               </span>
               <textarea
                 type="text"
                 {...register('note')}
                 placeholder="Note"
-                disabled={success}
+                disabled={editSuccess}
               />
-                            <select
-                {...register("driver_id", { required: true })}
-                disabled={success}
-              >
-                <option value="" hidden>Select a driver</option>
-                {success2 === true ? (
-                  <>
-                    {items.map((driver) => (
-                      <option key={driver.id} value={driver.id}>
-                        {driver.name}
-                      </option>
-                    ))}
-                  </>
-                ) : (
-                  <option value="">No drivers available</option>
-                )}
-              </select>
-              <button type="submit" disabled={loading || success}>
+              <button type="submit" disabled={loading || editSuccess}>
                 {loading ? <Spinner /> : 'Create'}
               </button>
-              {errors && <Error message={errors.message} />}
+              {editErrors && <Error message={editErrors.message} />}
             </div>
           </div>
         </div>
