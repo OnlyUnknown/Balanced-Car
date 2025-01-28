@@ -1,10 +1,10 @@
-import '../styling/CarComp.scss';
+import '../../styling/CarComp.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { indexItems } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
-const CarComp = () => {
+const DriverComp = () => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
 
@@ -50,4 +50,4 @@ const CarComp = () => {
   );
 };
 
-export default CarComp;
+export default DriverComp;

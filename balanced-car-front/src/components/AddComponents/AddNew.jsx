@@ -1,4 +1,4 @@
-import '../styling/CarComp.scss';
+import '../../styling/CarComp.scss';
 
 const AddNew = () => (
   <div className="box">

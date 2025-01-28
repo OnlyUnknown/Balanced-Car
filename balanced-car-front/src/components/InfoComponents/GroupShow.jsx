@@ -1,5 +1,5 @@
-import '../styling/main.scss';
-import GroupComp from './GroupComp';
+import '../../styling/main.scss';
+import GroupComp from '../CompsComponents/GroupComp';
 import Navigation from '../Navigation';
 
 const GroupShow = () => (

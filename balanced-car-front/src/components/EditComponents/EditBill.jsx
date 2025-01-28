@@ -1,4 +1,4 @@
-import '../styling/prof.scss';
+import '../../styling/prof.scss';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';

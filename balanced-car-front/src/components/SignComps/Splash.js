@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styling/splash.scss';
+import '../../styling/splash.scss';
 
 const Splash = () => (
   <div className="splash">

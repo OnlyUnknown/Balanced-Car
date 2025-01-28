@@ -1,4 +1,4 @@
-import '../styling/main.scss';
+import '../../styling/main.scss';
 import Headroom from 'react-headroom';
 import DriverComp from '../CompsComponents/DriverComp';
 import Navigation from '../Navigation';

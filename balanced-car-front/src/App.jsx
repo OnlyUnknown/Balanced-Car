@@ -24,7 +24,7 @@ import RevenueIndex from './components/IndexComponents/RevenueIndex';
 import RevenueCarIndex from './components/IndexComponents/RevenueCarIndex';
 import EditBill from './components/EditComponents/EditBill';
 import GroupIndex from './components/IndexComponents/GroupIndex';
-import GroupShow from './components/GroupShow';
+import GroupShow from './components/InfoComponents/GroupShow';
 import AddGroup from './components/AddComponents/AddGroup';
 import DriverIndex from './components/IndexComponents/DriverIndex';
 

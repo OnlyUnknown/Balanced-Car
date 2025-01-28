@@ -1,4 +1,4 @@
-import '../styling/main.scss';
+import '../../styling/main.scss';
 import GroupsComp from '../CompsComponents/GroupsComp';
 import Navigation from '../Navigation';
 

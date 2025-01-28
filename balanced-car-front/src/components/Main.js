@@ -1,6 +1,6 @@
 import '../styling/main.scss';
 import Headroom from 'react-headroom';
-import CarComp from './CarComp';
+import CarComp from './CompsComponents/CarComp';
 import Navigation from './Navigation';
 
 const Main = () => (

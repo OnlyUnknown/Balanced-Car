@@ -1,4 +1,4 @@
-import '../styling/main.scss';
+import '../../styling/main.scss';
 import RevenueComp from '../CompsComponents/RevenueComp';
 import Navigation from '../Navigation';
 

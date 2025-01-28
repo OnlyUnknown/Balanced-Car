@@ -1,4 +1,4 @@
-import '../styling/prof.scss';
+import '../../styling/prof.scss';
 import { useSelector } from 'react-redux';
 import Navigation from '../Navigation';
 

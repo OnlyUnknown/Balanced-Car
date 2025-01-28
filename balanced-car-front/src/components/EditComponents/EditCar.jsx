@@ -1,4 +1,4 @@
-import '../styling/AddCar.scss';
+import '../../styling/AddCar.scss';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,7 +25,7 @@ const AddCar = () => {
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
-  }, [success]);
+  }, [editSuccess]);
 
   useEffect(() => {
     const classname = 'drivers';
@@ -49,8 +49,8 @@ const AddCar = () => {
       setValue('oil_milage', show_item.oil_milage || '');
       setValue('buy_limit', show_item.buy_limit || '');
       setValue('last_bid', show_item.last_bid || '');
-      setValue('for_bidding', show_item.for_bidding || '');
-      setValue('public', show_item.public || '');
+      setValue('for_bidding', show_item.for_bidding || false);
+      setValue('public', show_item.public || false);
       setValue('note', show_item.note || '');
     }
   }, [show_item, setValue]);
@@ -202,7 +202,7 @@ const AddCar = () => {
                 placeholder="Note"
                 disabled={editSuccess}
               />
-              <button type="submit" disabled={loading || editSuccess}>
+              <button type="submit" disabled={editLoading || editSuccess}>
                 {loading ? <Spinner /> : 'Create'}
               </button>
               {editErrors && <Error message={editErrors.message} />}

@@ -1,4 +1,4 @@
-import '../styling/main.scss';
+import '../../styling/main.scss';
 import { useParams } from 'react-router-dom';
 import RevenueComp from '../CompsComponents/RevenueCarComp';
 import Navigation from '../Navigation';

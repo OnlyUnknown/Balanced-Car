@@ -1,4 +1,4 @@
-import '../styling/main.scss';
+import '../../styling/main.scss';
 import BillComp from '../CompsComponents/BillComp';
 import Navigation from '../Navigation';
 
