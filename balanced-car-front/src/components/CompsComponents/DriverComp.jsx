@@ -17,7 +17,7 @@ const DriverComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
-          {items.map((app) => (
+          {items?.map((app) => (
             <div className="box">
               <div className="pic">Pic</div>
               <div className="info">

@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { addItem } from '../../features/add/addActions';
-import { indexItems } from '../../features/show/showActions';
+import { showItem } from '../../features/show/showActions';
+import { useParams } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';
@@ -15,11 +16,12 @@ const AddCar = () => {
     const { loading: editLoading, errors: editErrors, success: editSuccess } = useSelector((state) => state.edit);  
     const { items, success: success2 } = useSelector((state) => state.show);
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const navigate = useNavigate();
+    let { cid } = useParams();
 
   useEffect(() => {
-    if (success === true) {
+    if (editSuccess === true) {
       const Transfer = () => {
         navigate('/main');
       };
@@ -28,9 +30,30 @@ const AddCar = () => {
   }, [editSuccess]);
 
   useEffect(() => {
-    const classname = 'drivers';
-    dispatch(indexItems({ classname }));
-  }, [dispatch]);
+    const classname = "car";
+    const id = cid;
+    dispatch(showItem({ classname, id }));
+  }, [dispatch, cid]);
+
+  const parseTiresAge = (tiresAgeString) => {
+    if (!tiresAgeString) return {};
+
+    // Convert the string to a valid JSON format
+    let stringData = tiresAgeString.replace(/=>/g, ':').replace(/"(\w+)"\s*:\s*"/g, '"$1": "');
+
+    // Parse the string into a JavaScript object
+    let dataObject;
+    try {
+      dataObject = JSON.parse(stringData);
+    } catch (e) {
+      console.error('Invalid JSON format', e);
+      return {};
+    }
+    return dataObject;
+  };
+
+  // Parse the tires_age string into an object
+  const tiresAge = showItem?.tires_age ? parseTiresAge(showItem.tires_age) : {};
 
   useEffect(() => {
     if (show_item) {
@@ -42,10 +65,10 @@ const AddCar = () => {
       setValue('milage', show_item.milage || '');
       setValue('chassis_number', show_item.chassis_number || '');
       setValue('auto_milage', show_item.auto_milage || '');
-      setValue('tires_age.tirerf', show_item.tires_age_tirerf || '');
-      setValue('tires_age.tirelf', show_item.tires_age_tirelf || '');
-      setValue('tires_age.tirerb', show_item.tires_age_tirerb || '');
-      setValue('tires_age.tirelb', show_item.tires_age_tirelb || '');
+      setValue('tires_age.tirerf', tiresAge.tirerf || '');
+      setValue('tires_age.tirelf', tiresAge.tirelf || '');
+      setValue('tires_age.tirerb', tiresAge.tirerb || '');
+      setValue('tires_age.tirelb', tiresAge.tirelb || '');
       setValue('oil_milage', show_item.oil_milage || '');
       setValue('buy_limit', show_item.buy_limit || '');
       setValue('last_bid', show_item.last_bid || '');
@@ -203,7 +226,7 @@ const AddCar = () => {
                 disabled={editSuccess}
               />
               <button type="submit" disabled={editLoading || editSuccess}>
-                {loading ? <Spinner /> : 'Create'}
+                {editLoading ? <Spinner /> : 'Create'}
               </button>
               {editErrors && <Error message={editErrors.message} />}
             </div>

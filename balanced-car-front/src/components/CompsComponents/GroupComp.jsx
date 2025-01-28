@@ -20,7 +20,7 @@ const GroupComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
-          {item.map((app) => (
+          {item?.map((app) => (
             <div className="box">
               <div className="pic">Pic</div>
               <div className="info">

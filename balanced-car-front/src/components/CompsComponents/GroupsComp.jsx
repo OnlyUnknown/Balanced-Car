@@ -16,7 +16,7 @@ const GroupsComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
-          {items.map((app) => (
+          {items?.map((app) => (
             <div className="box">
               <div className="info">
                 <div>

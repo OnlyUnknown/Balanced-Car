@@ -27,6 +27,7 @@ import GroupIndex from './components/IndexComponents/GroupIndex';
 import GroupShow from './components/InfoComponents/GroupShow';
 import AddGroup from './components/AddComponents/AddGroup';
 import DriverIndex from './components/IndexComponents/DriverIndex';
+import EditCar from './components/EditComponents/EditCar';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/main" element={<Main />} />
         <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/editbill/:cid" element={<EditBill />} />
+        <Route path="/editcar/:cid" element={<EditCar />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
