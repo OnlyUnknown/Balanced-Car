@@ -35,28 +35,11 @@ const AddCar = () => {
     dispatch(showItem({ classname, id }));
   }, [dispatch, cid]);
 
-  const parseTiresAge = (tiresAgeString) => {
-    if (!tiresAgeString) return {};
-
-    // Convert the string to a valid JSON format
-    let stringData = tiresAgeString.replace(/=>/g, ':').replace(/"(\w+)"\s*:\s*"/g, '"$1": "');
-
-    // Parse the string into a JavaScript object
-    let dataObject;
-    try {
-      dataObject = JSON.parse(stringData);
-    } catch (e) {
-      console.error('Invalid JSON format', e);
-      return {};
-    }
-    return dataObject;
-  };
-
-  // Parse the tires_age string into an object
-  const tiresAge = showItem?.tires_age ? parseTiresAge(showItem.tires_age) : {};
-
   useEffect(() => {
     if (show_item) {
+      const tires_age = show_item.tires_age || '{}';
+      const validJson = tires_age.replace(/"=>"/g, '":"').replace(/"(\w+)"/g, '"$1"');
+      const tiresAge = JSON.parse(validJson);
       setValue('name', show_item.name || '');
       setValue('car_type', show_item.car_type || '');
       setValue('transimission_type', show_item.transmission_type || '');
