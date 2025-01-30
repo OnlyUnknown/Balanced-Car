@@ -18,7 +18,7 @@ const RevenueComp = () => {
       {success === true ? (
         <div className="main-box">
           {items?.map((app) => (
-            <div className="box">
+            <a href={`/revenueinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
@@ -39,7 +39,7 @@ const RevenueComp = () => {
                 </div>
                 <button type="button">Remove</button>
               </div>
-            </div>
+            </a>
 
           ))}
         </div>

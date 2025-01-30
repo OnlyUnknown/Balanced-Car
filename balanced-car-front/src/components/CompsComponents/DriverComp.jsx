@@ -18,7 +18,7 @@ const DriverComp = () => {
       {success === true ? (
         <div className="main-box">
           {items?.map((app) => (
-            <div className="box">
+            <a href={`/driverinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
@@ -35,7 +35,7 @@ const DriverComp = () => {
                 </div>
                 <button type="button">Remove</button>
               </div>
-            </div>
+            </a>
 
           ))}
         </div>

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
-import { addItem } from '../../features/add/addActions';
+import { editItem } from '../../features/edit/editActions';
 import { showItem } from '../../features/show/showActions';
 import { useParams } from 'react-router-dom';
 import Navigation from '../Navigation';
@@ -42,9 +42,9 @@ const AddCar = () => {
       const tiresAge = JSON.parse(validJson);
       setValue('name', show_item.name || '');
       setValue('car_type', show_item.car_type || '');
-      setValue('transimission_type', show_item.transmission_type || '');
+      setValue('transmission_type', show_item.transmission_type || '');
       setValue('model', show_item.model || '');
-      setValue('transimission_milage', show_item.transmission_milage || '');
+      setValue('transmission_milage', show_item.transmission_milage || '');
       setValue('milage', show_item.milage || '');
       setValue('chassis_number', show_item.chassis_number || '');
       setValue('auto_milage', show_item.auto_milage || '');
@@ -67,9 +67,10 @@ const AddCar = () => {
   }, [editSuccess]);
 
 
-  const submitForm = async (item, classname) => {
-      classname = "car"
-      dispatch(addItem({ item, classname }))
+  const submitForm = async (item, classname, id) => {
+      classname = "Car"
+      id = cid
+      dispatch(editItem({ classname, item, id }))
       .unwrap()
       .then(() => {
         toast.success('Car Has been edited successfully');
