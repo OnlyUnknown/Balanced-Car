@@ -16,8 +16,9 @@ const GroupsComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
+          {console.log(items)}
           {items?.map((app) => (
-            <div className="box">
+            <a href={`/group/${app.group_type}/${app.id}`} className="box">
               <div className="info">
                 <div>
                   name:
@@ -33,7 +34,7 @@ const GroupsComp = () => {
                 </div>
                 <button type="button">Remove</button>
               </div>
-            </div>
+            </a>
 
           ))}
         </div>

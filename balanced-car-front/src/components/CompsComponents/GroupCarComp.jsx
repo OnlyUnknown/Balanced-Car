@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { showItem } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
-const GroupComp = () => {
+const GroupCarComp = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   const { gid } = useParams();
@@ -20,8 +20,9 @@ const GroupComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
+          {console.log(item)}
           {item?.map((app) => (
-            <div className="box">
+            <a href={`/carinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
@@ -42,7 +43,7 @@ const GroupComp = () => {
                 </div>
                 <button type="button">Remove</button>
               </div>
-            </div>
+            </a>
 
           ))}
         </div>
@@ -57,4 +58,4 @@ const GroupComp = () => {
   );
 };
 
-export default GroupComp;
+export default GroupCarComp;

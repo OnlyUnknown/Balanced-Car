@@ -24,7 +24,7 @@ import RevenueIndex from './components/IndexComponents/RevenueIndex';
 import RevenueCarIndex from './components/IndexComponents/RevenueCarIndex';
 import EditBill from './components/EditComponents/EditBill';
 import GroupIndex from './components/IndexComponents/GroupIndex';
-import GroupShow from './components/InfoComponents/GroupShow';
+import GroupShow from './components/InfoComponents/GroupDriverShow';
 import AddGroup from './components/AddComponents/AddGroup';
 import DriverIndex from './components/IndexComponents/DriverIndex';
 import EditCar from './components/EditComponents/EditCar';
@@ -37,7 +37,8 @@ function App() {
         <Route path="/signin" element={<SigninScreen />} />
         <Route exact path="/" element={<Main />} />
         <Route path="/groups" element={<GroupIndex />} />
-        <Route path="/group/:gid" element={<GroupShow />} />
+        <Route path="/group/cars/:gid" element={<GroupShow />} />
+        <Route path="/group/drivers/:gid" element={<GroupShow />} />
         <Route path="/Bills" element={<BillIndex />} />
         <Route path="/Bills/:cid" element={<BillCarIndex />} />
         <Route path="/Revenues" element={<RevenueIndex />} />

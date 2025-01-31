@@ -1,12 +1,12 @@
 import '../../styling/main.scss';
-import GroupComp from '../CompsComponents/GroupComp';
+import GroupCarComp from '../CompsComponents/GroupCarComp';
 import Navigation from '../Navigation';
 
 const GroupShow = () => (
   <>
     <Navigation />
     <div className="main_box">
-      <GroupComp />
+      <GroupCarComp />
     </div>
   </>
 );
