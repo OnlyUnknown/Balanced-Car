@@ -28,6 +28,7 @@ import GroupShow from './components/InfoComponents/GroupDriverShow';
 import AddGroup from './components/AddComponents/AddGroup';
 import DriverIndex from './components/IndexComponents/DriverIndex';
 import EditCar from './components/EditComponents/EditCar';
+import AddToGroup from './components/AddComponents/AddToGroup';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
         <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/editbill/:cid" element={<EditBill />} />
         <Route path="/editcar/:cid" element={<EditCar />} />
+        <Route path='/addtoGroup' element={<AddToGroup />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

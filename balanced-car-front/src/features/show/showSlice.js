@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { showItem, indexItems } from './showActions';
+import { showItem, indexItems, indexGroups } from './showActions';
 
 const getUserToken = () => {
   const userToken = localStorage.getItem('userToken');
@@ -14,6 +14,7 @@ const initialState = {
   success: false,
   item: null,
   items: null,
+  groups: null,
 };
 
 const showSlice = createSlice({
@@ -52,7 +53,7 @@ const showSlice = createSlice({
     [indexItems.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-    },
+    },  
   },
 });
 

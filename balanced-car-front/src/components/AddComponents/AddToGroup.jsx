@@ -5,24 +5,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { addItem } from '../../features/add/addActions';
-import { indexItems } from '../../features/show/showActions';
+import { indexGroups, indexItems } from '../../features/show/showActions';
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';
 /* eslint-disable */
-const AddBill = () => {
+const AddToGroup = () => {
   const { loading, errors, success } = useSelector((state) => state.add);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-    const { items, success: success2 } = useSelector((state) => state.show);
+    const { items, groups, success: success2 } = useSelector((state) => state.show);
       const [selectedItemId, setSelectedItemId] = useState('');
 
-  
-    useEffect(() => {
-      const classname = 'cars';
-      dispatch(indexItems({ classname }));
-    }, [dispatch]);
+
+      useEffect(() => {
+        const classname = 'cars';
+        // const groups = 'groups';
+        dispatch(indexItems({ classname }));
+        // dispatch(indexGroups( {groups} ));
+      }, [dispatch]);
 
   useEffect(() => {
     if (success === true) {
@@ -64,6 +66,7 @@ const AddBill = () => {
                 {success2 === true ? (
                   <>
                                     <option value="" hidden>Select a car</option>
+                                    {console.log(items)}
                     {items.map((car) => (
                       <option key={car.id} value={car.id}>
                         {car.name}, {car.id}
@@ -105,4 +108,4 @@ const AddBill = () => {
   );
 };
 
-export default AddBill;
+export default AddToGroup;
