@@ -57,7 +57,7 @@ export const indexItems = createAsyncThunk(
 );
 
 export const indexGroups = createAsyncThunk(
-  'show/index',
+  'show/groups',
   async ({ groups }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.userToken; // Retrieve token from the state

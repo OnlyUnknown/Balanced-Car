@@ -15,14 +15,15 @@ const AddToGroup = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-    const { items, groups, success: success2 } = useSelector((state) => state.show);
+    const { items, groups, success: success2, successg } = useSelector((state) => state.show);
       const [selectedItemId, setSelectedItemId] = useState('');
 
 
       useEffect(() => {
         const classname = 'cars';
-        // const groups = 'groups';
+        const groups = 'groups';
         dispatch(indexItems({ classname }));
+        dispatch(indexGroups({ groups }));
         // dispatch(indexGroups( {groups} ));
       }, [dispatch]);
 
@@ -70,6 +71,23 @@ const AddToGroup = () => {
                     {items.map((car) => (
                       <option key={car.id} value={car.id}>
                         {car.name}, {car.id}
+                      </option>
+                    ))}
+                  </>
+                ) : (
+                  <option value="">No cars available</option>
+                )}
+              </select>
+              <select
+                {...register("group_id", { required: true })}
+                disabled={success}
+              >
+                {successg === true ? (
+                  <>
+                                    <option value="" hidden>Select a group</option>
+                    {groups.map((group) => (
+                      <option key={group.id} value={group.id}>
+                        {group.name}, {group.id}
                       </option>
                     ))}
                   </>
