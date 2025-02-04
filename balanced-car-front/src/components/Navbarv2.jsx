@@ -58,6 +58,9 @@ function Navbarv2() {
             <NavLink onClick={removeActive} className={`${styles.navLink}`} to="/revenues">Revenues</NavLink>
           </li>
           <li>
+            <NavLink onClick={removeActive} className={`${styles.navLink}`} to="/groups">Groups</NavLink>
+          </li>
+          <li>
             {userInfo ? (
               <NavLink onClick={removeActive} className={`${styles.navLink}`} to="/drivers">
                 Drivers

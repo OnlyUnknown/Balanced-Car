@@ -2,7 +2,7 @@ import '../../styling/main.scss';
 import GroupDriverComp from '../CompsComponents/GroupDriverComp';
 import Navigation from '../Navigation';
 
-const GroupShow = () => (
+const GroupDriverShow = () => (
   <>
     <Navigation />
     <div className="main_box">
@@ -11,4 +11,4 @@ const GroupShow = () => (
   </>
 );
 
-export default GroupShow;
+export default GroupDriverShow;
