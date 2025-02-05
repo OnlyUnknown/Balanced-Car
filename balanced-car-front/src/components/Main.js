@@ -14,6 +14,14 @@ const Main = () => (
     <div className="main_box">
       <CarComp />
     </div>
+          <a href={`/addcar`} className="box">
+
+              <div className="info">
+
+Add new
+
+              </div>
+            </a>
   </>
 );
 

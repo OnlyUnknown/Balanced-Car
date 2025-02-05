@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { showItem } from '../../features/show/showActions';
-import Navigation from '../Nav';
+import Navigation from '../Navigation';
 import Spinner from '../Spinner';
 /* eslint-disable */
 
@@ -31,7 +31,7 @@ const BillInfo = () => {
             <div>
               Total: {item.total}
             </div>
-            <div>The car: <a href={`/carinfo/${item.car_id}`}>{item.car_id}</a></div>
+            <a href={`/carinfo/${item.car_id}`}><div>The car: {item.car_id}</div></a>
             <div>date: {item.date}</div>
             <div>Note: {item.note}</div>
           </div>

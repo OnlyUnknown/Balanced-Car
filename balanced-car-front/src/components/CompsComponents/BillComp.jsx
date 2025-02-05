@@ -22,11 +22,11 @@ const BillComp = () => {
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
-                  Oil change:
+                  Total:
                   {app.total}
                 </div>
                 <div>
-                  name:
+                  Id:
                   {app.id}
                 </div>
                 <div>
