@@ -30,8 +30,8 @@ const BillComp = () => {
                   {app.id}
                 </div>
                 <div>
-                  Tire age:
-
+                  date:
+                  {app.date}
                 </div>
                 <div>
                   Model:

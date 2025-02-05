@@ -23,8 +23,8 @@ const AddToGroup = () => {
     const groups = 'groups';
     dispatch(indexItems({ classname }));
     dispatch(indexGroups({ groups }));
-    // dispatch(indexGroups( {groups} ));
   }, [dispatch]);
+
   useEffect(() => {
     if (success && selectedItemId) {
       navigate(`/group/${selectedItemId}`);
@@ -60,6 +60,11 @@ const AddToGroup = () => {
           <div className="shadow-box-add">
             <div className="car_box_pic">Pic</div>
             <div className="info_box">
+              <select {...register('item_type', { required: true })} disabled={success}>
+                <option value="">Select Category</option>
+                <option value="car">Cars</option>
+                <option value="driver">Drivers</option>
+              </select>
               <select {...register("item_id", { required: true })} disabled={success}>
                 {success2 ? (
                   <>
@@ -87,11 +92,6 @@ const AddToGroup = () => {
                 ) : (
                   <option value="">No groups available</option>
                 )}
-              </select>
-              <select {...register('item_type', { required: true })} disabled={success}>
-                <option value="">Select Category</option>
-                <option value="car">Cars</option>
-                <option value="driver">Drivers</option>
               </select>
               <button type="submit" disabled={loading || success}>
                 {loading ? <Spinner /> : 'Create'}
