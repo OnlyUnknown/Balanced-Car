@@ -30,6 +30,7 @@ import AddGroup from './components/AddComponents/AddGroup';
 import DriverIndex from './components/IndexComponents/DriverIndex';
 import EditCar from './components/EditComponents/EditCar';
 import AddToGroup from './components/AddComponents/AddToGroup';
+import PublicGroupsIndex from './components/IndexComponents/PublicGroupIndex';
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
         <Route path="/editbill/:cid" element={<EditBill />} />
         <Route path="/editcar/:cid" element={<EditCar />} />
         <Route path="/addtoGroup" element={<AddToGroup />} />
+        <Route path='/public_groups/:cid' element={<PublicGroupsIndex />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
