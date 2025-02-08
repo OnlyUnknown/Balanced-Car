@@ -10,7 +10,7 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def show_public_groups
-    @user = User.find_by_id(params[:user_id])
+    @user = User.find_by_id(params[:id])
     if @user
       @public_groups = @user.groups.where(public: true)
       render json: @public_groups, except: %i[created_at updated_at]

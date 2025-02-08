@@ -63,7 +63,7 @@ function App() {
         <Route path="/editbill/:cid" element={<EditBill />} />
         <Route path="/editcar/:cid" element={<EditCar />} />
         <Route path="/addtoGroup" element={<AddToGroup />} />
-        <Route path='/public_groups/:cid' element={<PublicGroupsIndex />} />
+        <Route path='/public_groups/:id' element={<PublicGroupsIndex />} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

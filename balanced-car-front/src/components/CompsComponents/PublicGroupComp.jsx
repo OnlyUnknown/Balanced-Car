@@ -5,20 +5,19 @@ import PropTypes from 'prop-types';
 import { showItem } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
-const PublicGroupsComp = ({ cid }) => {
-  const { items, loading, success } = useSelector((state) => state.show);
+const PublicGroupsComp = ({ id }) => {
+  const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const classname = "public_groups";
-    dispatch(showItem({ classname, id: cid }));
-  }, [dispatch, cid]);
+    dispatch(showItem({ classname, id }));
+  }, [dispatch, id]);
   return (
     <>
       {success === true ? (
         <div className="main-box">
-          {console.log(items)}
-          {items?.map((app) => (
+          {item?.map((app) => (
             <a href={`/group/${app.group_type}/${app.id}`} className="box">
               <div className="info">
                 <div>
@@ -51,7 +50,7 @@ const PublicGroupsComp = ({ cid }) => {
 };
 
 PublicGroupsComp.propTypes = {
-  cid: PropTypes.string.isRequired, // Assuming cid is a number
+  id: PropTypes.string.isRequired, // Assuming cid is a number
 };
 
 export default PublicGroupsComp;

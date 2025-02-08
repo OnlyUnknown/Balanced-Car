@@ -4,12 +4,13 @@ import PublicGroupsComp from '../CompsComponents/PublicGroupComp';
 import Navigation from '../Navigation';
 
 const PublicGroupsIndex = () => {
-      const { cid } = useParams();
+      const { id } = useParams();
       return (
   <>
+  {console.log(id)}
     <Navigation />
     <div className="main_box">
-      <PublicGroupsComp cid={cid} />
+      <PublicGroupsComp id={id} />
     </div>
   </>
 )
