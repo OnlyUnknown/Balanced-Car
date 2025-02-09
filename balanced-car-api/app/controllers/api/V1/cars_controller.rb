@@ -20,7 +20,8 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def show_group_items
-    @group = Group.find_by(id: params[:group_id], public: true)
+    @group = Group.find_by(id: params[:id], public: true)
+    print @group
     if @group
       case @group.group_type
       when 'drivers'
