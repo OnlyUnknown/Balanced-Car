@@ -28,9 +28,7 @@ Rails.application.routes.draw do
         delete '/remove_from_group/:group_id/:item_type/:item_id', to: 'groups#remove_from_group', on: :collection
         get "show/public_group/:id", to: 'cars#show_group_items', on: :collection
         get "show/public_groups/:id", to: 'cars#show_public_groups', on: :collection
-      end
-      resources :car, only: [] do
-        get 'show/:id', to: 'cars#show', on: :collection
+        get 'show/public_car/:id', to: 'cars#show', on: :collection
       end
       resources :users, only: [:show, :create, :destroy]
     end

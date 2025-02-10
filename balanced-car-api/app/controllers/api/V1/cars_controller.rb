@@ -5,7 +5,7 @@ class Api::V1::CarsController < ApplicationController
     if @car.for_bidding == false
       render json: @car, except: %i[public for_bidding last_bid buy_limit commercial revenues chassis_number]
     else
-      render json: @car, except: %i[public commercial chassis_number revenues]
+      render json: @car, except: %i[public for_bidding last_bid buy_limit commercial revenues chassis_number]
     end
   end
 

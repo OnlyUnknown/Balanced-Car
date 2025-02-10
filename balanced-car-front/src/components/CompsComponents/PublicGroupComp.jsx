@@ -20,7 +20,7 @@ const PublicGroupComp = ({id}) => {
         <div className="main-box">
           {console.log(item)}
           {item?.map((app) => (
-            <a href={`/carinfo/${app.id}`} className="box">
+            <a href={`/public_car/${app.id}`} className="box">
               <div className="pic">Pic</div>
               <div className="info">
                 <div>
