@@ -1,11 +1,11 @@
 import '../../styling/CarComp.scss';
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { showItem } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
-const PublicGroupComp = ({id}) => {
+const PublicGroupComp = ({ id }) => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
 
@@ -18,7 +18,6 @@ const PublicGroupComp = ({id}) => {
     <>
       {success === true ? (
         <div className="main-box">
-          {console.log(item)}
           {item?.map((app) => (
             <a href={`/public_car/${app.id}`} className="box">
               <div className="pic">Pic</div>
@@ -54,6 +53,9 @@ const PublicGroupComp = ({id}) => {
       )}
     </>
   );
+};
+PublicGroupComp.propTypes = {
+  id: PropTypes.string.isRequired,
 };
 
 export default PublicGroupComp;

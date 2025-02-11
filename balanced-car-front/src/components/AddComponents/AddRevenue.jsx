@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { addItem } from '../../features/add/addActions';
-import { indexItems } from '../../features/show/showActions';
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';

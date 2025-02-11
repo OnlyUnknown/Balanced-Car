@@ -55,8 +55,8 @@ const showSlice = createSlice({
     [indexItems.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-    },  
-        [indexGroups.pending]: (state) => {
+    },
+    [indexGroups.pending]: (state) => {
       state.loadingg = true;
       state.error = null;
     },
@@ -68,7 +68,7 @@ const showSlice = createSlice({
     [indexGroups.rejected]: (state, { payload }) => {
       state.loadingg = false;
       state.error = payload;
-    },  
+    },
   },
 });
 

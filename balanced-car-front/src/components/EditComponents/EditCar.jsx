@@ -2,11 +2,11 @@ import '../../styling/AddCar.scss';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { editItem } from '../../features/edit/editActions';
 import { showItem } from '../../features/show/showActions';
-import { useParams } from 'react-router-dom';
+
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';

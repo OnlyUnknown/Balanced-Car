@@ -20,7 +20,6 @@ const GroupCarComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
-          {console.log(item)}
           {item?.map((app) => (
             <a href={`/carinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>

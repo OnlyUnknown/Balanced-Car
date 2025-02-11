@@ -2,11 +2,7 @@ class Api::V1::CarsController < ApplicationController
   def show
     @car = Car.find_by_id(params[:id])
     check_publicity(@car)
-    if @car.for_bidding == false
-      render json: @car, except: %i[public for_bidding last_bid buy_limit commercial revenues chassis_number]
-    else
-      render json: @car, except: %i[public for_bidding last_bid buy_limit commercial revenues chassis_number]
-    end
+    render json: @car, except: %i[public for_bidding last_bid buy_limit commercial revenues chassis_number]
   end
 
   def show_public_groups

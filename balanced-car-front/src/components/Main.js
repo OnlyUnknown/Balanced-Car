@@ -14,14 +14,14 @@ const Main = () => (
     <div className="main_box">
       <CarComp />
     </div>
-          <a href={`/addcar`} className="box">
+    <a href="/addcar" className="box">
 
-              <div className="info">
+      <div className="info">
 
-Add new
+        Add new
 
-              </div>
-            </a>
+      </div>
+    </a>
   </>
 );
 

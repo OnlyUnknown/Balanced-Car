@@ -111,7 +111,7 @@ class Api::V1::UsersController < ApplicationController
               revenue_params
             end
     @item = resource.new(param)
-    if  @item.save 
+    if @item.save
       render json: @item
     else
       render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
@@ -161,6 +161,7 @@ end
 def driver_params
   @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
   raise 'Car already has a driver' if @car&.driver.present?
+
   params.require(:item).permit(
     :name,
     :identification,

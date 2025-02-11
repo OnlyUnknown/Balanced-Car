@@ -10,7 +10,7 @@ const PublicGroupsComp = ({ id }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const classname = "public_groups";
+    const classname = 'public_groups';
     dispatch(showItem({ classname, id }));
   }, [dispatch, id]);
   return (

@@ -20,7 +20,6 @@ const GroupDriverComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
-          {console.log(item)}
           {item?.map((app) => (
             <a href={`/driverinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>

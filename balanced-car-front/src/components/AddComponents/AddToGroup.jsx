@@ -12,7 +12,9 @@ import Spinner from '../Spinner';
 
 const AddToGroup = () => {
   const { loading, errors, success } = useSelector((state) => state.add);
-  const { items, groups, success: success2, successg } = useSelector((state) => state.show);
+  const {
+    items, groups, success: success2, successg,
+  } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -32,16 +34,16 @@ const AddToGroup = () => {
   }, [success, selectedItemId]);
 
   const submitForm = async (data) => {
-    const { item_id, item_type, group_id } = data;
+    const { ItemId, ItemType, GroupId } = data;
 
-    if (!item_id || !group_id || !item_type) {
+    if (!ItemId || !GroupId || !ItemType) {
       toast.error('Please fill all fields before submitting.');
       return;
     }
 
-    setSelectedItemId(group_id);
+    setSelectedItemId(GroupId);
 
-    dispatch(addToGroup({ item_id, item_type, group_id }))
+    dispatch(addToGroup({ ItemId, ItemType, GroupId }))
       .unwrap()
       .then(() => {
         toast.success('Added to group successfully');
@@ -60,18 +62,20 @@ const AddToGroup = () => {
           <div className="shadow-box-add">
             <div className="car_box_pic">Pic</div>
             <div className="info_box">
-              <select {...register('item_type', { required: true })} disabled={success}>
+              <select name="item_type" ref={register({ required: true })} disabled={success}>
                 <option value="">Select Category</option>
                 <option value="car">Cars</option>
                 <option value="driver">Drivers</option>
               </select>
-              <select {...register("item_id", { required: true })} disabled={success}>
+              <select name="item_id" ref={register({ required: true })} disabled={success}>
                 {success2 ? (
                   <>
                     <option value="" hidden>Select a car</option>
                     {items.map((car) => (
                       <option key={car.id} value={car.id}>
-                        {car.name}, {car.id}
+                        {car.name}
+                        ,
+                        {car.id}
                       </option>
                     ))}
                   </>
@@ -79,13 +83,15 @@ const AddToGroup = () => {
                   <option value="">No cars available</option>
                 )}
               </select>
-              <select {...register("group_id", { required: true })} disabled={success}>
+              <select name="group_id" ref={register({ required: true })} disabled={success}>
                 {successg ? (
                   <>
                     <option value="" hidden>Select a group</option>
                     {groups.map((group) => (
                       <option key={group.id} value={group.id}>
-                        {group.name}, {group.id}
+                        {group.name}
+                        ,
+                        {group.id}
                       </option>
                     ))}
                   </>
