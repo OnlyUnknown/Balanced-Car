@@ -1,0 +1,52 @@
+import '../../styling/Carinfo.scss';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { showItem } from '../../features/show/showActions';
+import Navigation from '../Navigation';
+import Spinner from '../Spinner';
+/* eslint-disable */
+
+
+const DriverInfo = () => {
+  const { item, loading, success } = useSelector((state) => state.show);
+  const dispatch = useDispatch();
+  let { cid } = useParams();
+
+  useEffect(() => {
+    const classname = "driver";
+    const id = cid;
+    dispatch(showItem({ classname, id }));
+  }, [dispatch, cid]);
+
+
+  return (
+    <>
+      <Navigation />
+      {success === true ? (
+        <div className="border">
+          <div className="carpic">Driver pic</div>
+          <div className="carinfo">
+          <div>Id: {item.id}</div>
+          <div>Id: {item.identification}</div>
+            <div>
+              Name: {item.name}
+            </div>
+            <div>Phone Number: {item.phone_number} </div>
+            <div>The car: <a href={`/carinfo/${item.car_id}`}>{item.car_id}</a></div>
+            <div>date: {item.nationality}</div>
+            <div>Note: {item.note}</div>
+          </div>
+        </div>
+      ) : (
+        loading === true ? (
+          <Spinner/>
+        ) : (
+          <div>empty</div>
+        )
+      )}
+    </>
+  );
+};
+
+export default DriverInfo;

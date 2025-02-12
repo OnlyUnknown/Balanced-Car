@@ -4,6 +4,7 @@ class Api::V1::UsersController < ApplicationController
                 only: %i[create_item index update_item
                          delete_car switch_publicity
                          update_driver profile update_profile]
+  @error = nil
   def index_cars
     @cars = Car.joins(:user).where(users: { id: current_devise_api_token.resource_owner })
     render json: @cars, except: %i[revenues bills drivers user]
@@ -113,7 +114,7 @@ class Api::V1::UsersController < ApplicationController
     if @item.save
       render json: @item
     else
-      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @item.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -131,6 +132,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def car_params
+    @driver = Driver.find_by_id(params[:driver_id]) if params[:driver_id].present?
     params.require(:item).permit(
       :name,
       :oil_milage,
@@ -147,9 +149,10 @@ class Api::V1::UsersController < ApplicationController
       :commercial,
       :public,
       :chassis_number,
-      :driver,
+      :driver_id,
       tires_age: %i[tirerf tirelf tirerb tirelb]
     ).merge(
+      driver: @driver,
       user: current_devise_api_token.resource_owner
     )
   end
@@ -157,6 +160,8 @@ end
 
 def driver_params
   @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
+  raise 'Car already has a driver' if @car&.driver.present?
+
   params.require(:item).permit(
     :name,
     :identification,

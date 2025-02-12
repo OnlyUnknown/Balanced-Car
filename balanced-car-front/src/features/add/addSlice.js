@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addItem } from './addActions';
+import { addGroup, addItem, addToGroup } from './addActions';
 
 // initialize userToken from local storage
 const getUserToken = () => {
@@ -38,6 +38,31 @@ const addSlice = createSlice({
       state.error = payload;
     },
 
+    // create group
+    [addGroup.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [addGroup.fulfilled]: (state) => {
+      state.loading = false;
+      state.success = true;
+    },
+    [addGroup.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
+    [addToGroup.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [addToGroup.fulfilled]: (state) => {
+      state.loading = false;
+      state.success = true;
+    },
+    [addToGroup.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+    },
   },
 });
 
