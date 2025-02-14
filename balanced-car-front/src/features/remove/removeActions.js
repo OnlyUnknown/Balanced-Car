@@ -4,7 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 const backendURL = 'http://localhost:3001/api/v1';
 
 export const removeItem = createAsyncThunk(
-  'add/item',
+  'remove/item',
   async ({ item, classname }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.userToken; // Retrieve token from the state

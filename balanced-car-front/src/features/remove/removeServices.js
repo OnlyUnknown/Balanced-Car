@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const authApi = createApi({
+export const removeApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     // base url of backend API
@@ -28,4 +28,4 @@ export const authApi = createApi({
 
 // export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUserDetailsQuery } = authApi;
+export const { useGetUserDetailsQuery } = removeApi;
