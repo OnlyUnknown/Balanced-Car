@@ -5,7 +5,7 @@ const backendURL = 'http://localhost:3001/api/v1';
 
 export const removeItem = createAsyncThunk(
   'remove/item',
-  async ({ item, classname }, { getState, rejectWithValue }) => {
+  async ({ item, classname,  id }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.userToken; // Retrieve token from the state
       const config = {
@@ -14,7 +14,7 @@ export const removeItem = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       };
-      const data = await axios.post(
+      const data = await axios.delete(
         `${backendURL}/user/delete_resource/${id}`,
         { resource: classname, item},
         config,

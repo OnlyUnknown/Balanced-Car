@@ -2,6 +2,7 @@ import '../../styling/CarComp.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { indexItems } from '../../features/show/showActions';
+import RemoveComp from './RemoveComp';
 import Spinner from '../Spinner';
 
 const CarComp = () => {
@@ -37,7 +38,7 @@ const CarComp = () => {
                   Model:
                   {app.model}
                 </div>
-                <button type="button">Remove</button>
+                <RemoveComp resource={"cars"} cid={app.id} />
               </div>
             </a>
 

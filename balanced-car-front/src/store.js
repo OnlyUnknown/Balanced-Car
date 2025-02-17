@@ -19,7 +19,7 @@ const store = configureStore({
     [addApi.reducerPath]: addApi.reducer,
     show: showReducer,
     [removeApi.reducerPath]: removeApi.reducer,
-    show: removeReducer,
+    remove: removeReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(authApi.middleware,
     editApi.middleware, addApi.middleware, removeApi.middleware),
