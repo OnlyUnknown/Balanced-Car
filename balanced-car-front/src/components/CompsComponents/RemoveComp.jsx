@@ -9,12 +9,13 @@ const RemoveComp = ({resource, cid}) => {
   useEffect((res) => {
     res = resource
     const id = cid
-    dispatch(removeItem({ id, res }));
-  }, []);
+    dispatch(removeItem({ id, classname: res }));
+  }, [dispatch]);  
 
   return (
     <>
-      <button onClick={() => dispatch(removeItem({ id: cid, resouce: "Car" }))}>
+    {console.log(resource)}
+      <button onClick={() => dispatch(removeItem({ id: cid, resource: resource }))}>
         Remove
       </button>
     </>
