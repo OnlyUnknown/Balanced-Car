@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { showItem } from '../../features/show/showActions';
+import RemoveComp from '../CompsComponents/RemoveComp';
 import Navigation from '../Navigation';
 import Spinner from '../Spinner';
 /* eslint-disable */
@@ -73,6 +74,7 @@ const Carinfo = () => {
             <div>Chassis Number: {item.chassis_number}</div>
             <div>Driver: {item.driver_id}</div>
           </div>
+          <RemoveComp resource={"car"} cid={item.id} />
         </div>
       ) : (
         loading === true ? (

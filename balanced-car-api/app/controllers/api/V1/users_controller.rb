@@ -119,7 +119,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def delete_resource
-    resource = params[:resource].capitalize.constantize.find(params[:id])
+    p params
+    resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
     check_user(resource.user)
     check_driver(resource.driver) if resource.instance_of?(Car)
     if resource.delete

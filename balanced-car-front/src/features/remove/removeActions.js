@@ -15,7 +15,7 @@ export const removeItem = createAsyncThunk(
         },
       };
       const data = await axios.delete(
-        `${backendURL}/user/delete_resource/${id}`,
+        `${backendURL}/user/delete_resource/${classname}/${id}`,
         { resource: classname, item},
         config,
       );

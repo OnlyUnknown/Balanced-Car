@@ -8,7 +8,7 @@ import Spinner from '../Spinner';
 const CarComp = () => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
-
+  const Car = 'Car';
   useEffect(() => {
     const classname = 'cars';
     dispatch(indexItems({ classname }));
@@ -38,7 +38,7 @@ const CarComp = () => {
                   Model:
                   {app.model}
                 </div>
-                <RemoveComp resource="car" cid={app.id} />
+                <RemoveComp resource={"car"} cid={app.id} />
               </div>
             </a>
 
