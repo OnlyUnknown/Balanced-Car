@@ -3,7 +3,8 @@ class Api::V1::UsersController < ApplicationController
   before_action :authenticate_devise_api_token!,
                 only: %i[create_item index update_item
                          delete_car switch_publicity
-                         update_driver profile update_profile]
+                         update_driver profile update_profile
+                        delete_resource]
   @error = nil
   def index_cars
     @cars = Car.joins(:user).where(users: { id: current_devise_api_token.resource_owner })
@@ -119,14 +120,13 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def delete_resource
-    p params
-    resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
-    check_user(resource.user)
-    check_driver(resource.driver) if resource.instance_of?(Car)
-    if resource.delete
-      render json: { resource:, message: "#{resource.class.name} #{resource.id} Deleted successfully" }
+    @resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
+    check_user(@resource.user)
+    check_driver(@resource.driver) if @resource.instance_of?(Car)
+    if @resource.delete
+      render json: { resource: @resource, message: "#{@resource.class.name} #{@resource.id} Deleted successfully" }
     else
-      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @resource.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
