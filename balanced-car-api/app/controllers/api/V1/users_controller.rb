@@ -122,7 +122,13 @@ class Api::V1::UsersController < ApplicationController
   def delete_resource
     @resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
     check_user(@resource.user)
-    check_driver(@resource.driver) if @resource.instance_of?(Car)
+    if @resource.instance_of?(Car)
+      if @resource.driver.present?
+      @resource.driver.update(car_id: nil)
+      end
+    end
+    @resource.bills.destroy_all
+    @resource.revenues.destroy_all
     if @resource.delete
       render json: { resource: @resource, message: "#{@resource.class.name} #{@resource.id} Deleted successfully" }
     else
