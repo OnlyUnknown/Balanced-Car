@@ -74,7 +74,7 @@ const Carinfo = () => {
             <div>Chassis Number: {item.chassis_number}</div>
             <div>Driver: {item.driver_id}</div>
           </div>
-          <RemoveComp resource={"car"} cid={item.id} />
+          <RemoveComp resource={"car"} cid={item.id} page={"main"} />
         </div>
       ) : (
         loading === true ? (

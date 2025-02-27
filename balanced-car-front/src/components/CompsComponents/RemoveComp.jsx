@@ -1,10 +1,12 @@
 import '../../styling/CarComp.scss';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { removeItem } from '../../features/remove/removeActions';
+import { toast } from 'react-toastify';
+import Spinner from '../Spinner';
 
-const RemoveComp = ({resource, cid}) => {
+const RemoveComp = ({resource, cid, page}) => {
   const { loading, errors, success } = useSelector((state) => state.remove);
   const dispatch = useDispatch();
   const navigate = useNavigate();
