@@ -7,28 +7,28 @@ import { toast } from 'react-toastify';
 import Spinner from '../Spinner';
 
 const RemoveComp = ({resource, cid, page}) => {
-  const { loading, errors, success } = useSelector((state) => state.remove);
+  const { removeLoading, errors, removeSuccess } = useSelector((state) => state.remove);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (success === true) {
+    if (removeSuccess === true) {
       const Transfer = () => {
-        navigate(-1);
+        navigate("/main");
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
-  }, [success]);
+  }, [removeSuccess]);
 
     useEffect(() => {
-      if (success)
-        toast.success('Item delted successfully');
-    }, [success]);
+      if (removeSuccess)
+        toast.success('Item deleted successfully');
+    }, [removeSuccess]);
 
   return (
     <>
-      <button onClick={() => dispatch(removeItem({ id: cid, classname: resource }))} disabled={loading || success}>
-      {loading ? <Spinner /> : 'remove'}
+      <button onClick={() => dispatch(removeItem({ id: cid, classname: resource }))} disabled={removeLoading || removeSuccess}>
+      {removeLoading ? <Spinner /> : 'remove'}
       </button>
     </>
   );

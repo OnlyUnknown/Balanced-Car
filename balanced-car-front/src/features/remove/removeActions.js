@@ -14,7 +14,7 @@ export const removeItem = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       };
-      const data = await axios.delete(
+      const { data } = await axios.delete(
         `${backendURL}/user/delete_resource/${classname}/${id}`,
         config,
       );

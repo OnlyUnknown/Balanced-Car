@@ -8,11 +8,11 @@ const getUserToken = () => {
 };
 
 const initialState = {
-  loading: false,
+  removeLoading: false,
   userInfo: null,
   userToken: getUserToken(),
-  error: null,
-  success: false,
+  removeError: null,
+  removeSuccess: false,
 };
 
 const removeSlice = createSlice({
@@ -26,16 +26,16 @@ const removeSlice = createSlice({
   extraReducers: {
     // add profile
     [removeItem.pending]: (state) => {
-      state.loading = true;
-      state.error = null;
+      state.removeLoading = true;
+      state.removeError = null;
     },
     [removeItem.fulfilled]: (state) => {
-      state.loading = false;
-      state.success = true;
+      state.removeLoading = false;
+      state.removeSuccess = true;
     },
     [removeItem.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.error = payload;
+      state.removeLoading = false;
+      state.rmooveError = payload;
     },
   },
 });

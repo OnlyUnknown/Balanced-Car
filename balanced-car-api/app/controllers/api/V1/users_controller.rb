@@ -121,39 +121,24 @@ class Api::V1::UsersController < ApplicationController
 
   def delete_resource
     @resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
-    
-    # Check if the user is authorized to delete the resource
     check_user(@resource.user)
   
     begin
       ActiveRecord::Base.transaction do
-        # Handle Car-specific logic
         if @resource.instance_of?(Car)
-          # Update the driver's car_id to nil if a driver is associated
-          if @resource.driver.present?
-            @resource.driver.update!(car_id: nil)
-          end
-  
-          # Destroy associated GroupItems
+          @resource.driver.update!(car_id: nil) if @resource.driver.present?
+          # Destroy all newly discovered dependencies
           @resource.group_items.destroy_all
         end
   
-        # Destroy associated bills and revenues
         @resource.bills.destroy_all
         @resource.revenues.destroy_all
-  
-        # Delete the resource
-        @resource.destroy
+        @resource.destroy!
       end
   
-      # If the transaction succeeds, return a success response
       render json: { resource: @resource, message: "#{@resource.class.name} #{@resource.id} deleted successfully" }
-    rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotDestroyed => e
-      # If any operation fails, the transaction will roll back, and this block will execute
+    rescue => e
       render json: { errors: e.message }, status: :unprocessable_entity
-    rescue StandardError => e
-      # Handle any other unexpected errors
-      render json: { errors: "An error occurred: #{e.message}" }, status: :internal_server_error
     end
   end
 
