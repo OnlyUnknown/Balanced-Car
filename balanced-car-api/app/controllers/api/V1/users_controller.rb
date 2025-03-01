@@ -120,27 +120,27 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def delete_resource
-    @resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
-    check_user(@resource.user)
-  
-    begin
-      ActiveRecord::Base.transaction do
-        if @resource.instance_of?(Car)
-          @resource.driver.update!(car_id: nil) if @resource.driver.present?
-          # Destroy all newly discovered dependencies
-          @resource.group_items.destroy_all
+      @resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
+      check_user(@resource.user)
+      # ... existing code to find resource ...
+    
+      @resource.transaction do
+        # Handle drivers by setting car_id to nil
+        @resource.driver.destroy! if @resource.driver.present?
+    
+        # Destroy dependent records
+        @resource.group_items.destroy_all if @resource.respond_to?(:group_items)
+        @resource.bills.destroy_all if @resource.respond_to?(:bills)
+        @resource.revenues.destroy_all if @resource.respond_to?(:revenues)
+    
+        if @resource.destroy
+          render json: { message: "#{@resource.class.name} deleted successfully" }, status: :ok
+        else
+          render json: { errors: @resource.errors.full_messages }, status: :unprocessable_entity
+          raise ActiveRecord::Rollback
         end
-  
-        @resource.bills.destroy_all
-        @resource.revenues.destroy_all
-        @resource.destroy!
       end
-  
-      render json: { resource: @resource, message: "#{@resource.class.name} #{@resource.id} deleted successfully" }
-    rescue => e
-      render json: { errors: e.message }, status: :unprocessable_entity
     end
-  end
 
   private
 

@@ -7,9 +7,15 @@ import { toast } from 'react-toastify';
 import Spinner from '../Spinner';
 
 const RemoveComp = ({resource, cid, page}) => {
-  const { removeLoading, errors, removeSuccess } = useSelector((state) => state.remove);
+  const { removeLoading, removeError, removeSuccess } = useSelector((state) => state.remove);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (removeError) {
+      toast.error(removeError);
+    }
+  }, [removeError]);
 
   useEffect(() => {
     if (removeSuccess === true) {
