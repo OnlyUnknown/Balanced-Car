@@ -38,7 +38,6 @@ const CarComp = () => {
                   Model:
                   {app.model}
                 </div>
-                <RemoveComp resource={"car"} cid={app.id} />
               </div>
             </a>
 

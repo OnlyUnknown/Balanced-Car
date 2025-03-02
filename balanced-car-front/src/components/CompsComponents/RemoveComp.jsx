@@ -20,7 +20,7 @@ const RemoveComp = ({resource, cid, page}) => {
   useEffect(() => {
     if (removeSuccess === true) {
       const Transfer = () => {
-        navigate("/main");
+        navigate("/" + page);
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
