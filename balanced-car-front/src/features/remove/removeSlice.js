@@ -35,7 +35,7 @@ const removeSlice = createSlice({
     },
     [removeItem.rejected]: (state, { payload }) => {
       state.removeLoading = false;
-      state.rmoveError = payload;
+      state.removeError = payload;
     },
   },
 });

@@ -126,7 +126,7 @@ class Api::V1::UsersController < ApplicationController
     
       @resource.transaction do
         # Handle drivers by setting car_id to nil
-        @resource.driver.destroy! if @resource.driver.present?
+        @resource.driver.update(car_id: nil) if @resource.driver.present?
     
         # Destroy dependent records
         @resource.group_items.destroy_all if @resource.respond_to?(:group_items)
