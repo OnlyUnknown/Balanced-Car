@@ -126,13 +126,11 @@ class Api::V1::UsersController < ApplicationController
     
       @resource.transaction do
         # Handle drivers by setting car_id to nil
+        if @resource.class == Car
         @resource.driver.update(car_id: nil) if @resource.driver.present?
-    
-        # Destroy dependent records
-        @resource.group_items.destroy_all if @resource.respond_to?(:group_items)
-        @resource.bills.destroy_all if @resource.respond_to?(:bills)
-        @resource.revenues.destroy_all if @resource.respond_to?(:revenues)
-    
+        elsif @resource.class == Driver
+        @resource.car.update(driver_id: nil) if @resource.car.present?
+        end
         if @resource.destroy
           render json: { message: "#{@resource.class.name} deleted successfully" }, status: :ok
         else
@@ -141,6 +139,7 @@ class Api::V1::UsersController < ApplicationController
         end
       end
     end
+    
 
   private
 

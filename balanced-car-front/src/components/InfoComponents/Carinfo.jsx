@@ -72,7 +72,8 @@ const Carinfo = () => {
             <div>Is it commercial: {item.commercial.toString()}</div>
             <div>Is it public?: {item.public.toString()}</div>
             <div>Chassis Number: {item.chassis_number}</div>
-            <div>Driver: {item.driver_id}</div>
+            {console.log(item.driver)}
+            <div>Driver: {item.driver}</div>
           </div>
           <RemoveComp resource={"car"} cid={item.id} page={"main"} />
         </div>

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { showItem } from '../../features/show/showActions';
+import RemoveComp from '../CompsComponents/RemoveComp';
 import Navigation from '../Navigation';
 import Spinner from '../Spinner';
 /* eslint-disable */
@@ -37,6 +38,7 @@ const DriverInfo = () => {
             <div>date: {item.nationality}</div>
             <div>Note: {item.note}</div>
           </div>
+          <RemoveComp resource={"Driver"} cid={item.id} page={"Drivers"} />
         </div>
       ) : (
         loading === true ? (
