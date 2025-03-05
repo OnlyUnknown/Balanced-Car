@@ -34,6 +34,7 @@ const AddRevenue = () => {
 
   const submitForm = async (item, classname, car_id) => {
         car_id = item.car_id
+        setSelectedItemId(car_id); // Set car_id to the state
       classname = "revenue",
       dispatch(addItem({ item, classname, car_id }))
       .unwrap()
