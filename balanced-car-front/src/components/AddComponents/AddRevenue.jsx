@@ -1,10 +1,11 @@
 import '../../styling/AddCar.scss';
-import { useEffect } from 'react';
+import { useEffect, useState  } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { addItem } from '../../features/add/addActions';
+import { indexItems } from '../../features/show/showActions';
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';
@@ -15,16 +16,21 @@ const AddRevenue = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { items, success: success2 } = useSelector((state) => state.show);
+    const [selectedItemId, setSelectedItemId] = useState('');
 
   useEffect(() => {
     if (success === true) {
-      toast.success('Profile updated successfully');
       const Transfer = () => {
-        navigate('/main');
+        navigate(`/revenues/${selectedItemId}`); // Pass selectedItemId to the next page
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
   }, [success]);
+
+  useEffect(() => {
+    const classname = 'cars';
+    dispatch(indexItems({ classname }));
+  }, [dispatch]);
 
   const submitForm = async (item, classname, car_id) => {
         car_id = item.car_id
