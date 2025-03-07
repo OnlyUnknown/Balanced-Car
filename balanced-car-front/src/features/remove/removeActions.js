@@ -27,3 +27,28 @@ export const removeItem = createAsyncThunk(
     }
   },
 );
+
+export const removeGroup = createAsyncThunk(
+  'remove/item',
+  async ({ id }, { getState, rejectWithValue }) => {
+    try {
+      const token = getState().auth.userToken; // Retrieve token from the state
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.delete(
+        `${backendURL}/user/delete_group/${id}`,
+        config,
+      );
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      }
+      return rejectWithValue(error.message);
+    }
+  },
+);

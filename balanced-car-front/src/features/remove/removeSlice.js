@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { removeItem } from './removeActions';
+import { removeGroup } from './removeActions';
 
 // initialize userToken from local storage
 const getUserToken = () => {
@@ -34,6 +35,18 @@ const removeSlice = createSlice({
       state.removeSuccess = true;
     },
     [removeItem.rejected]: (state, { payload }) => {
+      state.removeLoading = false;
+      state.removeError = payload;
+    },
+    [removeGroup.pending]: (state) => {
+      state.removeLoading = true;
+      state.removeError = null;
+    },
+    [removeGroup.fulfilled]: (state) => {
+      state.removeLoading = false;
+      state.removeSuccess = true;
+    },
+    [removeGroup.rejected]: (state, { payload }) => {
       state.removeLoading = false;
       state.removeError = payload;
     },
