@@ -62,12 +62,12 @@ const AddToGroup = () => {
           <div className="shadow-box-add">
             <div className="car_box_pic">Pic</div>
             <div className="info_box">
-              <select name="item_type" ref={register({ required: true })} disabled={success}>
+              <select name="item_type" {...register('item_type', { required: true })} disabled={success}>
                 <option value="">Select Category</option>
                 <option value="car">Cars</option>
                 <option value="driver">Drivers</option>
               </select>
-              <select name="item_id" ref={register({ required: true })} disabled={success}>
+              <select name="item_id" {...register('item_id', { required: true })} disabled={success}>
                 {success2 ? (
                   <>
                     <option value="" hidden>Select a car</option>
@@ -83,7 +83,7 @@ const AddToGroup = () => {
                   <option value="">No cars available</option>
                 )}
               </select>
-              <select name="group_id" ref={register({ required: true })} disabled={success}>
+              <select name="group_id" {...register('group_id', { required: true })} disabled={success}>
                 {successg ? (
                   <>
                     <option value="" hidden>Select a group</option>
