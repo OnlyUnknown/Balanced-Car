@@ -34,16 +34,16 @@ const AddToGroup = () => {
   }, [success, selectedItemId]);
 
   const submitForm = async (data) => {
-    const { ItemId, ItemType, GroupId } = data;
+    const { item_id, item_type, group_id } = data;
 
-    if (!ItemId || !GroupId || !ItemType) {
+    if (!item_id || !group_id || !item_type) {
       toast.error('Please fill all fields before submitting.');
       return;
     }
 
-    setSelectedItemId(GroupId);
+    setSelectedItemId(group_id);
 
-    dispatch(addToGroup({ ItemId, ItemType, GroupId }))
+    dispatch(addToGroup({ item_id, item_type, group_id }))
       .unwrap()
       .then(() => {
         toast.success('Added to group successfully');
