@@ -33,6 +33,7 @@ import AddToGroup from './components/AddComponents/AddToGroup';
 import PublicGroupsIndex from './components/IndexComponents/PublicGroupsIndex';
 import PublicGroupShow from './components/InfoComponents/PublicGroupShow';
 import PublicCar from './components/InfoComponents/PublicCar';
+import GroupCarInfo from './components/InfoComponents/GroupCarInfo';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
         <Route path="/splash" element={<Splash />} />
         <Route path="/Drivers" element={<DriverIndex />} />
         <Route path="/carinfo/:cid" element={<Carinfo />} />
+        <Route path='/groupcarinfo/:cid' element={<GroupCarInfo />} />
         <Route path="/driverinfo/:cid" element={<DriverInfo />} />
         <Route path="/revenueinfo/:cid" element={<RevenueInfo />} />
         <Route path="/billinfo/:cid" element={<BillInfo />} />

@@ -8,7 +8,7 @@ import Navigation from '../Navigation';
 import Spinner from '../Spinner';
 /* eslint-disable */
 
-const Carinfo = () => {
+const GroupCarInfo = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   let { cid } = useParams();
@@ -88,4 +88,4 @@ const Carinfo = () => {
   );
 };
 
-export default Carinfo;
+export default GroupCarInfo;
