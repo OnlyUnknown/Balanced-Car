@@ -6,7 +6,7 @@ import { removeFromGroup } from '../../features/remove/removeActions';
 import { toast } from 'react-toastify';
 import Spinner from '../Spinner';
 
-const RemoveFromGComp = ({cid, page}) => {
+const RemoveFromGComp = ({cid, page, group_id, resource}) => {
   const { removeLoading, removeError, removeSuccess } = useSelector((state) => state.remove);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const RemoveFromGComp = ({cid, page}) => {
 
   return (
     <>
-      <button onClick={() => dispatch(removeFromGroup({ id: cid }))} disabled={removeLoading }>
+      <button onClick={() => dispatch(removeFromGroup({item_type:resource, group_id:group_id, item_id: cid }))} disabled={removeLoading }>
       {removeLoading ? <Spinner /> : 'remove'}
       </button>
     </>

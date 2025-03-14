@@ -12,6 +12,7 @@ const GroupCarInfo = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   let { cid } = useParams();
+  let { gid } = useParams();
 
   useEffect(() => {
     const classname = "car";
@@ -75,7 +76,7 @@ const GroupCarInfo = () => {
             {console.log(item)}
             <div>Driver: {item.driver_id}</div>
           </div>
-          <RemoveFromGComp resource={"car"} cid={item.id} page={"main"} />
+          <RemoveFromGComp resource={"car"} group_id={gid} cid={item.id} page={"main"} />
         </div>
       ) : (
         loading === true ? (
