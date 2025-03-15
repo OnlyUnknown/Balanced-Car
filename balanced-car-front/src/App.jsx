@@ -33,6 +33,7 @@ import AddToGroup from './components/AddComponents/AddToGroup';
 import PublicGroupsIndex from './components/IndexComponents/PublicGroupsIndex';
 import PublicGroupShow from './components/InfoComponents/PublicGroupShow';
 import PublicCar from './components/InfoComponents/PublicCar';
+import GroupCarInfo from './components/InfoComponents/GroupCarInfo';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route exact path="/" element={<Main />} />
         <Route path="/groups" element={<GroupIndex />} />
         <Route path="/group/cars/:gid" element={<GroupCarShow />} />
+        <Route path="/group/cars/:gid/groupcarinfo/:cid" element={<GroupCarInfo />} />
         <Route path="/group/drivers/:gid" element={<GroupDriverShow />} />
         <Route path="/Bills" element={<BillIndex />} />
         <Route path="/Bills/:cid" element={<BillCarIndex />} />

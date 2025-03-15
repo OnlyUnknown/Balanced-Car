@@ -7,7 +7,6 @@ import Spinner from '../Spinner';
 const CarComp = () => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
-
   useEffect(() => {
     const classname = 'cars';
     dispatch(indexItems({ classname }));
@@ -37,7 +36,6 @@ const CarComp = () => {
                   Model:
                   {app.model}
                 </div>
-                <button type="button">Remove</button>
               </div>
             </a>
 

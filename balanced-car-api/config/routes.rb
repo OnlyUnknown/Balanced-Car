@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         get 'show/group/:id', to: 'groups#show_items', on: :collection
         patch 'update_item/:id', to: 'users#update_item', on: :collection
         patch 'publicity/:id', to: 'users#switch_publicity', on: :collection
-        delete '/delete_resource/:id', to: 'users#delete_resource', on: :collection
+        delete '/delete_resource/:resource/:id', to: 'users#delete_resource', on: :collection
         post '/create_item', to: 'users#create_item', on: :collection
         get '/profile', to: 'users#profile', on: :collection
         patch '/update_profile', to: 'users#update_profile', on: :collection

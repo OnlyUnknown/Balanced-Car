@@ -3,15 +3,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { showItem } from '../../features/show/showActions';
-import RemoveComp from '../CompsComponents/RemoveComp';
+import RemoveFromGComp from '../CompsComponents/RemoveFromGComp';
 import Navigation from '../Navigation';
 import Spinner from '../Spinner';
 /* eslint-disable */
 
-const Carinfo = () => {
+const GroupCarInfo = () => {
   const { item, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   let { cid } = useParams();
+  let { gid } = useParams();
 
   useEffect(() => {
     const classname = "car";
@@ -75,7 +76,7 @@ const Carinfo = () => {
             {console.log(item)}
             <div>Driver: {item.driver_id}</div>
           </div>
-          <RemoveComp resource={"car"} cid={item.id} page={"main"} />
+          <RemoveFromGComp resource={"car"} GroupId={gid} cid={item.id} page={"main"} />
         </div>
       ) : (
         loading === true ? (
@@ -88,4 +89,4 @@ const Carinfo = () => {
   );
 };
 
-export default Carinfo;
+export default GroupCarInfo;

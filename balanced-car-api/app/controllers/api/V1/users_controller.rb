@@ -3,7 +3,8 @@ class Api::V1::UsersController < ApplicationController
   before_action :authenticate_devise_api_token!,
                 only: %i[create_item index update_item
                          delete_car switch_publicity
-                         update_driver profile update_profile]
+                         update_driver profile update_profile
+                         delete_resource]
   @error = nil
   def index_cars
     @cars = Car.joins(:user).where(users: { id: current_devise_api_token.resource_owner })
@@ -119,13 +120,23 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def delete_resource
-    resource = params[:resource].capitalize.constantize.find(params[:id])
-    check_user(resource.user)
-    check_driver(resource.driver) if resource.instance_of?(Car)
-    if resource.delete
-      render json: { resource:, message: "#{resource.class.name} #{resource.id} Deleted successfully" }
-    else
-      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
+    @resource = params[:resource].capitalize.constantize.find_by_id(params[:id])
+    check_user(@resource.user)
+    # ... existing code to find resource ...
+
+    @resource.transaction do
+      # Handle drivers by setting car_id to nil
+      if @resource.instance_of?(Car)
+        @resource.driver.update(car_id: nil) if @resource.driver.present?
+      elsif @resource.instance_of?(Driver)
+        @resource.car.update(driver_id: nil) if @resource.car.present?
+      end
+      if @resource.destroy
+        render json: { message: "#{@resource.class.name} deleted successfully" }, status: :ok
+      else
+        render json: { errors: @resource.errors.full_messages }, status: :unprocessable_entity
+        raise ActiveRecord::Rollback
+      end
     end
   end
 

@@ -18,7 +18,7 @@ const BillComp = ({ cid }) => {
     <>
       {success === true ? (
         <div className="main-box">
-          {items.map((app) => (
+          {items?.map((app) => (
             <a href={`/billinfo/${app.id}`} className="box" key={app.id}>
               <div className="pic">Pic</div>
               <div className="info">
@@ -38,6 +38,7 @@ const BillComp = ({ cid }) => {
                   Note:
                   {app.note}
                 </div>
+
                 <button type="button">Remove</button>
               </div>
             </a>

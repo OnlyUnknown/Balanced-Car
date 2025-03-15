@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { showItem } from '../../features/show/showActions';
+import RemoveComp from '../CompsComponents/RemoveComp';
 import Navigation from '../Navigation';
 import Spinner from '../Spinner';
 /* eslint-disable */
@@ -35,6 +36,7 @@ const RevenueInfo = () => {
             <div>owner: {item.user_id}</div>
             <div>Note: {item.note}</div>
           </div>
+          <RemoveComp resource={"revenue"} cid={item.id} page={"revenues/"+ item.car_id} />
         </div>
       ) : (
         loading === true ? (
