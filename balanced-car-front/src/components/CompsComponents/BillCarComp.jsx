@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { indexItemsOfItem } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
-
 const BillComp = ({ cid }) => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();

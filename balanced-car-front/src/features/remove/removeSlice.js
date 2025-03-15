@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { removeItem } from './removeActions';
-import { removeGroup } from './removeActions';
+import { removeItem, removeGroup } from './removeActions';
 
 // initialize userToken from local storage
 const getUserToken = () => {

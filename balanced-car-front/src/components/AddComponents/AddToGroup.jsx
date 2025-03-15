@@ -34,16 +34,16 @@ const AddToGroup = () => {
   }, [success, selectedItemId]);
 
   const submitForm = async (data) => {
-    const { item_id, item_type, group_id } = data;
+    const { ItemId, ItemType, GroupId } = data;
 
-    if (!item_id || !group_id || !item_type) {
+    if (!ItemId || !GroupId || !ItemType) {
       toast.error('Please fill all fields before submitting.');
       return;
     }
 
-    setSelectedItemId(group_id);
+    setSelectedItemId(GroupId);
 
-    dispatch(addToGroup({ item_id, item_type, group_id }))
+    dispatch(addToGroup({ ItemId, ItemType, GroupId }))
       .unwrap()
       .then(() => {
         toast.success('Added to group successfully');
@@ -62,12 +62,12 @@ const AddToGroup = () => {
           <div className="shadow-box-add">
             <div className="car_box_pic">Pic</div>
             <div className="info_box">
-              <select name="item_type" {...register('item_type', { required: true })} disabled={success}>
+              <select name="ItemType" {...register('ItemType', { required: true })} disabled={success}>
                 <option value="">Select Category</option>
                 <option value="car">Cars</option>
                 <option value="driver">Drivers</option>
               </select>
-              <select name="item_id" {...register('item_id', { required: true })} disabled={success}>
+              <select name="ItemId" {...register('ItemId', { required: true })} disabled={success}>
                 {success2 ? (
                   <>
                     <option value="" hidden>Select a car</option>

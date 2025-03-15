@@ -44,7 +44,7 @@ function App() {
         <Route exact path="/" element={<Main />} />
         <Route path="/groups" element={<GroupIndex />} />
         <Route path="/group/cars/:gid" element={<GroupCarShow />} />
-        <Route path='/group/cars/:gid/groupcarinfo/:cid' element={<GroupCarInfo />} />
+        <Route path="/group/cars/:gid/groupcarinfo/:cid" element={<GroupCarInfo />} />
         <Route path="/group/drivers/:gid" element={<GroupDriverShow />} />
         <Route path="/Bills" element={<BillIndex />} />
         <Route path="/Bills/:cid" element={<BillCarIndex />} />

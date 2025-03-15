@@ -76,7 +76,7 @@ const GroupCarInfo = () => {
             {console.log(item)}
             <div>Driver: {item.driver_id}</div>
           </div>
-          <RemoveFromGComp resource={"car"} group_id={gid} cid={item.id} page={"main"} />
+          <RemoveFromGComp resource={"car"} GroupId={gid} cid={item.id} page={"main"} />
         </div>
       ) : (
         loading === true ? (

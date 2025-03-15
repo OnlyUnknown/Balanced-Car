@@ -1,8 +1,8 @@
 import '../../styling/main.scss';
+import { useParams } from 'react-router-dom';
 import GroupCarComp from '../CompsComponents/GroupCarComp';
 import RemoveGComp from '../CompsComponents/RemoveGComp';
 import Navigation from '../Navigation';
-import { useParams } from 'react-router-dom';
 
 const GroupCarShow = () => {
   const { gid } = useParams();
@@ -13,7 +13,7 @@ const GroupCarShow = () => {
       <div className="main_box">
         <GroupCarComp />
       </div>
-      <RemoveGComp cid={gid} page={"groups"} />
+      <RemoveGComp cid={gid} page="groups" />
     </>
   );
 };

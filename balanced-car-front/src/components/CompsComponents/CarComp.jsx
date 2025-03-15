@@ -2,13 +2,11 @@ import '../../styling/CarComp.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { indexItems } from '../../features/show/showActions';
-import RemoveComp from './RemoveComp';
 import Spinner from '../Spinner';
 
 const CarComp = () => {
   const { items, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
-  const Car = 'Car';
   useEffect(() => {
     const classname = 'cars';
     dispatch(indexItems({ classname }));
