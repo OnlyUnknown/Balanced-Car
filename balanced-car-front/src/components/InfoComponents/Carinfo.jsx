@@ -6,6 +6,7 @@ import { showItem } from '../../features/show/showActions';
 import RemoveComp from '../CompsComponents/RemoveComp';
 import Navigation from '../Navigation';
 import Spinner from '../Spinner';
+import EditButton from '../EditComponents/EditButton';
 /* eslint-disable */
 
 const Carinfo = () => {
@@ -75,6 +76,7 @@ const Carinfo = () => {
             {console.log(item)}
             <div>Driver: {item.driver_id}</div>
           </div>
+          <EditButton onClick={() => (window.location.href = `/editcar/${item.id}`)} />
           <RemoveComp resource={"car"} cid={item.id} page={"main"} />
         </div>
       ) : (

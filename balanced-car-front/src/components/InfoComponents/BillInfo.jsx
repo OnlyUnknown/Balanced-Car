@@ -6,6 +6,7 @@ import { showItem } from '../../features/show/showActions';
 import RemoveComp from '../CompsComponents/RemoveComp';
 import Navigation from '../Navigation';
 import Spinner from '../Spinner';
+import EditButton from '../EditComponents/EditButton';
 /* eslint-disable */
 
 
@@ -36,6 +37,7 @@ const BillInfo = () => {
             <div>date: {item.date}</div>
             <div>Note: {item.note}</div>
           </div>
+          <EditButton onClick={() => {window.location.href = `/editbill/${item.id}`}}/>
           <RemoveComp resource={"bill"} cid={item.id} page={"bills/"+ item.car_id} />
         </div>
       ) : (
