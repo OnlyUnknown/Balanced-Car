@@ -33,10 +33,10 @@ const EditBill = () => {
     }
   }, [show_item, setValue]);
 
-  useEffect(() => {
-    if (editSuccess)
-      toast.success('Bill updated successfully');
-  }, [editSuccess]);
+  // useEffect(() => {
+  //   if (editSuccess)
+  //     toast.success('Bill updated successfully');
+  // }, [editSuccess]);
 
   const submitForm = async (item, classname, id) => {
     classname = "Bill"

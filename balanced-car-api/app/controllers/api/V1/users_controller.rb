@@ -224,7 +224,7 @@ def useru_params
 end
 
 def caru_params
-  params.require(:car).permit(
+  params.require(:item).permit(
     :name,
     :tires_age,
     :oil,
@@ -245,7 +245,7 @@ def caru_params
 end
 
 def driveru_params
-  params.require(:driver).permit(
+  params.require(:item).permit(
     :name,
     :identification,
     :phone_number,
@@ -267,7 +267,7 @@ end
 
 def revenueu_params
   @car = Car.find_by_id(params.require(:car_id))
-  params.require(:revenue).permit(
+  params.require(:item).permit(
     :revenue,
     :note,
     :date

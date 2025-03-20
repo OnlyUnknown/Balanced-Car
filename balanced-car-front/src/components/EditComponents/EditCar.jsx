@@ -68,7 +68,7 @@ const AddCar = () => {
 
 
   const submitForm = async (item, classname, id) => {
-      classname = "Car"
+      classname = "car"
       id = cid
       dispatch(editItem({ classname, item, id }))
       .unwrap()
