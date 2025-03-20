@@ -14,7 +14,6 @@ import Spinner from '../Spinner';
 const AddCar = () => {
     const { item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
     const { loading: editLoading, errors: editErrors, success: editSuccess } = useSelector((state) => state.edit);  
-    const { items, success: success2 } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   const { register, handleSubmit, setValue } = useForm();
   const navigate = useNavigate();
@@ -68,7 +67,7 @@ const AddCar = () => {
 
 
   const submitForm = async (item, classname, id) => {
-      classname = "car"
+      classname = "Car"
       id = cid
       dispatch(editItem({ classname, item, id }))
       .unwrap()

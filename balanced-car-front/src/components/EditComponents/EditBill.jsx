@@ -2,7 +2,7 @@ import '../../styling/prof.scss';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import Navigation from '../Navigation';
 import Error from '../Error';
@@ -18,6 +18,7 @@ const EditBill = () => {
   const { register, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch();
   let { cid } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const classname = "bill";
@@ -33,10 +34,15 @@ const EditBill = () => {
     }
   }, [show_item, setValue]);
 
-  // useEffect(() => {
-  //   if (editSuccess)
-  //     toast.success('Bill updated successfully');
-  // }, [editSuccess]);
+  useEffect(() => {
+    if (editSuccess)
+      {
+        const Transfer = () => {
+          navigate('/billinfo/' + cid);
+        };
+        setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
+      }
+  }, [editSuccess]);
 
   const submitForm = async (item, classname, id) => {
     classname = "Bill"

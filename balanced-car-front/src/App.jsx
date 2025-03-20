@@ -34,6 +34,7 @@ import PublicGroupsIndex from './components/IndexComponents/PublicGroupsIndex';
 import PublicGroupShow from './components/InfoComponents/PublicGroupShow';
 import PublicCar from './components/InfoComponents/PublicCar';
 import GroupCarInfo from './components/InfoComponents/GroupCarInfo';
+import EditRevenue from './components/EditComponents/EditRevenue';
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
         <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/editbill/:cid" element={<EditBill />} />
         <Route path="/editcar/:cid" element={<EditCar />} />
+        <Route path="/editrevenue/:cid" element={<EditRevenue />} />
         <Route path="/addtoGroup" element={<AddToGroup />} />
         <Route path="/public_groups/:id" element={<PublicGroupsIndex />} />
         <Route path="/public_group/:id" element={<PublicGroupShow />} />
