@@ -25,13 +25,13 @@ const EditDriver = () => {
   }, [dispatch]);
   
   useEffect(() => {
-    if (success === true) {
+    if (editSuccess === true) {
       const Transfer = () => {
-        navigate('/');
+        navigate('/driverinfor/' + cid);
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
-  }, [success]);
+  }, [editSuccess]);
 
   const submitForm = async (item, classname, car_id) => {
     car_id = item.car_id;
@@ -41,7 +41,7 @@ const EditDriver = () => {
       .then(() => {
         toast.success('Driver added successfully');
       })
-      .catch((err = errors.message) => {
+      .catch((err = editErrors.message) => {
         toast.error('Failed to add driver, Maybe the car has already a driver. Please try again.');
       });
   };
@@ -59,12 +59,12 @@ const EditDriver = () => {
             <div className="info_box">
               <select
                 {...register("car_id")}
-                disabled={success}
+                disabled={editSuccess}
               >
                 <option value="">Select a car</option>
-                {success2 === true ? (
+                {showSuccess === true ? (
                   <>
-                    {items.map((car) => (
+                    {show_item.map((car) => (
                       <option key={car.id} value={car.id}>
                         {car.name}
                       </option>
@@ -78,30 +78,30 @@ const EditDriver = () => {
                 type="text"
                 {...register('name', { required: true })}
                 placeholder="Name"
-                disabled={success}
+                disabled={editSuccess}
               />
                <input
                 type="text"
                 {...register('phone_number', { required: true })}
                 placeholder="Phone Number"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="text"
                 {...register('nationality', { required: true })}
                 placeholder="Nationality"
-                disabled={success}
+                disabled={editSuccess}
               />
               <input
                 type="number" step="any"
                 {...register('identification', { required: true })}
                 placeholder="Identification"
-                disabled={success}
+                disabled={editSuccess}
               />
-              <button type="submit" disabled={loading || success}>
-                {loading ? <Spinner /> : 'Create'}
+              <button type="submit" disabled={editLoading || editSuccess}>
+                {editLoading ? <Spinner /> : 'Create'}
               </button>
-              {errors && <Error message={errors.message} />}
+              {editErrors && <Error message={editErrors.message} />}
             </div>
           </div>
         </div>
