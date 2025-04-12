@@ -48,7 +48,7 @@ const Carinfo = () => {
         <div className="border">
           <div className="carpic">Car pic</div>
           <div className="carinfo">
-          <div>Id: {item.id}</div>
+            <div>Id: {item.id}</div>
             <div>Name: {item.name}</div>
             <div>
               Tires age:
@@ -73,8 +73,9 @@ const Carinfo = () => {
             <div>Is it commercial: {item.commercial.toString()}</div>
             <div>Is it public?: {item.public.toString()}</div>
             <div>Chassis Number: {item.chassis_number}</div>
-            {console.log(item)}
-            <div>Driver: {item.driver_id}</div>
+            {item.driver != undefined && (
+              <div>Driver: <a href={`/driverinfo/${item.driver.id}`}>{item.driver.id}</a></div>
+            )}
           </div>
           <EditButton onClick={() => (window.location.href = `/editcar/${item.id}`)} />
           <RemoveComp resource={"car"} cid={item.id} page={"main"} />

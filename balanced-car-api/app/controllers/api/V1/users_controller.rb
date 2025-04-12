@@ -30,9 +30,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show_car
-    @car = Car.find_by_id(params[:id])
+    @car = Car.includes(:driver).find(params[:id])
+  
     check_user(@car.user)
-    render json: @car
+    render json: @car, include: :driver
   end
 
   def show_driver
