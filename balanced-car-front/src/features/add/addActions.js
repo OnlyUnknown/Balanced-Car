@@ -5,7 +5,7 @@ const backendURL = 'http://localhost:3001/api/v1';
 
 export const addItem = createAsyncThunk(
   'add/item',
-  async ({ item, classname, car_id }, { getState, rejectWithValue }) => {
+  async ({ item, classname, car_id, driver_id }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.userToken; // Retrieve token from the state
       const config = {
@@ -16,7 +16,7 @@ export const addItem = createAsyncThunk(
       };
       const data = await axios.post(
         `${backendURL}/user/create_item`,
-        { resource: classname, item, car_id: car_id},
+        { resource: classname, item, car_id: car_id, driver_id: driver_id },
         config,
       );
       return data;

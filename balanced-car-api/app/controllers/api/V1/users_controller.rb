@@ -145,6 +145,7 @@ class Api::V1::UsersController < ApplicationController
 
   def car_params
     @driver = Driver.find_by_id(params[:driver_id]) if params[:driver_id].present?
+    raise 'Driver already has a car' if @driver&.car.present?
     params.require(:item).permit(
       :name,
       :oil_milage,
@@ -161,7 +162,6 @@ class Api::V1::UsersController < ApplicationController
       :commercial,
       :public,
       :chassis_number,
-      :driver_id,
       tires_age: %i[tirerf tirelf tirerb tirelb]
     ).merge(
       driver: @driver,

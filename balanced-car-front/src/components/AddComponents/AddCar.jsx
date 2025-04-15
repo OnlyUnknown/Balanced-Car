@@ -32,9 +32,10 @@ const AddCar = () => {
   }, [dispatch]);
 
 
-  const submitForm = async (item, classname) => {
+  const submitForm = async (item, classname, driver_id) => {
+    driver_id = item.driver_id;
       classname = "car"
-      dispatch(addItem({ item, classname }))
+      dispatch(addItem({ item, classname, driver_id }))
       .unwrap()
       .then(() => {
         toast.success('Car added successfully');
@@ -142,6 +143,23 @@ const AddCar = () => {
                 placeholder="buy_limit"
                 disabled={success}
               />
+              <select
+                {...register("driver_id")}
+                disabled={success}
+              >
+                <option value="">Select a driver</option>
+                {success2 === true ? (
+                  <>
+                    {items.map((driver) => (
+                      <option key={driver.id} value={driver.id}>
+                        {driver.name}
+                      </option>
+                    ))}
+                  </>
+                ) : (
+                  <option value="">No cars available</option>
+                )}
+              </select>
               <input
                 type="text"
                 {...register('last_bid')}
