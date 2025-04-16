@@ -164,6 +164,7 @@ class Api::V1::UsersController < ApplicationController
       :chassis_number,
       tires_age: %i[tirerf tirelf tirerb tirelb]
     ).merge(
+      driver_id: @driver.id,
       driver: @driver,
       user: current_devise_api_token.resource_owner
     )
