@@ -13,7 +13,7 @@ import { editItem } from '../../features/edit/editActions';
 import { showItem } from '../../features/show/showActions';
 /* eslint-disable */
 const EditDriver = () => {
-    const { item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
+    const { items: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
     const { loading: editLoading, errors: editErrors, success: editSuccess } = useSelector((state) => state.edit);  
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
