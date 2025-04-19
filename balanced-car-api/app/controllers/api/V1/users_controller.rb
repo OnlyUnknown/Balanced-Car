@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApplicationController
   before_action :authenticate_devise_api_token!,
                 only: %i[create_item index update_item
                          delete_car switch_publicity
-                         update_driver profile update_profile
+                         profile update_profile
                          delete_resource]
   @error = nil
   def index_cars
@@ -247,6 +247,8 @@ def caru_params
 end
 
 def driveru_params
+  @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
+  raise 'Car already has a driver' if @car&.driver.present?
   params.require(:item).permit(
     :name,
     :identification,
@@ -254,6 +256,7 @@ def driveru_params
     :nationality,
     :car
   ).merge(
+    car: @car,
     user: current_devise_api_token.resource_owner
   )
 end
