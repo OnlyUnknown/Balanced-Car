@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
 import { editItem } from '../../features/edit/editActions';
-import { showItem } from '../../features/show/showActions';
+import { showItem, indexItems } from '../../features/show/showActions';
 
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';
 /* eslint-disable */
 const AddCar = () => {
-    const { item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
+    const { items: show_items,item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
     const { loading: editLoading, errors: editErrors, success: editSuccess } = useSelector((state) => state.edit);  
   const dispatch = useDispatch();
   const { register, handleSubmit, setValue } = useForm();
@@ -27,6 +27,11 @@ const AddCar = () => {
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
   }, [editSuccess]);
+
+    useEffect(() => {
+      const classname = 'drivers';
+      dispatch(indexItems({ classname }));
+    }, [dispatch]);
 
   useEffect(() => {
     const classname = "car";
@@ -57,6 +62,7 @@ const AddCar = () => {
       setValue('for_bidding', show_item.for_bidding || false);
       setValue('public', show_item.public || false);
       setValue('note', show_item.note || '');
+      setValue('driver_id', show_item.driver?.id || '');
     }
   }, [show_item, setValue]);
 
@@ -66,16 +72,17 @@ const AddCar = () => {
   }, [editSuccess]);
 
 
-  const submitForm = async (item, classname, id) => {
+  const submitForm = async (item, classname, id, driver_id) => {
       classname = "Car"
       id = cid
-      dispatch(editItem({ classname, item, id }))
+      driver_id = item.driver_id;
+      dispatch(editItem({ classname, item, id, driver_id }))
       .unwrap()
       .then(() => {
         toast.success('Car Has been edited successfully');
       })
       .catch(() => {
-        toast.error('Failed to edit the car. Please try again.');
+        toast.error('Failed to edit the car, the driver may have a car Please try again.');
       });
   };
 
@@ -90,6 +97,23 @@ const AddCar = () => {
               Pic
             </div>
             <div className="info_box">
+            <select
+                {...register("driver_id")}
+                disabled={editSuccess}
+              >
+                <option value="">Select a driver</option>
+                {showSuccess === true ? (
+                  <>
+                    {show_items?.map((driver) => (
+                      <option key={driver.id} value={driver.id}>
+                        {driver.name}
+                      </option>
+                    ))}
+                  </>
+                ) : (
+                  <option value="">No drivers available</option>
+                )}
+              </select>
               <input
                 id="name"
                 type="text"

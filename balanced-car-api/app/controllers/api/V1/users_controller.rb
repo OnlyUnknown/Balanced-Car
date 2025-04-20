@@ -226,6 +226,8 @@ def useru_params
 end
 
 def caru_params
+  @driver = Driver.find_by_id(params[:driver_id]) if params[:driver_id].present?
+    raise 'Driver already has a car' if @driver&.car.present?
   params.require(:item).permit(
     :name,
     :tires_age,
@@ -240,8 +242,9 @@ def caru_params
     :commercial,
     :public,
     :chassis_number,
-    :driver
+    
   ).merge(
+    driver: @driver,
     user: current_devise_api_token.resource_owner
   )
 end
