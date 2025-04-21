@@ -1,15 +1,14 @@
 import '../../styling/AddCar.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'; // Assuming you're using react-toastify for notifications
-import { indexItems } from '../../features/show/showActions';
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';
 import { editItem } from '../../features/edit/editActions';
-import { showItem } from '../../features/show/showActions';
+import { showItem, indexItems } from '../../features/show/showActions';
 /* eslint-disable */
 const EditRevenue = () => {
     const { item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);

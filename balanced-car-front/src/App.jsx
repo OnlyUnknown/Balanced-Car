@@ -69,7 +69,7 @@ function App() {
         <Route path="/editbill/:cid" element={<EditBill />} />
         <Route path="/editcar/:cid" element={<EditCar />} />
         <Route path="/editrevenue/:cid" element={<EditRevenue />} />
-        <Route path='/editdriver/:cid' element={<EditDriver />} />
+        <Route path="/editdriver/:cid" element={<EditDriver />} />
         <Route path="/addtoGroup" element={<AddToGroup />} />
         <Route path="/public_groups/:id" element={<PublicGroupsIndex />} />
         <Route path="/public_group/:id" element={<PublicGroupShow />} />

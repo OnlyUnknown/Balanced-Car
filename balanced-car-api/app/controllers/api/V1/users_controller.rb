@@ -265,11 +265,15 @@ def driveru_params
 end
 
 def billu_params
-  @car = Car.find_by_id(params[:car_id]) if params[:car_id].present?
+  @car = Car.find_by_id(params.require(:car_id))
+  user = @car.user
+  check_user(user)
   params.require(:item).permit(
     :total,
     :note,
     :date
+  ).merge(
+    car: @car,
   )
 end
 
