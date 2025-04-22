@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'; // Assuming you're using react-toastify 
 import Navigation from '../Navigation';
 import Error from '../Error';
 import Spinner from '../Spinner';
-// import { useUpdateProfileMutation } from '../features/edit/editServices';
 import { editItem } from '../../features/edit/editActions';
 import { showItem, indexItems } from '../../features/show/showActions';
 /* eslint-disable */
@@ -38,7 +37,7 @@ const EditBill = () => {
       setValue('note', show_item.note || '');
       setValue('car_id', show_item.car_id || '');
     }
-  }, [showSuccess, setValue]);
+  }, [show_items, showSuccess, setValue]);
 
   useEffect(() => {
     if (editSuccess)
@@ -80,7 +79,7 @@ const EditBill = () => {
                 disabled={editSuccess}
               >
                 <option value="" hidden>Select a car</option>
-                {showSuccess === true ? (
+                {showSuccess === true  ? (
                   <>
                     {show_items?.map((car) => (
                       <option key={car.id} value={car.id}>
@@ -92,6 +91,7 @@ const EditBill = () => {
                   <option value="">No cars available</option>
                 )}
               </select>
+              
               <input
                 type="number" step="any"
                 {...register('total', { required: true })}
