@@ -11,7 +11,7 @@ import { editItem } from '../../features/edit/editActions';
 import { showItem, indexItems } from '../../features/show/showActions';
 /* eslint-disable */
 const EditRevenue = () => {
-    const { item: show_item, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
+    const { item: show_item, items:show_items, loading: showLoading, success: showSuccess, errors: showErrors } = useSelector((state) => state.show);
     const { loading: editLoading, errors: editErrors, success: editSuccess } = useSelector((state) => state.edit);  
   const dispatch = useDispatch();
   const { register, handleSubmit, setValue  } = useForm();
@@ -43,13 +43,15 @@ const EditRevenue = () => {
       setValue('revenue', show_item.revenue || '');
       setValue('date', show_item.date || '');
       setValue('note', show_item.note || '');
+      setValue('car_id', show_item.car_id || '');
     }
-  }, [show_item, setValue]);
+  }, [show_items, show_item, setValue]);
 
-  const submitForm = async (item, classname, id) => {
+  const submitForm = async (item, classname, id, car_id) => {
     classname = "Revenue"
+    car_id = item.car_id;
     id = cid
-      dispatch(editItem({ classname, item, id }))
+      dispatch(editItem({ classname, item, id, car_id }))
       .unwrap()
       .then(() => {
         toast.success('Revenue Has been edited successfully');
@@ -69,29 +71,23 @@ const EditRevenue = () => {
               Pic
             </div>
             <div className="info_box">
-            {/* <select
+            <select
                 {...register("car_id", { required: true })}
-                disabled={success}
+                disabled={editSuccess}
               >
-                                <option value="" hidden>Select a car</option>
-                {success2 === true ? (
+                <option value="" hidden>Select a car</option>
+                {showSuccess === true  ? (
                   <>
-                    {items.map((car) => (
-                        <option key={car.id} value={car.id}>
-                            {car.name}
-                        </option>
+                    {show_items?.map((car) => (
+                      <option key={car.id} value={car.id}>
+                        {car.name}
+                      </option>
                     ))}
-                    {/* <SearchableDropdown
-                    options={items}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}/> }
                   </>
                 ) : (
                   <option value="">No cars available</option>
                 )}
-              </select> */}
+              </select>
               <input
                 type="number" step="any"
                 {...register('revenue', { required: true })}
