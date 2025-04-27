@@ -71,15 +71,6 @@ class Api::V1::GroupsController < ApplicationController
   def show_items
     @group = Group.find(params[:id])
     check_user(@group.user)
-    if @group
-      @items = case @group.group_type
-               when 'cars'
-                 @group.cars
-               when 'drivers'
-                 @group.drivers
-               else
-                 []
-               end
       render json: @items
     else
       render json: { error: 'Group not found' }, status: :not_found
@@ -144,19 +135,8 @@ class Api::V1::GroupsController < ApplicationController
     end
   end
 
-  def find_item_by_type(item_type, item_id, group_type = nil)
-    return nil if group_type && item_type != group_type
-
-    case item_type
-    when 'car'
-      Car.find_by_id(item_id)
-    when 'driver'
-      Driver.find_by_id(item_id)
-    end
-  end
-
   def group_params
-    params.require(:item).permit(:name, :description, :public,
-                                 :group_type).merge(user: current_devise_api_token.resource_owner)
+    params.require(:item).permit(:name, :description, :public
+                      ).merge(user: current_devise_api_token.resource_owner)
   end
 end
