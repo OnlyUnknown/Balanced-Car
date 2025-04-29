@@ -5,7 +5,7 @@ import { indexItems } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
 const DriverComp = () => {
-  const { items, loading, success } = useSelector((state) => state.show);
+  const { drivers, loading, success } = useSelector((state) => state.showD);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const DriverComp = () => {
     <>
       {success === true ? (
         <div className="main-box">
-          {items?.map((app) => (
+          {drivers?.map((app) => (
             <a href={`/driverinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>
               <div className="info">

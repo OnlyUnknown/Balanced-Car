@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { showItem } from './showActions';
+import { indexItems } from './showActions';
 
 const getUserToken = () => {
   const userToken = localStorage.getItem('userToken');
@@ -12,7 +12,7 @@ const initialState = {
   userToken: getUserToken(),
   error: null,
   success: false,
-  drvirs: null,
+  drivers: null,
 };
 
 const showDSlice = createSlice({
@@ -25,16 +25,16 @@ const showDSlice = createSlice({
   },
   extraReducers: {
     // show item
-    [showItem.pending]: (state) => {
+    [indexItems.pending]: (state) => {
       state.loading = true;
       state.error = null;
     },
-    [showItem.fulfilled]: (state, { payload }) => {
+    [indexItems.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.drivers = payload.data;
       state.success = true;
     },
-    [showItem.rejected]: (state, { payload }) => {
+    [indexItems.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     }
