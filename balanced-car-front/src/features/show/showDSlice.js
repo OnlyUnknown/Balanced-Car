@@ -16,7 +16,7 @@ const initialState = {
 };
 
 const showDSlice = createSlice({
-  name: 'edit',
+  name: 'showD',
   initialState,
   reducers: {
     setCredentials: (state, { payload }) => {
