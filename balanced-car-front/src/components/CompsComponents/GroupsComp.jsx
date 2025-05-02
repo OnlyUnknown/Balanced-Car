@@ -14,7 +14,7 @@ const GroupsComp = () => {
   }, [dispatch]);
   return (
     <>
-      {success === true ? (
+      {success === true && items.length > 0 ? (
         <div className="main-box">
           {items?.map((app) => (
             <a href={`/group/${app.group_type}/${app.id}/`} className="box">

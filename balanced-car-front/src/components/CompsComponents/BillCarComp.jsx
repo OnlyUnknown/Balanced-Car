@@ -16,7 +16,7 @@ const BillComp = ({ cid }) => {
 
   return (
     <>
-      {success === true ? (
+      {success === true && items.length > 0 ? (
         <div className="main-box">
           {items?.map((app) => (
             <a href={`/billinfo/${app.id}`} className="box" key={app.id}>

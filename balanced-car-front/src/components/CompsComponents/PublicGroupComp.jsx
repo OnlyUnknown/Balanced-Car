@@ -16,7 +16,7 @@ const PublicGroupComp = ({ id }) => {
 
   return (
     <>
-      {success === true ? (
+      {success === true && item.length > 0 ? (
         <div className="main-box">
           {item?.map((app) => (
             <a href={`/public_car/${app.id}`} className="box">

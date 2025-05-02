@@ -15,7 +15,7 @@ const PublicGroupsComp = ({ id }) => {
   }, [dispatch, id]);
   return (
     <>
-      {success === true ? (
+      {success === true && item.length > 0 ? (
         <div className="main-box">
           {item?.map((app) => (
             <a href={`/public_group/${app.id}`} className="box">
