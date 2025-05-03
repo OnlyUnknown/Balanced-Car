@@ -65,11 +65,6 @@ const AddGroup = () => {
                 disabled={success}
               />
               <label htmlFor="public">The publicity of the group</label>
-              <select {...register('group_type', { required: true })} disabled={success}>
-                <option value="">Select Category</option>
-                <option value="cars">Cars</option>
-                <option value="drivers">Drivers</option>
-              </select>
               <button type="submit" disabled={loading || success}>
                 {loading ? <Spinner /> : 'Create'}
               </button>

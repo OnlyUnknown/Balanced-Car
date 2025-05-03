@@ -69,8 +69,10 @@ class Api::V1::GroupsController < ApplicationController
   end
 
   def show_items
-    @group = Group.find(params[:id])
-    check_user(@group.user)
+    @group = Group.find_by_id(params[:id])
+    if @group
+      check_user(@group.user)
+      @items = @group.items
       render json: @items
     else
       render json: { error: 'Group not found' }, status: :not_found
