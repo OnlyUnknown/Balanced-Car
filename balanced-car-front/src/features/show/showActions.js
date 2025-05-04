@@ -82,6 +82,33 @@ export const indexGroups = createAsyncThunk(
   },
 );
 
+export const indexGroupItems = createAsyncThunk(
+  'show/group',
+  async ({ id }, { getState, rejectWithValue }) => {
+    try {
+      const token = getState().auth.userToken; // Retrieve token from the state
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.get(
+        `${backendURL}/api/v1/user/show/group/${id}`,
+        config,
+      );
+      return { data }; // Return a success message or an object
+    } catch (error) {
+      // return custom error message from backend if present
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      }
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+
 export const indexItemsOfItem = createAsyncThunk(
   'show/index',
   async ({ classname, id }, { getState, rejectWithValue }) => {

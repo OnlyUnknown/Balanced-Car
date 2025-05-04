@@ -2,25 +2,25 @@ import '../../styling/CarComp.scss';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { showItem } from '../../features/show/showActions';
+import { indexGroupItems } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
 const GroupCarComp = () => {
-  const { item, loading, success } = useSelector((state) => state.show);
+  const { groupItems, loading, success } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   const { gid } = useParams();
 
   useEffect(() => {
     const classname = 'group';
     const id = gid;
-    dispatch(showItem({ classname, id }));
+    dispatch(indexGroupItems({ classname, id }));
   }, [dispatch, gid]);
 
   return (
     <>
-      {success === true && item.length > 0? (
+      {success === true && groupItems.length > 0? (
         <div className="main-box">
-          {item?.map((app) => (
+          {groupItems?.map((app) => (
             <a href={`groupcarinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>
               <div className="info">
