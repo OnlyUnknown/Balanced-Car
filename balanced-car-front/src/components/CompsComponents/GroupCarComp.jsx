@@ -18,40 +18,63 @@ const GroupCarComp = () => {
 
   return (
     <>
-      {success === true && groupItems.length > 0? (
+      {success === true && groupItems.length > 0 ? (
         <div className="main-box">
           {groupItems?.map((app) => (
-            <a href={`groupcarinfo/${app.id}`} className="box">
+            <a href={`groupcarinfo/${app.id}`} className="box" key={app.id}>
               <div className="pic">Pic</div>
               <div className="info">
-                <div>
-                  Oil change:
-                  {app.name}
-                </div>
-                <div>
-                  name:
-                  {app.car_type}
-                </div>
-                <div>
-                  Tire age:
-                  {app.description}
-                </div>
-                <div>
-                  Model:
-                  {app.public}
-                </div>
+                {app.classname === 'bills' ? (
+                  <>
+                    <div>
+                      Bill Amount:
+                      {app.amount}
+                    </div>
+                    <div>
+                      Due Date:
+                      {app.due_date}
+                    </div>
+                  </>
+                ) : app.classname === 'drivers' ? (
+                  <>
+                    <div>
+                      Driver Name:
+                      {app.name}
+                    </div>
+                    <div>
+                      License Number:
+                      {app.license_number}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      Oil change:
+                      {app.name}
+                    </div>
+                    <div>
+                      Name:
+                      {app.car_type}
+                    </div>
+                    <div>
+                      Tire age:
+                      {app.description}
+                    </div>
+                    <div>
+                      Model:
+                      {app.public}
+                    </div>
+                  </>
+                )}
                 <button type="button">Remove</button>
               </div>
             </a>
-
           ))}
         </div>
+      ) : loading === true ? (
+        <Spinner />
       ) : (
-        loading === true ? (
-          <Spinner />
-        ) : (
-          <div>empty</div>
-        )
+        <div>empty</div>
       )}
     </>
   );

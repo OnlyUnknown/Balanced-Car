@@ -108,7 +108,6 @@ export const indexGroupItems = createAsyncThunk(
   },
 );
 
-
 export const indexItemsOfItem = createAsyncThunk(
   'show/index',
   async ({ classname, id }, { getState, rejectWithValue }) => {

@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { showItem, indexItems, indexGroups, indexGroupItems } from './showActions';
+import {
+  showItem, indexItems, indexGroups, indexGroupItems,
+} from './showActions';
 
 const getUserToken = () => {
   const userToken = localStorage.getItem('userToken');

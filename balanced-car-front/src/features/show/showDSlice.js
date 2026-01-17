@@ -37,7 +37,7 @@ const showDSlice = createSlice({
     [indexItems.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
-    }
+    },
   },
 });
 
