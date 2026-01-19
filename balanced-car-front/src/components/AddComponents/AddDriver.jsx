@@ -15,7 +15,7 @@ const AddDriver = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const { items, success: success2 } = useSelector((state) => state.show);
+  const { items, success: success2 } = useSelector((state) => state.shows);
 
   useEffect(() => {
     const classname = 'cars';
@@ -25,7 +25,7 @@ const AddDriver = () => {
   useEffect(() => {
     if (success === true) {
       const Transfer = () => {
-        navigate('/');
+        navigate('/drivers');
       };
       setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }

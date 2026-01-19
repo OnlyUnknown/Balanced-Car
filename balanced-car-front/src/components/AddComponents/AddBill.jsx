@@ -16,7 +16,7 @@ const AddBill = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const { items, success: success2 } = useSelector((state) => state.show);
+  const { items, success: success2 } = useSelector((state) => state.shows);
   // State to hold selected car_id
   const [selectedItemId, setSelectedItemId] = useState('');
 

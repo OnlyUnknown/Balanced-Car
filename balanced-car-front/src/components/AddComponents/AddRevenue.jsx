@@ -15,7 +15,7 @@ const AddRevenue = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
-  const { items, success: success2 } = useSelector((state) => state.show);
+  const { items, success: success2 } = useSelector((state) => state.shows);
     const [selectedItemId, setSelectedItemId] = useState('');
 
   useEffect(() => {

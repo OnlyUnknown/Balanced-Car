@@ -6,7 +6,7 @@ import { indexItemsOfItem } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
 const RevenueComp = ({ cid }) => {
-  const { items, loading, success } = useSelector((state) => state.show);
+  const { items, loading, success } = useSelector((state) => state.shows);
   const dispatch = useDispatch();
 
   useEffect(() => {
