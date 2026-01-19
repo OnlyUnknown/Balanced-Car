@@ -9,6 +9,7 @@ import showReducer from './features/show/showSlice';
 import showDReducer from './features/show/showDSlice';
 import { removeApi } from './features/remove/removeServices';
 import removeReducer from './features/remove/removeSlice';
+import showsReducer from './features/show/showsSlice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     [addApi.reducerPath]: addApi.reducer,
     show: showReducer,
     showD: showDReducer,
+    shows: showsReducer,
     [removeApi.reducerPath]: removeApi.reducer,
     remove: removeReducer,
   },

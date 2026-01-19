@@ -16,7 +16,6 @@ const initialState = {
   error: null,
   success: false,
   item: null,
-  items: null,
   successg: false,
   groups: null,
   groupItems: null,
@@ -42,20 +41,6 @@ const showSlice = createSlice({
       state.success = true;
     },
     [showItem.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.error = payload;
-    },
-    // show index
-    [indexItems.pending]: (state) => {
-      state.loading = true;
-      state.error = null;
-    },
-    [indexItems.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.items = payload.data;
-      state.success = true;
-    },
-    [indexItems.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
     },
