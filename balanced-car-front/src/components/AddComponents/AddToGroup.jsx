@@ -14,7 +14,7 @@ const AddToGroup = () => {
   const { loading, errors, success } = useSelector((state) => state.add);
   const {
     items, groups, success: success2, successg,
-  } = useSelector((state) => state.show);
+  } = useSelector((state) => state.shows);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();

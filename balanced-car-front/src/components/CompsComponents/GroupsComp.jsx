@@ -5,7 +5,7 @@ import { indexGroups } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
 const GroupsComp = () => {
-  const { groups, loading, success } = useSelector((state) => state.show);
+  const { groups, loadingg, successg } = useSelector((state) => state.showg);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const GroupsComp = () => {
   }, [dispatch]);
   return (
     <>
-      {success === true  ? (
+      {successg === true  && groups.length > 0 ? (
         <div className="main-box">
           {groups?.map((app) => (
             <a href={`/group/${app.id}/`} className="box">
@@ -38,7 +38,7 @@ const GroupsComp = () => {
           ))}
         </div>
       ) : (
-        loading === true ? (
+        loadingg === true ? (
           <Spinner />
         ) : (
           <div>empty</div>

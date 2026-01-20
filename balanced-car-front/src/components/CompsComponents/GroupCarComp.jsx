@@ -6,7 +6,7 @@ import { indexGroupItems } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
 const GroupCarComp = () => {
-  const { groupItems, loading, success } = useSelector((state) => state.show);
+  const { groupItems, loadingg, successg } = useSelector((state) => state.showg);
   const dispatch = useDispatch();
   const { gid } = useParams();
 
@@ -18,7 +18,7 @@ const GroupCarComp = () => {
 
   return (
     <>
-      {success === true && groupItems.length > 0 ? (
+      {successg === true && groupItems.length > 0 ? (
         <div className="main-box">
           {groupItems?.map((app) => (
             <a href={`groupcarinfo/${app.id}`} className="box" key={app.id}>
@@ -71,7 +71,7 @@ const GroupCarComp = () => {
             </a>
           ))}
         </div>
-      ) : loading === true ? (
+      ) : loadingg === true ? (
         <Spinner />
       ) : (
         <div>empty</div>
