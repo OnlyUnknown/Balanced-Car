@@ -18,7 +18,9 @@ const GroupCarComp = () => {
 
   return (
     <>
-      {successg === true && groupItems.length > 0 ? (
+      {loadingg === true ? (
+        <Spinner />
+      ) : successg === true && groupItems.length > 0 ? (
         <div className="main-box">
           {groupItems?.map((app) => (
             <a href={`groupcarinfo/${app.id}`} className="box" key={app.id}>
@@ -71,8 +73,6 @@ const GroupCarComp = () => {
             </a>
           ))}
         </div>
-      ) : loadingg === true ? (
-        <Spinner />
       ) : (
         <div>empty</div>
       )}

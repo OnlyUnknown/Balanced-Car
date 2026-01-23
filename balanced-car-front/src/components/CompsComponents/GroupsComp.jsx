@@ -14,7 +14,9 @@ const GroupsComp = () => {
   }, [dispatch]);
   return (
     <>
-      {successg === true  && groups.length > 0 ? (
+      {loadingg === true ? (
+        <Spinner />
+      ) : successg === true && groups.length > 0 ? (
         <div className="main-box">
           {groups?.map((app) => (
             <a href={`/group/${app.id}/`} className="box">
@@ -34,15 +36,10 @@ const GroupsComp = () => {
                 <button type="button">Remove</button>
               </div>
             </a>
-
           ))}
         </div>
       ) : (
-        loadingg === true ? (
-          <Spinner />
-        ) : (
-          <div>empty</div>
-        )
+        <div>empty</div>
       )}
     </>
   );

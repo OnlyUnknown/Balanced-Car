@@ -15,7 +15,9 @@ const RevenueComp = () => {
 
   return (
     <>
-      {success === true && items.length > 0 ? (
+      {loading === true ? (
+        <Spinner />
+      ) : success === true && items.length > 0 ? (
         <div className="main-box">
           {items?.map((app) => (
             <a href={`/revenueinfo/${app.id}`} className="box">
@@ -44,11 +46,7 @@ const RevenueComp = () => {
           ))}
         </div>
       ) : (
-        loading === true ? (
-          <Spinner />
-        ) : (
-          <div>empty</div>
-        )
+        <div>empty</div>
       )}
     </>
   );

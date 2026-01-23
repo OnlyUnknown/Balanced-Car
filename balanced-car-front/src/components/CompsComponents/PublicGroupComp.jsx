@@ -16,7 +16,9 @@ const PublicGroupComp = ({ id }) => {
 
   return (
     <>
-      {success === true && item.length > 0 ? (
+      {loading === true ? (
+        <Spinner />
+      ) : success === true && item.length > 0 ? (
         <div className="main-box">
           {item?.map((app) => (
             <a href={`/public_car/${app.id}`} className="box">
@@ -45,11 +47,7 @@ const PublicGroupComp = ({ id }) => {
           ))}
         </div>
       ) : (
-        loading === true ? (
-          <Spinner />
-        ) : (
-          <div>empty</div>
-        )
+        <div>empty</div>
       )}
     </>
   );

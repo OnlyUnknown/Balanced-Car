@@ -18,7 +18,9 @@ const GroupDriverComp = () => {
 
   return (
     <>
-      {success === true && item.length > 0? (
+      {loading === true ? (
+        <Spinner />
+      ) : success === true && item.length > 0 ? (
         <div className="main-box">
           {item?.map((app) => (
             <a href={`/driverinfo/${app.id}`} className="box">
@@ -43,15 +45,10 @@ const GroupDriverComp = () => {
                 <button type="button">Remove</button>
               </div>
             </a>
-
           ))}
         </div>
       ) : (
-        loading === true ? (
-          <Spinner />
-        ) : (
-          <div>empty</div>
-        )
+        <div>empty</div>
       )}
     </>
   );
