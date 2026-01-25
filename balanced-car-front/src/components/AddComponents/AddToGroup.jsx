@@ -13,8 +13,11 @@ import Spinner from '../Spinner';
 const AddToGroup = () => {
   const { loading, errors, success } = useSelector((state) => state.add);
   const {
-    items, groups, success: success2, successg,
+    items, success: success2,
   } = useSelector((state) => state.shows);
+    const {
+     groups, successg,
+  } = useSelector((state) => state.showg);
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
@@ -34,13 +37,12 @@ const AddToGroup = () => {
   }, [success, selectedItemId]);
 
   const submitForm = async (data) => {
-    const { ItemId, groupId } = data;
+    const { ItemId, group_id, item_type } = data;
 
    
 
-    setSelectedItemId(groupId);
-
-    dispatch(addToGroup({ ItemId, groupId }))
+    setSelectedItemId(group_id);
+    dispatch(addToGroup({ item_id: ItemId, group_id, item_type: "Car" }))
       .unwrap()
       .then(() => {
         toast.success('Added to group successfully');

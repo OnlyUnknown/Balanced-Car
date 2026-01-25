@@ -57,7 +57,7 @@ export const addGroup = createAsyncThunk(
 
 export const addToGroup = createAsyncThunk(
   'add/to_group',
-  async ({ item_id, group_id }, { getState, rejectWithValue }) => {
+  async ({ item_id, group_id, item_type }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.userToken; // Retrieve token from the state
       const config = {
@@ -68,7 +68,7 @@ export const addToGroup = createAsyncThunk(
       };
       const data = await axios.post(
         `${backendURL}/user/add_to_group`,
-        {item_id, group_id},
+        {item_id, group_id, item_type},
         config,
       );
       return data;
