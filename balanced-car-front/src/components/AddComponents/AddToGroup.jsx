@@ -12,6 +12,7 @@ import Spinner from '../Spinner';
 
 const AddToGroup = () => {
   const { loading, errors, success } = useSelector((state) => state.add);
+  const { loadingg, error } = useSelector((state) => state.showg);
   const {
     items, success: success2,
   } = useSelector((state) => state.shows);
@@ -32,7 +33,10 @@ const AddToGroup = () => {
 
   useEffect(() => {
     if (success && selectedItemId) {
-      navigate(`/group/${selectedItemId}`);
+      const Transfer = () => {
+        navigate('/main');
+      };
+      setTimeout(Transfer, 1000); // Pass Transfer as a function reference, not by invoking it
     }
   }, [success, selectedItemId]);
 

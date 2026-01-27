@@ -44,7 +44,9 @@ const GroupCarInfo = () => {
   return (
     <>
       <Navigation />
-      {success === true ? (
+      {loading === true ? (
+        <Spinner/>
+      ) : success === true ? (
         <div className="border">
           <div className="carpic">Car pic</div>
           <div className="carinfo">
@@ -79,11 +81,7 @@ const GroupCarInfo = () => {
           <RemoveFromGComp resource={"car"} GroupId={gid} cid={item.id} page={"main"} />
         </div>
       ) : (
-        loading === true ? (
-          <Spinner/>
-        ) : (
-          <div>empty</div>
-        )
+        <div>empty</div>
       )}
     </>
   );
