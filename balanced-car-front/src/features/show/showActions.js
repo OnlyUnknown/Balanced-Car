@@ -84,7 +84,7 @@ export const indexGroups = createAsyncThunk(
 
 export const indexGroupItems = createAsyncThunk(
   'show/group',
-  async ({ id }, { getState, rejectWithValue }) => {
+  async ({ id, classname }, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.userToken; // Retrieve token from the state
       const config = {
@@ -94,7 +94,7 @@ export const indexGroupItems = createAsyncThunk(
         },
       };
       const { data } = await axios.get(
-        `${backendURL}/api/v1/user/show/group/${id}`,
+        `${backendURL}/api/v1/user/show/group/${classname}/${id}`,
         config,
       );
       return { data }; // Return a success message or an object

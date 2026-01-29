@@ -72,7 +72,7 @@ class Api::V1::GroupsController < ApplicationController
     @group = Group.find_by_id(params[:id])
     if @group
       check_user(@group.user)
-      @items = @group.items
+      @items = @group.cars
       render json: @items
     else
       render json: { error: 'Group not found' }, status: :not_found
