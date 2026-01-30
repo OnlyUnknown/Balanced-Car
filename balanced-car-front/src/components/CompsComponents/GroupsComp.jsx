@@ -16,7 +16,7 @@ const GroupsComp = () => {
     <>
       {loadingg === true ? (
         <Spinner />
-      ) : successg === true && groups.length > 0 ? (
+      ) : successg === true && groups && groups.length > 0 ? (
         <div className="main-box">
           {groups?.map((app) => (
             <a href={`/group/${app.id}/`} className="box">

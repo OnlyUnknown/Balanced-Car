@@ -23,7 +23,7 @@ const GroupCarComp = () => {
       ) : successg === true && groupItems.length > 0 ? (
         <div className="main-box">
           {groupItems?.map((app) => (
-            <a href={`groupcarinfo/${app.id}`} className="box" key={app.id}>
+            <a href={`cars/groupcarinfo/${app.id}`} className="box" key={app.id}>
               <div className="pic">Pic</div>
               <div className="info">
                 {app.classname === 'bills' ? (
