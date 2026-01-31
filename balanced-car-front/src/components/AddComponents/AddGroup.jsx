@@ -59,12 +59,20 @@ const AddGroup = () => {
                 placeholder="The description of the group"
                 disabled={success}
               />
+              <label htmlFor="public">Group type</label>
+              <select
+                {...register("type")}
+                disabled={success}
+              >
+                <option value="car">Car</option>
+                <option value="driver">Driver</option>
+              </select>
+              <label htmlFor="public">The publicity of the group</label>
               <input
                 type="checkbox"
                 {...register('public')}
                 disabled={success}
               />
-              <label htmlFor="public">The publicity of the group</label>
               <button type="submit" disabled={loading || success}>
                 {loading ? <Spinner /> : 'Create'}
               </button>

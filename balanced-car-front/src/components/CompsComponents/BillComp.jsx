@@ -17,7 +17,7 @@ const BillComp = () => {
     <>
       {loading === true ? (
         <Spinner />
-      ) : success === true && items.length > 0 ? (
+      ) : success === true && items && items.length > 0 ? (
         <div className="main-box">
           {items?.map((app) => (
             <a href={`/billinfo/${app.id}`} className="box">

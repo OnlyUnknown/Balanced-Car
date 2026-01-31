@@ -20,7 +20,7 @@ const GroupDriverComp = () => {
     <>
       {loading === true ? (
         <Spinner />
-      ) : success === true && item.length > 0 ? (
+      ) : success === true && item && item.length > 0 ? (
         <div className="main-box">
           {item?.map((app) => (
             <a href={`/driverinfo/${app.id}`} className="box">
