@@ -7,4 +7,5 @@ class Group < ApplicationRecord
   has_many :revenues, through: :group_items, source: :item, source_type: 'Revenue'
 
   validates :name, presence: true
+  validates :group_type, presence: true
 end

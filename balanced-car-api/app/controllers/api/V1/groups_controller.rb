@@ -138,7 +138,7 @@ class Api::V1::GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:item).permit(:name, :description, :public
+    params.require(:item).permit(:name, :description, :public, :group_type
                       ).merge(user: current_devise_api_token.resource_owner)
   end
 end

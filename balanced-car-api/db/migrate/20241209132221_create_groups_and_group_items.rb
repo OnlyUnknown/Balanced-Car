@@ -4,7 +4,7 @@ class CreateGroupsAndGroupItems < ActiveRecord::Migration[7.0]
     # Create the groups table
     create_table :groups do |t|
       t.string :name, null: false
-      t.string :type, null: false
+      t.string :group_type, null: false
       t.boolean :public, default: false
       t.string :description
       t.string :location

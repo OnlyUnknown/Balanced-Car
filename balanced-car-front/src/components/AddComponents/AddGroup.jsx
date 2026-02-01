@@ -61,7 +61,7 @@ const AddGroup = () => {
               />
               <label htmlFor="public">Group type</label>
               <select
-                {...register("type")}
+                {...register("group_type")}
                 disabled={success}
               >
                 <option value="car">Car</option>
