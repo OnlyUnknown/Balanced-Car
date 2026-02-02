@@ -20,7 +20,7 @@ const SignUp = () => {
 
   useEffect(() => {
     // redirect user to login page if registration was successful
-    if (success) navigate('/signin');
+    if (success) navigate('/main');
     // redirect authenticated user to profile screen
     if (userInfo) navigate('/user-profile');
   }, [navigate, userInfo, success]);
@@ -46,7 +46,6 @@ const SignUp = () => {
         <input type="password" id="signup-password" placeholder="Password" {...register('password', { required: true })} />
         <input type="password" id="signup-password-confirm" placeholder="Confirm Password" {...register('confirmPassword', { required: true })} />
         <button type="submit" disabled={loading}>{loading ? <Spinner /> : 'SignUp'}</button>
-        {error && <div className="error">{error}</div>}
       </form>
     </div>
   );

@@ -10,7 +10,7 @@ import Splash from './components/SignComps/Splash';
 import SignUp from './components/SignComps/signup';
 import SigninScreen from './components/SignComps/signin';
 import Profile from './components/SignComps/Profile';
-import EditProfile from './components/EditComponents/editprofile';
+import EditProfile from './components/EditComponents/Editprofile';
 import DriverInfo from './components/InfoComponents/DriverInfo';
 import 'react-toastify/dist/ReactToastify.css';
 import AddBill from './components/AddComponents/AddBill';
