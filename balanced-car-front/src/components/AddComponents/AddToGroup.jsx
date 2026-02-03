@@ -25,7 +25,7 @@ const AddToGroup = () => {
   const [selectedItemId, setSelectedItemId] = useState('');
 
   useEffect(() => {
-    const classname = 'cars';
+    const classname = 'drivers';
     const groups = 'groups';
     dispatch(indexItems({ classname }));
     dispatch(indexGroups({ groups }));
@@ -56,6 +56,14 @@ const AddToGroup = () => {
       });
   };
 
+  const [itemType, setItemType] = useState('drivers');
+
+  const handleItemTypeChange = (e) => {
+    const classname = e.target.value;
+    setItemType(classname);
+    dispatch(indexItems({ classname }));
+  };
+
   return (
     <>
       <Navigation />
@@ -65,21 +73,24 @@ const AddToGroup = () => {
           <div className="shadow-box-add">
             <div className="car_box_pic">Pic</div>
             <div className="info_box">
-             
+              <select value={itemType} onChange={handleItemTypeChange} disabled={success}>
+                <option value="drivers">Drivers</option>
+                <option value="cars">Cars</option>
+              </select>
               <select name="ItemId" {...register('ItemId', { required: true })} disabled={success}>
                 {success2 ? (
                   <>
-                    <option value="" hidden>Select a car</option>
-                    {items.map((car) => (
-                      <option key={car.id} value={car.id}>
-                        {car.name}
+                    <option value="" hidden>Select an item</option>
+                    {items.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
                         ,
-                        {car.id}
+                        {item.id}
                       </option>
                     ))}
                   </>
                 ) : (
-                  <option value="">No cars available</option>
+                  <option value="">No items available</option>
                 )}
               </select>
               <select name="group_id" {...register('group_id', { required: true })} disabled={success}>
