@@ -56,7 +56,7 @@ const AddToGroup = () => {
       });
   };
 
-  const [itemType, setItemType] = useState('drivers');
+  const [itemType, setItemType] = useState('car');
 
   const handleItemTypeChange = (e) => {
     const classname = e.target.value;
@@ -74,8 +74,8 @@ const AddToGroup = () => {
             <div className="car_box_pic">Pic</div>
             <div className="info_box">
               <select value={itemType} onChange={handleItemTypeChange} disabled={success}>
-                <option value="drivers">Drivers</option>
-                <option value="cars">Cars</option>
+                <option value="driver">Drivers</option>
+                <option value="car">Cars</option>
               </select>
               <select name="ItemId" {...register('ItemId', { required: true })} disabled={success}>
                 {success2 ? (
@@ -97,7 +97,7 @@ const AddToGroup = () => {
                 {successg ? (
                   <>
                     <option value="" hidden>Select a group</option>
-                    {groups.map((group) => (
+                    {groups.filter((group) => group.group_type === itemType).map((group) => (
                       <option key={group.id} value={group.id}>
                         {group.name}
                         ,
