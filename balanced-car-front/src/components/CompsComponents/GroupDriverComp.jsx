@@ -6,7 +6,7 @@ import { showItem } from '../../features/show/showActions';
 import Spinner from '../Spinner';
 
 const GroupDriverComp = () => {
-  const { item, loading, success } = useSelector((state) => state.show);
+  const { groupItems, loading, successg } = useSelector((state) => state.showg);
   const dispatch = useDispatch();
   const { gid } = useParams();
 
@@ -20,9 +20,9 @@ const GroupDriverComp = () => {
     <>
       {loading === true ? (
         <Spinner />
-      ) : success === true && item && item.length > 0 ? (
+      ) : successg === true && groupItems && groupItems.length > 0 ?  (
         <div className="main-box">
-          {item?.map((app) => (
+          {groupItems?.map((app) => (
             <a href={`/driverinfo/${app.id}`} className="box">
               <div className="pic">Pic</div>
               <div className="info">
